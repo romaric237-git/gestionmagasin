@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" styleClass="app-brand">
+         <children>
+            <ImageView fitHeight="101.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/logo/icon.png" />
+               </image>
+            </ImageView>
+            <VBox styleClass="justify-content-center">
+               <children>
+                  <Label styleClass="h3" text="Neb" textFill="#f5f3f3" />
+                  <Label styleClass="h3" text="Gest" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <content>
+            <Accordion style="-fx-background-color: #fff;">
+              <panes>
+                <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="menu-item" text="Dashboard">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" />
+                  </content>
+                     <graphic>
+                        <FontIcon iconLiteral="bx-home-circle" text="" />
+                     </graphic>
+                </TitledPane>
+                  <TitledPane animated="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="menu-header-text" text="GESTION">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" />
+                     </content>
+                     <graphic>
+                        <Line endX="15.0" styleClass="line" />
+                     </graphic>
+                  </TitledPane>
+                <TitledPane animated="false" graphicTextGap="15.0" nodeOrientation="RIGHT_TO_LEFT" text="Products">
+                  <content>
+                        <VBox>
+                           <children>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="List" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </HBox>
+                              <TitledPane expanded="false" graphicTextGap="15.0" nodeOrientation="RIGHT_TO_LEFT" text="Category">
+                                 <content>
+                                    <VBox>
+                                       <children>
+                                          <HBox styleClass="data-truncate">
+                                             <children>
+                                                <Button mnemonicParsing="false" text="Add" />
+                                                <Separator styleClass="circle" />
+                                             </children>
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </HBox>
+                                          <HBox styleClass="data-truncate">
+                                             <children>
+                                                <Button mnemonicParsing="false" text="List" />
+                                                <Separator styleClass="circle" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                                 <graphic>
+                                    <Separator styleClass="circle" />
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="menu-item" />
+                                    <String fx:value="menu-toggle" />
+                                    <String fx:value="data-truncate" />
+                                 </styleClass>
+                              </TitledPane>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Overview" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </HBox>
+                           </children>
+                        </VBox>
+                  </content>
+                     <styleClass>
+                        <String fx:value="menu-item" />
+                        <String fx:value="menu-toggle" />
+                     </styleClass>
+                     <graphic>
+                        <FontIcon iconLiteral="bx-box" />
+                     </graphic>
+                </TitledPane>
+                <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" text="Order">
+                  <content>
+                        <VBox>
+                           <children>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="List" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Overview" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                  </content>
+                     <styleClass>
+                        <String fx:value="menu-item" />
+                        <String fx:value="menu-toggle" />
+                     </styleClass>
+                     <graphic>
+                        <FontIcon iconLiteral="bx-cart" />
+                     </graphic>
+                </TitledPane>
+                  <TitledPane animated="false" graphicTextGap="15.0" nodeOrientation="RIGHT_TO_LEFT" text="Invoice">
+                     <content>
+                        <VBox>
+                           <children>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="List" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Overview" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                     <styleClass>
+                        <String fx:value="menu-item" />
+                        <String fx:value="menu-toggle" />
+                     </styleClass>
+                     <graphic>
+                        <FontIcon iconLiteral="bx-food-menu" />
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" text="Customer">
+                     <content>
+                        <VBox>
+                           <children>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="List" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Overview" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                     <styleClass>
+                        <String fx:value="menu-item" />
+                        <String fx:value="menu-toggle" />
+                     </styleClass>
+                     <graphic>
+                        <FontIcon iconLiteral="bx-user" />
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" text="Supplier">
+                     <content>
+                        <VBox>
+                           <children>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="List" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Overview" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                     <styleClass>
+                        <String fx:value="menu-item" />
+                        <String fx:value="menu-toggle" />
+                     </styleClass>
+                     <graphic>
+                        <FontIcon iconLiteral="bx-user" />
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane animated="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="menu-header-text" text="ADMINISTRATION">
+                     <graphic>
+                        <Line endX="15.0" styleClass="line" />
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" text="User">
+                     <content>
+                        <VBox>
+                           <children>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="List" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Overview" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                     <styleClass>
+                        <String fx:value="menu-item" />
+                        <String fx:value="menu-toggle" />
+                     </styleClass>
+                     <graphic>
+                        <FontIcon iconLiteral="bx-user-circle" />
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="menu-item" text="Logs">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                     <graphic>
+                        <FontIcon iconLiteral="bx-user" />
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" text="Setting">
+                     <content>
+                        <VBox>
+                           <children>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Application" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Account" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Shop" />
+                                    <Separator styleClass="circle" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                     <styleClass>
+                        <String fx:value="menu-item" />
+                        <String fx:value="menu-toggle" />
+                     </styleClass>
+                     <graphic>
+                        <FontIcon iconLiteral="bx-cube-alt" />
+                     </graphic>
+                  </TitledPane>
+              </panes>
+            </Accordion>
+         </content>
+      </ScrollPane>
+      <VBox styleClass="mb-4" />
+   </children>
+   <styleClass>
+      <String fx:value="bg-menu-theme" />
+      <String fx:value="menu-vertical" />
+      <String fx:value="menu" />
+   </styleClass>
+</VBox>

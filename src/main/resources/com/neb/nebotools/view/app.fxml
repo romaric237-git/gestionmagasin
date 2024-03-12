@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <fx:include source="component/sidebar.fxml" />
+   </left>
+   <center>
+      <VBox prefHeight="880.0" prefWidth="1246.0" style="-fx-background-color: #f5f5f9;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox>
+               <children>
+                  <fx:include source="component/header.fxml" VBox.vgrow="ALWAYS" />
+                  <VBox styleClass="spacing30" VBox.vgrow="ALWAYS">
+                     <children>
+                        <fx:include source="page/product/productList.fxml" />
+                     </children>
+                  </VBox>
+               </children>
+               <styleClass>
+                  <String fx:value="container-xxl" />
+                  <String fx:value="justify-content-top-left" />
+                  <String fx:value="spacing30" />
+               </styleClass>
+            </VBox>
+         </children>
+         <styleClass>
+            <String fx:value="justify-content-center" />
+            <String fx:value="mb-4" />
+         </styleClass>
+      </VBox>
+   </center>
+</BorderPane>

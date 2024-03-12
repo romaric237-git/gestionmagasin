@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.HTMLEditor?>
+
+<VBox prefHeight="1000.0" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox styleClass="spacing20">
+         <children>
+            <VBox>
+               <children>
+                  <Label text="Add a new Product">
+                     <styleClass>
+                        <String fx:value="h4" />
+                        <String fx:value="mb-1" />
+                        <String fx:value="bolder" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Orders placed across your store">
+                     <styleClass>
+                        <String fx:value="h6" />
+                        <String fx:value="text-muted" />
+                     </styleClass></Label>
+               </children>
+            </VBox>
+            <VBox HBox.hgrow="ALWAYS" />
+            <VBox />
+            <Button mnemonicParsing="false" text="Discard">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-label-secondary" />
+                  <String fx:value="btn-padding" />
+               </styleClass>
+            </Button>
+            <Button mnemonicParsing="false" text="Save draft">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-label-primary" />
+                  <String fx:value="btn-padding" />
+               </styleClass>
+            </Button>
+            <Button mnemonicParsing="false" text="Publish Product">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-primary" />
+                  <String fx:value="btn-padding" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+      <HBox styleClass="spacing30">
+         <children>
+            <VBox styleClass="spacing30" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox>
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="mb-2" />
+                     </styleClass>
+                     <children>
+                        <VBox styleClass="card-body">
+                           <children>
+                              <Label text="Product Information">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="bolder" />
+                                    <String fx:value="mb-4" />
+                                 </styleClass>
+                              </Label>
+                              <VBox styleClass="mb-3">
+                                 <children>
+                                    <Label styleClass="form-label" text="NAME" />
+                                    <TextField promptText="Product title" styleClass="form-control" />
+                                 </children>
+                              </VBox>
+                              <HBox>
+                                 <children>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="form-label" text="SKU" />
+                                          <TextField promptText="SKU" styleClass="form-control" />
+                                       </children>
+                                    </VBox>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="form-label" text="BARCODE" />
+                                          <TextField promptText="0123-4567" styleClass="form-control" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="mb-3" />
+                                    <String fx:value="spacing30" />
+                                 </styleClass>
+                              </HBox>
+                              <VBox styleClass="mb-3">
+                                 <children>
+                                    <HBox styleClass="spacing5">
+                                       <children>
+                                          <Label text="DESCRIPTION" />
+                                          <Label styleClass="text-muted" text="(OPTIONAL)" />
+                                       </children>
+                                    </HBox>
+                                    <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" minHeight="300.0" styleClass="editor" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="mb-2" />
+                     </styleClass>
+                     <children>
+                        <VBox styleClass="card-body">
+                           <children>
+                              <Label text="Media">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="bolder" />
+                                    <String fx:value="mb-4" />
+                                 </styleClass>
+                              </Label>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label styleClass="h4" text="Drag and drop your image here" />
+                                          <Label styleClass="h5" text="or" />
+                                          <Button mnemonicParsing="false" text="Browse image">
+                                             <styleClass>
+                                                <String fx:value="btn" />
+                                                <String fx:value="btn-label-primary" />
+                                                <String fx:value="btn-padding" />
+                                             </styleClass>
+                                          </Button>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="spacing30" />
+                                          <String fx:value="justify-content-center" />
+                                          <String fx:value="drop-zone" />
+                                       </styleClass>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="mb-2" />
+                     </styleClass>
+                     <children>
+                        <VBox styleClass="card-body">
+                           <children>
+                              <Label text="Variants">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="bolder" />
+                                    <String fx:value="mb-4" />
+                                 </styleClass>
+                              </Label>
+                              <VBox styleClass="mb-4">
+                                 <children>
+                                    <HBox styleClass="spacing30">
+                                       <children>
+                                          <VBox prefHeight="59.0" prefWidth="235.0">
+                                             <children>
+                                                <Label text="OPTION">
+                                                   <styleClass>
+                                                      <String fx:value="form-label" />
+                                                      <String fx:value="mb-3" />
+                                                   </styleClass>
+                                                </Label>
+                                                <ChoiceBox maxWidth="1.7976931348623157E308" styleClass="form-select" />
+                                             </children>
+                                          </VBox>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label>
+                                                   <styleClass>
+                                                      <String fx:value="form-label" />
+                                                      <String fx:value="mb-3" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" VBox.vgrow="ALWAYS" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <Button mnemonicParsing="false" text="Add another option">
+                                 <styleClass>
+                                    <String fx:value="btn" />
+                                    <String fx:value="btn-primary" />
+                                    <String fx:value="btn-padding" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox>
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="mb-2" />
+                     </styleClass>
+                     <children>
+                        <VBox styleClass="card-body">
+                           <children>
+                              <Label text="Pricing">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="bolder" />
+                                    <String fx:value="mb-4" />
+                                 </styleClass>
+                              </Label>
+                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
+                                 <children>
+                                    <Label text="BASE PRICE">
+                                       <styleClass>
+                                          <String fx:value="form-label" />
+                                          <String fx:value="mb-3" />
+                                       </styleClass>
+                                    </Label>
+                                    <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
+                                 <children>
+                                    <Label text="BASE PRICE">
+                                       <styleClass>
+                                          <String fx:value="form-label" />
+                                          <String fx:value="mb-3" />
+                                       </styleClass>
+                                    </Label>
+                                    <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="mb-2" />
+                     </styleClass>
+                     <children>
+                        <VBox styleClass="card-body">
+                           <children>
+                              <Label text="Options">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="bolder" />
+                                    <String fx:value="mb-4" />
+                                 </styleClass>
+                              </Label>
+                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
+                                 <children>
+                                    <Label text="ADD TO STOCK">
+                                       <styleClass>
+                                          <String fx:value="form-label" />
+                                          <String fx:value="mb-3" />
+                                       </styleClass>
+                                    </Label>
+                                    <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
+                                 <children>
+                                    <Label text="CATEGORY">
+                                       <styleClass>
+                                          <String fx:value="form-label" />
+                                          <String fx:value="mb-3" />
+                                       </styleClass>
+                                    </Label>
+                                    <ChoiceBox maxWidth="1.7976931348623157E308" styleClass="form-select" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+               <styleClass>
+                  <String fx:value="justify-content-top-left" />
+                  <String fx:value="spacing30" />
+               </styleClass></VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
