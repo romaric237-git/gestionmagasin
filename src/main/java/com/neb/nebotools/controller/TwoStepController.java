@@ -1,4 +1,4 @@
-package controller;
+package com.neb.nebotools.controller;
 
 import com.neb.nebotools.HelloApplication;
 import javafx.event.ActionEvent;

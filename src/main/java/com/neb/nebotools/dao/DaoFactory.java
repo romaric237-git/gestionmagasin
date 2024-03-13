@@ -1,4 +1,4 @@
-package dao;
+package com.neb.nebotools.dao;
 
 public class DaoFactory {
 

@@ -1,27 +1,29 @@
-package validator;
+package com.neb.nebotools.validator;
 
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+
+import java.util.Stack;
 
 public class Validator {
 
-    private Control control;
-    private String messageEmpty;
-    private String messageLength;
-    private String messageNotPatern;
     public Validator(Control control, String messageEmpty, String messageNotPatern, String pattern, String messageLength, int lenght){
-        this.control = control;
-
         if(control instanceof TextInputControl)
             control.setOnKeyReleased(a->{
                 TextInputControl textInputControl = (TextInputControl) control;
                 textInputControl.setOnKeyReleased(k->{
-                    if(control.getParent() instanceof Pane parent) {
-                        if (parent.getChildren().size() > parent.getChildren().indexOf(control) + 1) {
-                            parent.getChildren().remove(parent.getChildren().indexOf(control) + 1);
+                    VBox parent = null;
+                    if(control.getParent() instanceof VBox) parent = (VBox) control.getParent();
+                    else if(control.getParent() instanceof StackPane && control.getParent().getParent().getParent() instanceof VBox)
+                        parent = (VBox) control.getParent().getParent().getParent();
+
+                    if(parent != null) {
+                        if (parent.getChildren().size() >  1) {
+                            parent.getChildren().remove( 1);
                         }
                         if (!messageEmpty.isEmpty() && textInputControl.getText().isEmpty()) {
                             Label error = new Label(messageEmpty);
@@ -31,7 +33,7 @@ public class Validator {
                             Label error = new Label(messageNotPatern);
                             error.getStyleClass().add("label-danger");
                             parent.getChildren().add(error);
-                        } else if (!messageLength.isEmpty() && textInputControl.getText().length()<lenght) {
+                        } else if (!messageLength.isEmpty() && textInputControl.getText().length() < lenght) {
                             Label error = new Label(messageLength);
                             error.getStyleClass().add("label-danger");
                             parent.getChildren().add(error);
@@ -64,7 +66,6 @@ public class Validator {
     public Validator(Control control,String messageNotPatern, String pattern, String messageLength, int lenght){
         this(control, "", messageNotPatern, pattern, messageLength, lenght);
     }
-
 
 
 }

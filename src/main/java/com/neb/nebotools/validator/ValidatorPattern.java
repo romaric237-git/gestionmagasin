@@ -1,4 +1,4 @@
-package validator;
+package com.neb.nebotools.validator;
 
 public enum ValidatorPattern {
     MAIL("yo");

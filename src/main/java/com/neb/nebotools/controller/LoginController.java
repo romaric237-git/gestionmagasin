@@ -1,7 +1,7 @@
-package controller;
+package com.neb.nebotools.controller;
 
 import com.neb.nebotools.HelloApplication;
-import dao.DaoFactory;
+import com.neb.nebotools.dao.DaoFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +13,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import validator.Validator;
-import validator.ValidatorPattern;
+import com.neb.nebotools.validator.Validator;
+import com.neb.nebotools.validator.ValidatorPattern;
 
 import java.io.IOException;
 import java.net.URL;
@@ -69,6 +68,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        new Validator(mail, "Le mail ne doit pas etre vide","Le mail n'est pas valide", ValidatorPattern.MAIL.getReggex());
+        new Validator(mail, "Le mail ne doit pas etre vide");
+        new Validator(passwordP, "Le mot de passe ne doit pas etre vide", "Le mot de passe doit avoir au moins 8 caractères", 8);
     }
 }

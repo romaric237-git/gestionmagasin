@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="container-xxl" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="container-xxl" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.LoginController">
    <children>
       <VBox VBox.vgrow="ALWAYS">
          <children>
@@ -59,15 +59,19 @@
                               <VBox prefWidth="100.0" styleClass="mb-3">
                                  <children>
                                     <Label styleClass="form-label" text="%login.mailLabel" />
-                                    <TextField fx:id="mail" promptText="%login.mailInput" styleClass="form-control" />
+                                    <VBox>
+                                       <children>
+                                          <TextField fx:id="mail" promptText="%login.mailInput" styleClass="form-control" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </VBox>
                               <VBox prefWidth="100.0" styleClass="mb-3">
                                  <children>
                                     <Label styleClass="form-label" text="%login.passwordLabel" />
-                                    <HBox focusTraversable="true">
+                                    <VBox>
                                        <children>
-                                          <AnchorPane HBox.hgrow="ALWAYS">
+                                          <AnchorPane>
                                              <children>
                                                 <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
@@ -87,7 +91,7 @@
                                              </children>
                                           </AnchorPane>
                                        </children>
-                                    </HBox>
+                                    </VBox>
                                  </children>
                               </VBox>
                               <CheckBox fx:id="rememberMe" mnemonicParsing="false" selected="true" text="%login.remember">

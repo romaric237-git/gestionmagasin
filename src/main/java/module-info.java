@@ -13,6 +13,6 @@ module com.neb.nebotools {
 
     opens com.neb.nebotools to javafx.fxml;
     exports com.neb.nebotools;
-    exports controller to javafx.fxml;
-    opens controller to javafx.fxml;
+    exports com.neb.nebotools.controller to javafx.fxml;
+    opens com.neb.nebotools.controller to javafx.fxml;
 }
