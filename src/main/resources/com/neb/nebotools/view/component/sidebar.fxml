@@ -16,9 +16,9 @@
 <?import javafx.scene.shape.Line?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.component.SidebarController">
    <children>
-      <HBox alignment="CENTER" styleClass="app-brand">
+      <HBox alignment="CENTER" minHeight="160.0" prefHeight="160.0" styleClass="app-brand">
          <children>
             <ImageView fitHeight="101.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -33,11 +33,11 @@
             </VBox>
          </children>
       </HBox>
-      <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+      <ScrollPane fitToHeight="true" fitToWidth="true">
          <content>
             <Accordion style="-fx-background-color: #fff;">
               <panes>
-                <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="menu-item" text="Dashboard">
+                <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#changeDashboard" styleClass="menu-item" text="Dashboard">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" />
                   </content>
@@ -57,13 +57,13 @@
                   <content>
                         <VBox>
                            <children>
-                              <HBox styleClass="data-truncate">
+                              <HBox onMouseClicked="#changeProductAdd" styleClass="data-truncate">
                                  <children>
                                     <Button mnemonicParsing="false" text="Add" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
-                              <HBox styleClass="data-truncate">
+                              <HBox onMouseClicked="#changeProductList" styleClass="data-truncate">
                                  <children>
                                     <Button mnemonicParsing="false" text="List" />
                                     <Separator styleClass="circle" />
@@ -72,38 +72,13 @@
                                     <Cursor fx:constant="DEFAULT" />
                                  </cursor>
                               </HBox>
-                              <TitledPane expanded="false" graphicTextGap="15.0" nodeOrientation="RIGHT_TO_LEFT" text="Category">
-                                 <content>
-                                    <VBox>
-                                       <children>
-                                          <HBox styleClass="data-truncate">
-                                             <children>
-                                                <Button mnemonicParsing="false" text="Add" />
-                                                <Separator styleClass="circle" />
-                                             </children>
-                                             <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                             </cursor>
-                                          </HBox>
-                                          <HBox styleClass="data-truncate">
-                                             <children>
-                                                <Button mnemonicParsing="false" text="List" />
-                                                <Separator styleClass="circle" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                 </content>
-                                 <graphic>
+                              <HBox onMouseClicked="#changeCategory" styleClass="data-truncate">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Category" />
                                     <Separator styleClass="circle" />
-                                 </graphic>
-                                 <styleClass>
-                                    <String fx:value="menu-item" />
-                                    <String fx:value="menu-toggle" />
-                                    <String fx:value="data-truncate" />
-                                 </styleClass>
-                              </TitledPane>
-                              <HBox styleClass="data-truncate">
+                                 </children>
+                              </HBox>
+                              <HBox onMouseClicked="#changeProductOverview" styleClass="data-truncate">
                                  <children>
                                     <Button mnemonicParsing="false" text="Overview" />
                                     <Separator styleClass="circle" />

@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/application.fxml"));
         ResourceBundle bundle = ResourceBundle.getBundle("french");
         fxmlLoader.setResources(bundle);
         Parent root = fxmlLoader.load();
@@ -21,6 +21,9 @@ public class HelloApplication extends Application {
         scene.getStylesheets().add("light.css");
         stage.setTitle("Hello!");
         stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.setX(0);
+        stage.setY(0);
         stage.show();
     }
 
