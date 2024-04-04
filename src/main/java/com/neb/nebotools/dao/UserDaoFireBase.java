@@ -1,6 +1,8 @@
 package com.neb.nebotools.dao;
 
-public class UserDaoFireBase extends DaoFireBase implements UserDao{
+import com.neb.nebotools.model.User;
+
+public class UserDaoFireBase extends DaoFireBase<User> implements UserDao {
 
     @Override
     public boolean login(String mail, String password) {

@@ -67,5 +67,4 @@ public class Validator {
         this(control, "", messageNotPatern, pattern, messageLength, lenght);
     }
 
-
 }

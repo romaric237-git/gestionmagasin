@@ -2,29 +2,29 @@ package com.neb.nebotools.dao;
 
 import java.util.List;
 
-public class DaoFireBase implements Dao{
+public abstract class DaoFireBase<T> implements Dao<T>{
     @Override
-    public Object create(Object obj) {
+    public T create(T obj) {
         return null;
     }
 
     @Override
-    public Object update(Object obj) {
+    public T update(T obj) {
         return null;
     }
 
     @Override
-    public int mask(Object obj) {
+    public int mask(T obj) {
         return 0;
     }
 
     @Override
-    public Object find(Object obj) {
+    public T find(T obj) {
         return null;
     }
 
     @Override
-    public List getAll(Object obj, int limit) {
+    public List<T> getAll(T obj, int limit) {
         return null;
     }
 }

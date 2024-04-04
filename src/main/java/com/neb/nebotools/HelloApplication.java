@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/application.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/login.fxml"));
         ResourceBundle bundle = ResourceBundle.getBundle("french");
         fxmlLoader.setResources(bundle);
         Parent root = fxmlLoader.load();
