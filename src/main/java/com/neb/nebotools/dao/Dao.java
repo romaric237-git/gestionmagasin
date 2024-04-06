@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.neb.nebotools.model.AbstractEntity;
+import com.neb.nebotools.sql.BdConnexion;
 import exception.EntityNotFoundException;
 
-import sql.BdConnexion;
+
 
 public abstract class Dao <T>{
 

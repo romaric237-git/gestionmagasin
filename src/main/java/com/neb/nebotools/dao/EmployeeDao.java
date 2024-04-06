@@ -3,22 +3,20 @@ package com.neb.nebotools.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.neb.nebotools.model.User;
+import com.neb.nebotools.model.Employee;
 import exception.EntityNotFoundException;
 
-public class UserDao extends Dao<User> {
+public class EmployeeDao extends Dao<Employee> {
 
-	public UserDao() throws SQLException {
+	public EmployeeDao() throws SQLException {
 		super();
 		table = "user";
 		idS="usr";
 	}
 
 	@Override
-	public User create(User obj) throws SQLException, EntityNotFoundException {
+	public Employee create(Employee obj) throws SQLException, EntityNotFoundException {
 		String sql = "INSERT INTO `user`(`id`, `login`, `firstname`, `lastname`, `password`, `mail`, `phone`, `role`, `nb_person`) VALUES "
 				+ "(?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -36,7 +34,7 @@ public class UserDao extends Dao<User> {
 	}
 
 	@Override
-	public User update(User obj) throws SQLException, EntityNotFoundException {
+	public Employee update(Employee obj) throws SQLException, EntityNotFoundException {
 		String sql = "UPDATE `user` SET "
 				+ "`login`=?,"
 				+ "`firstname`=?,"
@@ -63,13 +61,13 @@ public class UserDao extends Dao<User> {
 	}
 
 	@Override
-	public User find(String id) throws SQLException, EntityNotFoundException {
+	public Employee find(String id) throws SQLException, EntityNotFoundException {
 		String sql = "SELECT * FROM `"+table+"` WHERE id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, id);
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {
-			return new User(new User.UserBuilder().id(rs.getString("id"))
+			return new Employee(new Employee.UserBuilder().id(rs.getString("id"))
 					.login(rs.getString("login"))
 					.firstname(rs.getString("firstname"))
 					.lastname(rs.getString("lastname"))
@@ -83,7 +81,7 @@ public class UserDao extends Dao<User> {
 	}
 
 
-	public User login(String mail, String password) throws SQLException, EntityNotFoundException {
+	public Employee login(String mail, String password) throws SQLException, EntityNotFoundException {
 		String sql = "SELECT `id` FROM `user` WHERE (`login` = ? OR `mail` = ?) AND `password` = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, mail);

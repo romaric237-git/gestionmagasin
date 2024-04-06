@@ -1,4 +1,4 @@
-package sql;
+package com.neb.nebotools.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class BdConnexion {
 
-	private static String url = "jdbc:mysql://localhost:3306/neb_tontine";
+	private static String url = "jdbc:mysql://localhost:3306/neb_tools";
 	private static String user = "root";
 	private static String passwd = "";
 

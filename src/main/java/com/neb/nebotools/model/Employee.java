@@ -6,9 +6,9 @@ import com.neb.nebotools.model.enumeration.Role;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User extends AbstractEntity{
-    private static User userConnected;
-    private static List<User> users = new ArrayList<User>();
+public class Employee extends AbstractEntity{
+    private static Employee userConnected;
+    private static List<Employee> users = new ArrayList<Employee>();
     private String login;
     private String firstname;
     private String lastname;
@@ -20,12 +20,12 @@ public class User extends AbstractEntity{
 
     static{
         try {
-            userConnected= DaoFactory.getUserDao().find("usr-023-001");
+            userConnected= DaoFactory.getEmployeeDao().find("usr-023-001");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public User(UserBuilder builder) {
+    public Employee(UserBuilder builder) {
         id = builder.id;
         login = builder.login;
         firstname = builder.firstname;
@@ -39,7 +39,7 @@ public class User extends AbstractEntity{
         if(!users.contains(this))users.add(this);
     }
 
-    public User() {
+    public Employee() {
     }
 
     public String getLogin() {
@@ -94,15 +94,15 @@ public class User extends AbstractEntity{
         this.nbPerson = nbPerson;
     }
 
-    public static User getUserConnected() {
+    public static Employee getUserConnected() {
         return userConnected;
     }
 
-    public static void setUserConnected(User userConnected) {
-        User.userConnected = userConnected;
+    public static void setUserConnected(Employee userConnected) {
+        Employee.userConnected = userConnected;
     }
 
-    public static List<User> getList() {
+    public static List<Employee> getList() {
         return users;
     }
 
@@ -163,15 +163,15 @@ public class User extends AbstractEntity{
             return this;
         }
 
-        public User build() {
-            return new User(this);
+        public Employee build() {
+            return new Employee(this);
         }
     }
 
 
     @Override
     public void setEntity(AbstractEntity t) {
-        User u = (User) t;
+        Employee u = (Employee) t;
 
         login = u.login;
         firstname = u.firstname;

@@ -163,7 +163,7 @@
   -fx-text-fill: #566a7f;
   -fx-font-size: 15;
 }
-.form-control, .form-select, .form-number {
+.form-control, .form-select, .form-number, .form-date {
   -fx-padding: 5 8;
   -fx-font-size: 15;
   -fx-font-weight: 400;
@@ -179,23 +179,31 @@
 .form-number{
   -fx-padding: 0;
 }
-
+.form-date{
+    -fx-padding: 0;
+}
 .form-number .text-field{
     -fx-background-color: #fff;
 }
 
 .form-number .increment-arrow-button,
-.form-number .decrement-arrow-button{
+.form-number .decrement-arrow-button,
+.form-date .arrow-button{
     -fx-background-color: #e9e9ed;
 }
 
 .form-number .increment-arrow,
-.form-number .decrement-arrow{
+.form-number .decrement-arrow,
+.form-date .arrow-button .arrow{
     -fx-background-color: #9f9fac;
 }
 
 .form-control:focused, .box-text:focused {
   -fx-border-color: #969af4;
+}
+
+.form-date .date-picker-display-node{
+    -fx-background-color: none;
 }
 .input-group{
   -fx-padding: 1;
@@ -267,6 +275,16 @@
     -fx-background-radius: 5;
     -fx-border-radius: 5;
 }
+.btn-danger{
+  -fx-text-fill: #fff;
+  -fx-background-color: #ff3e1d;
+  -fx-border-color: #ff3e1d;
+  -fx-padding: 5;
+  -fx-effect: dropshadow(gaussian, rgba(255,62,29,.4), 1, 0, 0, 1 );
+}
+.btn-danger:hover{
+  -fx-background-color: #e00e1d;
+}
 
 .btn-primary {
   -fx-text-fill: #fff;
@@ -281,7 +299,8 @@
   -fx-background-color: #383cff;
 }
 
-.btn-primary .text{
+.btn-primary .text,
+.btn-danger .text{
   -fx-fill: #fff;
   -fx-font-size: 16;
 }

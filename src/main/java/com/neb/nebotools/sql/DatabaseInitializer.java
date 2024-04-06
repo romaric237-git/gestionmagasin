@@ -14,7 +14,7 @@ public class DatabaseInitializer {
 	private static String DB_URL = "jdbc:mysql://localhost/";
 	private static String USER = "root";
 	private static String PASS = "";
-	private static String dbName = "neb_tontine";
+	private static String dbName = "neb_tools";
 
 
 	public static void init() throws SQLException, ClassNotFoundException, IOException {

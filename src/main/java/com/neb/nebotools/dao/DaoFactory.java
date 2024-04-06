@@ -3,10 +3,10 @@ package com.neb.nebotools.dao;
 import java.sql.SQLException;
 
 public abstract class DaoFactory {
-	static UserDao userDao;
+	static EmployeeDao userDao;
 
-	public static UserDao getUserDao() throws SQLException{
-		if(userDao==null) userDao = new UserDao();
+	public static EmployeeDao getEmployeeDao() throws SQLException{
+		if(userDao==null) userDao = new EmployeeDao();
 		return userDao;
 	}
 

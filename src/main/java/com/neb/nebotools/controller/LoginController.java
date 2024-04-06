@@ -2,7 +2,7 @@ package com.neb.nebotools.controller;
 
 import com.neb.nebotools.HelloApplication;
 import com.neb.nebotools.dao.DaoFactory;
-import com.neb.nebotools.model.User;
+import com.neb.nebotools.model.Employee;
 import exception.EntityNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,8 +40,8 @@ public class LoginController implements Initializable {
     @FXML
     void signIn(ActionEvent event) throws IOException, SQLException {
         try {
-            User.setUserConnected(DaoFactory.getUserDao().login(mail.getText(),passwordP.getText()));
-            if(User.getUserConnected()!=null){
+            Employee.setUserConnected(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText()));
+            if(Employee.getUserConnected()!=null){
             Stage stage = ((Stage) (mail.getScene().getWindow()));
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/twoStep.fxml"));
             ResourceBundle bundle = ResourceBundle.getBundle("english");
