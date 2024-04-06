@@ -1,4 +1,7 @@
 package com.neb.nebotools;
 
-public class ControllerOverviewAbstract extends ControllerAbstract{
+import com.neb.nebotools.controller.ControllerAbstract;
+
+public abstract class ControllerOverviewAbstract extends ControllerAbstract {
+
 }

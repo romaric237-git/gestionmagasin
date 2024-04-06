@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<VBox prefHeight="1000.0" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="1000.0" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.product.ProductAddController">
    <children>
       <HBox styleClass="spacing20">
          <children>
@@ -32,21 +32,14 @@
             </VBox>
             <VBox HBox.hgrow="ALWAYS" />
             <VBox />
-            <Button mnemonicParsing="false" text="Discard">
+            <Button fx:id="cancelBtn" mnemonicParsing="false" text="Discard">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-label-secondary" />
                   <String fx:value="btn-padding" />
                </styleClass>
             </Button>
-            <Button mnemonicParsing="false" text="Save draft">
-               <styleClass>
-                  <String fx:value="btn" />
-                  <String fx:value="btn-label-primary" />
-                  <String fx:value="btn-padding" />
-               </styleClass>
-            </Button>
-            <Button mnemonicParsing="false" text="Publish Product">
+            <Button fx:id="addBtn" mnemonicParsing="false" text="Publish Product">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-primary" />
@@ -177,18 +170,18 @@
                                        <children>
                                           <VBox prefHeight="59.0" prefWidth="235.0">
                                              <children>
-                                                <Label text="OPTION">
+                                                <Label text="NUM LOT">
                                                    <styleClass>
                                                       <String fx:value="form-label" />
                                                       <String fx:value="mb-3" />
                                                    </styleClass>
                                                 </Label>
-                                                <ChoiceBox maxWidth="1.7976931348623157E308" styleClass="form-select" />
+                                                <TextField promptText="SKU" styleClass="form-control" />
                                              </children>
                                           </VBox>
                                           <VBox HBox.hgrow="ALWAYS">
                                              <children>
-                                                <Label>
+                                                <Label text="NUM LOT">
                                                    <styleClass>
                                                       <String fx:value="form-label" />
                                                       <String fx:value="mb-3" />
@@ -201,7 +194,7 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <Button mnemonicParsing="false" text="Add another option">
+                              <Button mnemonicParsing="false" text="Add another lot">
                                  <styleClass>
                                     <String fx:value="btn" />
                                     <String fx:value="btn-primary" />
@@ -272,17 +265,6 @@
                                     <String fx:value="mb-4" />
                                  </styleClass>
                               </Label>
-                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
-                                 <children>
-                                    <Label text="ADD TO STOCK">
-                                       <styleClass>
-                                          <String fx:value="form-label" />
-                                          <String fx:value="mb-3" />
-                                       </styleClass>
-                                    </Label>
-                                    <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" VBox.vgrow="ALWAYS" />
-                                 </children>
-                              </VBox>
                               <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
                                  <children>
                                     <Label text="CATEGORY">

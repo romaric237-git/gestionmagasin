@@ -254,7 +254,7 @@
                         <HBox HBox.hgrow="ALWAYS" />
                         <ChoiceBox prefWidth="70.0" styleClass="form-select" />
                         <ChoiceBox styleClass="form-select" />
-                        <Button mnemonicParsing="false" text="Add Product">
+                        <Button fx:id="btnAdd" mnemonicParsing="false" text="Add Product">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-primary" />

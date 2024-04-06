@@ -1,25 +1,13 @@
 package com.neb.nebotools.dao;
 
-public class DaoFactory {
+import java.sql.SQLException;
 
-    /* 0 For MySQL DAO*/
-    private static int typeDao = 0;
+public abstract class DaoFactory {
+	static UserDao userDao;
 
-    private static DaoSQLFactory daoSQL;
-    private static DaoFireBaseFactory daoFireBase;
+	public static UserDao getUserDao() throws SQLException{
+		if(userDao==null) userDao = new UserDao();
+		return userDao;
+	}
 
-    private static AbstractDaoFactory verifyDao(){
-        if(typeDao == 0 ) {
-            if(daoSQL == null) daoSQL = new DaoSQLFactory();
-            return daoSQL;
-        }
-
-        if(daoFireBase == null) daoFireBase = new DaoFireBaseFactory();
-
-        return daoFireBase;
-
-    }
-    public static UserDao getUserDao(){
-        return verifyDao().getUserDao();
-    }
 }

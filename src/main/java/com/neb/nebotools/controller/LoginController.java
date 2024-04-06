@@ -2,6 +2,8 @@ package com.neb.nebotools.controller;
 
 import com.neb.nebotools.HelloApplication;
 import com.neb.nebotools.dao.DaoFactory;
+import com.neb.nebotools.model.User;
+import exception.EntityNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +17,10 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import com.neb.nebotools.validator.Validator;
-import com.neb.nebotools.validator.ValidatorPattern;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -36,8 +38,10 @@ public class LoginController implements Initializable {
     private CheckBox rememberMe;
 
     @FXML
-    void signIn(ActionEvent event) throws IOException {
-        if(DaoFactory.getUserDao().login(mail.getText(),passwordP.getText())) {
+    void signIn(ActionEvent event) throws IOException, SQLException {
+        try {
+            User.setUserConnected(DaoFactory.getUserDao().login(mail.getText(),passwordP.getText()));
+            if(User.getUserConnected()!=null){
             Stage stage = ((Stage) (mail.getScene().getWindow()));
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/twoStep.fxml"));
             ResourceBundle bundle = ResourceBundle.getBundle("english");
@@ -48,6 +52,10 @@ public class LoginController implements Initializable {
             stage.setTitle("Hello!");
             stage.setScene(scene);
             stage.show();
+            }
+
+        } catch (EntityNotFoundException e) {
+            System.err.println("Connexion impossible");
         }
     }
 

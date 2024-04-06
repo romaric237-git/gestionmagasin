@@ -1,6 +1,13 @@
 package com.neb.nebotools.controller;
 
-import com.neb.nebotools.ControllerAbstract;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
-public class ControllerListAbstract extends ControllerAbstract{
+public abstract class ControllerListAbstract<T> extends ControllerAbstract<T>{
+    @FXML
+    protected Button btnAdd;
+
+    public Button getAdd() {
+        return btnAdd;
+    }
 }
