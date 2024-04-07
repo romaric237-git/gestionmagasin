@@ -21,17 +21,7 @@ public class HelloApplication extends Application {
         DatabaseInitializer.init();
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/application.fxml"));
-        fxmlLoader.setResources(Utils.getBundle());
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("light.css");
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.setMaximized(true);
-        stage.setX(0);
-        stage.setY(0);
-        stage.show();
+        Utils.openApp(stage,"view/application.fxml");
     }
 
     public static void main(String[] args) {

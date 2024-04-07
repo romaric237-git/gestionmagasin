@@ -6,6 +6,7 @@ import com.neb.nebotools.controller.component.SidebarController;
 import com.neb.nebotools.controller.enumeration.State;
 import com.neb.nebotools.controller.page.product.ProductAddController;
 import com.neb.nebotools.controller.page.product.ProductListController;
+import com.neb.nebotools.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,7 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ApplicationController implements Initializable {
+public class ApplicationController extends Controller implements Initializable {
 
     SidebarController sidebarController;
     Parent sidebar;
@@ -35,39 +36,13 @@ public class ApplicationController implements Initializable {
     @FXML
     private BorderPane app;
 
-    private void switchPane(Parent child, String Entity, State state) {
+    private void switchPane(Parent child, String entity, State state) {
         content.getChildren().clear();
-        headerController.changeHeader(Entity, state.getName());
+        headerController.changeHeader(entity, state.getName());
         content.getChildren().add(child);
         VBox.setVgrow(child, Priority.ALWAYS);
 
     }
-
-
-//    public void backPane(VBox child, ManageControllerAbstract<?> manageController, State state, String message) {
-//        main.getChildren().clear();
-//        navigationControl.setManageType(state.getName());
-//        //		manageController
-//        main.getChildren().addAll(navigation, child);
-//        manageController.refresh();
-//        VBox.setVgrow(child, Priority.ALWAYS);
-//        createAndShowPopUp(message);
-//    }
-//
-//    public <T> void switchPane(VBox child, EntityControllerAbstract<T> control, State state, T entity) throws Exception {
-//        main.getChildren().clear();
-//        navigationControl.setManageType(state.getName());
-//        control.setEntity(entity);
-//        control.setState(state);
-//        main.getChildren().addAll(navigation, child);
-//    }
-//
-//    public <T> void switchPane(VBox child, MoreControllerAbstract<T> control, State state, T entity) throws Exception {
-//        main.getChildren().clear();
-//        navigationControl.setManageType(state.getName());
-//        control.setEntity(entity);
-//        main.getChildren().addAll(navigation, child);
-//    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -77,7 +52,7 @@ public class ApplicationController implements Initializable {
         setProduct();
         switchPane();
 
-        switchPane(productList, "product.entity", State.MANAGE);
+        switchPane(productAdd, "product.entity", State.ADD);
 
     }
 
@@ -89,7 +64,7 @@ public class ApplicationController implements Initializable {
         content.getChildren().add(productList);
     }
 
-    private void setProduct() {
+    private void setProduct(){
         try {
             FXMLLoader loader1 = new FXMLLoader();
             FXMLLoader loader2 = new FXMLLoader();
@@ -97,6 +72,8 @@ public class ApplicationController implements Initializable {
             loader1.setLocation(HelloApplication.class.getResource("view/page/product/productList.fxml"));
             loader2.setLocation(HelloApplication.class.getResource("view/page/product/productAdd.fxml"));
 
+            loader1.setResources(Utils.getBundle());
+            loader2.setResources(Utils.getBundle());
             productList = loader1.load();
             productAdd = loader2.load();
 
@@ -116,10 +93,10 @@ public class ApplicationController implements Initializable {
                 switchPane(productList, "product.entity", State.MANAGE);
             });
 
-        } catch (IOException e) {
-            System.err.println("Une erreur s'est manifesté. Impossible de trouver le composant: ");
-            e.printStackTrace();
         } catch (IllegalStateException e) {
+            System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
+            e.printStackTrace();
+        } catch (IOException e) {
             System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
             e.printStackTrace();
         }
@@ -173,6 +150,11 @@ public class ApplicationController implements Initializable {
             System.err.println("Une erreur s'est manifesté. Impossible de trouver la sideBar: " + e.getStackTrace()[2]);
         }
 
+
+    }
+
+    @Override
+    public void refresh() {
 
     }
 }

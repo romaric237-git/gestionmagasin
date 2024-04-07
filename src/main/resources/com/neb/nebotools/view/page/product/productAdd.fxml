@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<VBox prefHeight="1000.0" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.product.ProductAddController">
+<VBox prefHeight="2000.0" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.product.ProductAddController">
    <children>
       <HBox styleClass="spacing20">
          <children>
@@ -25,23 +28,24 @@
                         <String fx:value="bolder" />
                      </styleClass>
                   </Label>
-                  <Label text="Orders placed in your store">
+                  <Label text="%product.titleSubAdd">
                      <styleClass>
                         <String fx:value="h6" />
                         <String fx:value="text-muted" />
-                     </styleClass></Label>
+                     </styleClass>
+                  </Label>
                </children>
             </VBox>
             <VBox HBox.hgrow="ALWAYS" />
             <VBox />
-            <Button fx:id="cancelBtn" mnemonicParsing="false" text="Discard">
+            <Button fx:id="cancelBtn" mnemonicParsing="false" text="%btn.discard">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-label-secondary" />
                   <String fx:value="btn-padding" />
                </styleClass>
             </Button>
-            <Button fx:id="addBtn" mnemonicParsing="false" text="Publish Product">
+            <Button fx:id="addBtn" mnemonicParsing="false" text="%product.add">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-primary" />
@@ -62,7 +66,7 @@
                      <children>
                         <VBox styleClass="card-body">
                            <children>
-                              <Label text="Product Information">
+                              <Label text="%product.information">
                                  <styleClass>
                                     <String fx:value="h5" />
                                     <String fx:value="bolder" />
@@ -71,15 +75,15 @@
                               </Label>
                               <HBox>
                                  <children>
-                                    <VBox HBox.hgrow="ALWAYS">
+                                    <VBox fx:id="name" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label styleClass="form-label" text="NAME" />
-                                          <TextField promptText="Product title" styleClass="form-control" />
+                                          <Label styleClass="form-label" text="%product.name" />
+                                          <TextField promptText="%product.nameTitle" styleClass="form-control" />
                                        </children>
                                     </VBox>
-                                    <VBox HBox.hgrow="ALWAYS">
+                                    <VBox fx:id="barcode" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label styleClass="form-label" text="BARCODE" />
+                                          <Label styleClass="form-label" text="%product.barcode" />
                                           <TextField promptText="0123-4567" styleClass="form-control" />
                                        </children>
                                     </VBox>
@@ -89,12 +93,11 @@
                                     <String fx:value="spacing30" />
                                  </styleClass>
                               </HBox>
-                              <VBox styleClass="mb-3">
+                              <VBox fx:id="description" styleClass="mb-3">
                                  <children>
                                     <HBox styleClass="spacing5">
                                        <children>
-                                          <Label text="DESCRIPTION" />
-                                          <Label styleClass="text-muted" text="(OPTIONAL)" />
+                                          <Label text="%product.description" />
                                        </children>
                                     </HBox>
                                     <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" minHeight="300.0" styleClass="editor" />
@@ -110,148 +113,124 @@
                         <String fx:value="mb-2" />
                      </styleClass>
                      <children>
-                        <VBox styleClass="card-body">
+                        <VBox VBox.vgrow="ALWAYS">
                            <children>
                               <Label text="Stock">
                                  <styleClass>
                                     <String fx:value="h5" />
                                     <String fx:value="bolder" />
-                                    <String fx:value="mb-4" />
                                  </styleClass>
                               </Label>
-                              <VBox styleClass="mb-4">
-                                 <children>
-                                    <HBox>
-                                       <children>
-                                          <VBox prefWidth="250.0">
+                              <TabPane minHeight="400.0" prefHeight="200.0" prefWidth="200.0" styleClass="table-pane" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab>
+                                    <content>
+                                          <VBox styleClass="mb-4">
                                              <children>
-                                                <Label text="NUM LOT">
-                                                   <styleClass>
-                                                      <String fx:value="form-label" />
-                                                      <String fx:value="mb-3" />
-                                                   </styleClass>
-                                                </Label>
-                                                <TextField disable="true" promptText="PK7-PR5-85T-TRE-GRY" styleClass="form-control" />
-                                             </children>
-                                          </VBox>
-                                          <VBox prefWidth="250.0" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <Label text="QUANTITY">
-                                                   <styleClass>
-                                                      <String fx:value="form-label" />
-                                                      <String fx:value="mb-3" />
-                                                   </styleClass>
-                                                </Label>
-                                                <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" VBox.vgrow="ALWAYS" />
-                                             </children>
-                                          </VBox>
-                                          <VBox HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <Label text="VARIANT">
-                                                   <styleClass>
-                                                      <String fx:value="form-label" />
-                                                      <String fx:value="mb-3" />
-                                                   </styleClass>
-                                                </Label>
-                                                <TextField promptText="SKU" styleClass="form-control" />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                       <styleClass>
-                                          <String fx:value="spacing30" />
-                                          <String fx:value="mb-4" />
-                                       </styleClass>
-                                    </HBox>
-                                    <HBox>
-                                       <children>
-                                          <VBox prefWidth="250.0">
-                                             <children>
-                                                <Label text="EXP DATE">
-                                                   <styleClass>
-                                                      <String fx:value="form-label" />
-                                                      <String fx:value="mb-3" />
-                                                   </styleClass>
-                                                </Label>
-                                                <DatePicker maxWidth="1.7976931348623157E308" styleClass="form-date" VBox.vgrow="ALWAYS" />
-                                             </children>
-                                          </VBox>
-                                          <VBox prefWidth="250.0" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <Label text="SUPPLIER">
-                                                   <styleClass>
-                                                      <String fx:value="form-label" />
-                                                      <String fx:value="mb-3" />
-                                                   </styleClass>
-                                                </Label>
-                                                <ChoiceBox maxWidth="1.7976931348623157E308" styleClass="form-select" />
-                                             </children>
-                                          </VBox>
-                                          <VBox HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <Label text="PRICE">
-                                                   <styleClass>
-                                                      <String fx:value="form-label" />
-                                                      <String fx:value="mb-3" />
-                                                   </styleClass>
-                                                </Label>
-                                                <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                       <styleClass>
-                                          <String fx:value="spacing30" />
-                                          <String fx:value="mb-4" />
-                                       </styleClass>
-                                    </HBox>
-                                    <HBox>
-                                       <children>
-                                          <HBox>
-                                             <children>
-                                                <HBox>
+                                                <Separator prefWidth="200.0" />
+                                                <VBox styleClass="justify-content-center">
                                                    <children>
-                                                      <VBox prefWidth="250.0">
-                                                         <children>
-                                                            <Label text="STATUS">
-                                                               <styleClass>
-                                                                  <String fx:value="form-label" />
-                                                                  <String fx:value="mb-3" />
-                                                               </styleClass>
-                                                            </Label>
-                                                            <ChoiceBox maxWidth="1.7976931348623157E308" styleClass="form-select" />
-                                                         </children>
-                                                      </VBox>
+                                                      <Label text="%lot.inStock">
+                                                         <styleClass>
+                                                            <String fx:value="h5" />
+                                                            <String fx:value="bolder" />
+                                                            <String fx:value="mb-4" />
+                                                         </styleClass>
+                                                      </Label>
+                                                      <ListView fx:id="inStock" VBox.vgrow="ALWAYS">
+                                                         <styleClass>
+                                                            <String fx:value="list" />
+                                                            <String fx:value="list-lot" />
+                                                         </styleClass>
+                                                      </ListView>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                                             </padding>
+                                          </VBox>
+                                    </content>
+                                       <graphic>
+                                          <Label text="%lot.inStock">
+                                             <styleClass>
+                                                <String fx:value="h5" />
+                                                <String fx:value="bolder" />
+                                             </styleClass>
+                                          </Label>
+                                       </graphic>
+                                  </Tab>
+                                  <Tab>
+                                    <content>
+                                          <VBox styleClass="mb-4">
+                                             <children>
+                                                <Separator prefWidth="200.0" />
+                                                <VBox>
+                                                   <children>
+                                                      <Label text="%lot.addStock">
+                                                         <styleClass>
+                                                            <String fx:value="h5" />
+                                                            <String fx:value="bolder" />
+                                                         </styleClass>
+                                                      </Label>
+                                                      <ListView fx:id="addStock" VBox.vgrow="ALWAYS">
+                                                         <styleClass>
+                                                            <String fx:value="list" />
+                                                            <String fx:value="list-lot" />
+                                                         </styleClass>
+                                                      </ListView>
+                                                      <HBox styleClass="spacing30">
+                                                         <children>
+                                                            <Button mnemonicParsing="false" onAction="#addAnotherLot" text="%lot.add">
+                                                               <styleClass>
+                                                                  <String fx:value="btn" />
+                                                                  <String fx:value="btn-primary" />
+                                                                  <String fx:value="btn-padding" />
+                                                               </styleClass>
+                                                            </Button>
+                                                            <Button mnemonicParsing="false" onAction="#saveLot" text="%btn.save">
+                                                               <styleClass>
+                                                                  <String fx:value="btn" />
+                                                                  <String fx:value="btn-secondary" />
+                                                                  <String fx:value="btn-padding" />
+                                                               </styleClass>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                                   </padding>
                                                    <styleClass>
                                                       <String fx:value="spacing30" />
-                                                      <String fx:value="mb-4" />
+                                                      <String fx:value="justify-content-center" />
                                                    </styleClass>
-                                                </HBox>
+                                                </VBox>
                                              </children>
+                                          </VBox>
+                                    </content>
+                                       <graphic>
+                                          <Label text="%lot.addStock">
                                              <styleClass>
-                                                <String fx:value="spacing30" />
-                                                <String fx:value="mb-4" />
+                                                <String fx:value="h5" />
+                                                <String fx:value="bolder" />
                                              </styleClass>
-                                          </HBox>
-                                          <Pane HBox.hgrow="ALWAYS" />
-                                          <Button mnemonicParsing="false" text="Remove">
-                                             <styleClass>
-                                                <String fx:value="btn" />
-                                                <String fx:value="btn-danger" />
-                                                <String fx:value="btn-padding" />
-                                             </styleClass>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                              <Button mnemonicParsing="false" text="Add another lot">
-                                 <styleClass>
-                                    <String fx:value="btn" />
-                                    <String fx:value="btn-primary" />
-                                    <String fx:value="btn-padding" />
-                                 </styleClass>
-                              </Button>
+                                          </Label>
+                                       </graphic>
+                                  </Tab>
+                                </tabs>
+                              </TabPane>
                            </children>
+                           <styleClass>
+                              <String fx:value="card-body" />
+                              <String fx:value="spacing30" />
+                           </styleClass>
                         </VBox>
                      </children>
                   </VBox>
@@ -267,16 +246,16 @@
                      <children>
                         <VBox styleClass="card-body">
                            <children>
-                              <Label text="Pricing">
+                              <Label text="%product.pricing">
                                  <styleClass>
                                     <String fx:value="h5" />
                                     <String fx:value="bolder" />
                                     <String fx:value="mb-4" />
                                  </styleClass>
                               </Label>
-                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
+                              <VBox fx:id="basePrice" prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
                                  <children>
-                                    <Label text="BASE PRICE">
+                                    <Label text="%product.basePrice">
                                        <styleClass>
                                           <String fx:value="form-label" />
                                           <String fx:value="mb-3" />
@@ -285,9 +264,9 @@
                                     <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
-                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
+                              <VBox fx:id="minimumPrice" prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
                                  <children>
-                                    <Label text="MIN PRICE">
+                                    <Label text="%product.minPrice">
                                        <styleClass>
                                           <String fx:value="form-label" />
                                           <String fx:value="mb-3" />
@@ -315,9 +294,9 @@
                                     <String fx:value="mb-4" />
                                  </styleClass>
                               </Label>
-                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
+                              <VBox fx:id="category" prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
                                  <children>
-                                    <Label text="CATEGORY">
+                                    <Label text="%product.category">
                                        <styleClass>
                                           <String fx:value="form-label" />
                                           <String fx:value="mb-3" />
@@ -338,7 +317,7 @@
                      <children>
                         <VBox styleClass="card-body">
                            <children>
-                              <Label text="Category">
+                              <Label text="%product.category">
                                  <styleClass>
                                     <String fx:value="h5" />
                                     <String fx:value="bolder" />
@@ -349,22 +328,22 @@
                                  <children>
                                     <HBox styleClass="spacing30">
                                        <children>
-                                          <VBox prefHeight="59.0" prefWidth="235.0">
+                                          <VBox fx:id="nameCategory" prefHeight="59.0" prefWidth="235.0">
                                              <children>
-                                                <Label text="NAME">
+                                                <Label text="%product.name">
                                                    <styleClass>
                                                       <String fx:value="form-label" />
                                                       <String fx:value="mb-3" />
                                                    </styleClass>
                                                 </Label>
-                                                <TextField promptText="SKU" styleClass="form-control" />
+                                                <TextField styleClass="form-control" />
                                              </children>
                                           </VBox>
                                        </children>
                                     </HBox>
                                  </children>
                               </VBox>
-                              <Button mnemonicParsing="false" text="Add Category">
+                              <Button mnemonicParsing="false" onAction="#addCategory" text="%category.add">
                                  <styleClass>
                                     <String fx:value="btn" />
                                     <String fx:value="btn-primary" />

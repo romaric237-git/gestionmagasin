@@ -6,18 +6,23 @@ public abstract class AbstractEntity {
     protected String id;
     protected int row;
 
-    public AbstractEntity(String id) {
+    protected int is_actif;
+
+    public AbstractEntity(String id, int is_actif) {
         super();
         this.id = id;
+        this.is_actif = is_actif;
     }
 
     public AbstractEntity() {
-        super();
-        this.id = "";
+        this("",1);
     }
 
     public String getId() {
         return id;
+    }
+    public void setId() {
+        this.id = id;
     }
 
     public int getRow() {
@@ -26,6 +31,18 @@ public abstract class AbstractEntity {
 
     public void setRow(int row) {
         this.row = row;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getIs_actif() {
+        return is_actif;
+    }
+
+    public void setIs_actif(int is_actif) {
+        this.is_actif = is_actif;
     }
 
     public abstract void setEntity(AbstractEntity t);

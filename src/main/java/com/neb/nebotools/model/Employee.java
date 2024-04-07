@@ -16,7 +16,6 @@ public class Employee extends AbstractEntity{
     private String mail;
     private String phone;
     private Role role;
-    private int nbPerson;
 
     static{
         try {
@@ -34,7 +33,6 @@ public class Employee extends AbstractEntity{
         mail = builder.mail;
         phone = builder.phone;
         role = Role.getRole(builder.role);
-        nbPerson = builder.nbPerson;
 
         if(!users.contains(this))users.add(this);
     }
@@ -87,12 +85,6 @@ public class Employee extends AbstractEntity{
     public void setRole(int role) {
         this.role = Role.getRole(role);
     }
-    public int getNbPerson() {
-        return nbPerson;
-    }
-    public void setNbPerson(int nbPerson) {
-        this.nbPerson = nbPerson;
-    }
 
     public static Employee getUserConnected() {
         return userConnected;
@@ -116,7 +108,6 @@ public class Employee extends AbstractEntity{
         private String password = "";
         private String mail = "";
         private String phone = "";
-        private int nbPerson = 0;
 
         public UserBuilder id (String id) {
             this.id = id;
@@ -158,11 +149,6 @@ public class Employee extends AbstractEntity{
             return this;
         }
 
-        public UserBuilder nbPerson(int nbPerson) {
-            this.nbPerson = nbPerson;
-            return this;
-        }
-
         public Employee build() {
             return new Employee(this);
         }
@@ -180,7 +166,6 @@ public class Employee extends AbstractEntity{
         mail = u.mail;
         phone = u.phone;
         role = u.role;
-        nbPerson = u.nbPerson;
     }
 
     @Override
