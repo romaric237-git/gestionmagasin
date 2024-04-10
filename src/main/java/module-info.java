@@ -20,4 +20,6 @@ module com.neb.nebotools {
     exports com.neb.nebotools.controller.page.product to javafx.fxml;
     exports com.neb.nebotools.controller;
     opens com.neb.nebotools.controller.page.product to javafx.fxml;
+    exports com.neb.nebotools.controller.page.employee to javafx.fxml;
+    opens com.neb.nebotools.controller.page.employee to javafx.fxml;
 }

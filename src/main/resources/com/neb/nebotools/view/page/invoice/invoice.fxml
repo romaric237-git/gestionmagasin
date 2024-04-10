@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<VBox prefHeight="2000.0" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.product.ProductAddController">
+<VBox prefHeight="2000.0" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.product.ProductController">
    <children>
       <HBox styleClass="spacing20">
          <children>
@@ -75,16 +74,24 @@
                               </Label>
                               <HBox>
                                  <children>
-                                    <VBox fx:id="name" HBox.hgrow="ALWAYS">
+                                    <VBox HBox.hgrow="ALWAYS">
                                        <children>
                                           <Label styleClass="form-label" text="%product.name" />
-                                          <TextField promptText="%product.nameTitle" styleClass="form-control" />
+                                          <VBox>
+                                             <children>
+                                                <TextField fx:id="name" promptText="%product.nameTitle" styleClass="form-control" />
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </VBox>
-                                    <VBox fx:id="barcode" HBox.hgrow="ALWAYS">
+                                    <VBox HBox.hgrow="ALWAYS">
                                        <children>
                                           <Label styleClass="form-label" text="%product.barcode" />
-                                          <TextField promptText="0123-4567" styleClass="form-control" />
+                                          <VBox>
+                                             <children>
+                                                <TextField fx:id="barcode" promptText="0123-4567" styleClass="form-control" />
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </VBox>
                                  </children>
@@ -93,14 +100,14 @@
                                     <String fx:value="spacing30" />
                                  </styleClass>
                               </HBox>
-                              <VBox fx:id="description" styleClass="mb-3">
+                              <VBox styleClass="mb-3">
                                  <children>
                                     <HBox styleClass="spacing5">
                                        <children>
                                           <Label text="%product.description" />
                                        </children>
                                     </HBox>
-                                    <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" minHeight="300.0" styleClass="editor" />
+                                    <HTMLEditor fx:id="description" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" minHeight="300.0" styleClass="editor" />
                                  </children>
                               </VBox>
                            </children>
@@ -152,9 +159,6 @@
                                                    </padding>
                                                 </VBox>
                                              </children>
-                                             <padding>
-                                                <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-                                             </padding>
                                           </VBox>
                                     </content>
                                        <graphic>
@@ -253,7 +257,7 @@
                                     <String fx:value="mb-4" />
                                  </styleClass>
                               </Label>
-                              <VBox fx:id="basePrice" prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
+                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
                                  <children>
                                     <Label text="%product.basePrice">
                                        <styleClass>
@@ -261,10 +265,14 @@
                                           <String fx:value="mb-3" />
                                        </styleClass>
                                     </Label>
-                                    <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" VBox.vgrow="ALWAYS" />
+                                    <VBox VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <TextField fx:id="basePrice" promptText="500" styleClass="form-control" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </VBox>
-                              <VBox fx:id="minimumPrice" prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
+                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
                                  <children>
                                     <Label text="%product.minPrice">
                                        <styleClass>
@@ -272,7 +280,11 @@
                                           <String fx:value="mb-3" />
                                        </styleClass>
                                     </Label>
-                                    <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" VBox.vgrow="ALWAYS" />
+                                    <VBox VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <TextField fx:id="minimumPrice" promptText="500" styleClass="form-control" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </VBox>
                            </children>
@@ -294,7 +306,7 @@
                                     <String fx:value="mb-4" />
                                  </styleClass>
                               </Label>
-                              <VBox fx:id="category" prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
+                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
                                  <children>
                                     <Label text="%product.category">
                                        <styleClass>
@@ -302,7 +314,11 @@
                                           <String fx:value="mb-3" />
                                        </styleClass>
                                     </Label>
-                                    <ChoiceBox maxWidth="1.7976931348623157E308" styleClass="form-select" VBox.vgrow="ALWAYS" />
+                                    <VBox VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <ChoiceBox fx:id="category" maxWidth="1.7976931348623157E308" styleClass="form-select" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </VBox>
                            </children>
@@ -328,7 +344,7 @@
                                  <children>
                                     <HBox styleClass="spacing30">
                                        <children>
-                                          <VBox fx:id="nameCategory" prefHeight="59.0" prefWidth="235.0">
+                                          <VBox prefHeight="59.0" prefWidth="235.0">
                                              <children>
                                                 <Label text="%product.name">
                                                    <styleClass>
@@ -336,14 +352,18 @@
                                                       <String fx:value="mb-3" />
                                                    </styleClass>
                                                 </Label>
-                                                <TextField styleClass="form-control" />
+                                                <VBox>
+                                                   <children>
+                                                      <TextField fx:id="nameCategory" styleClass="form-control" />
+                                                   </children>
+                                                </VBox>
                                              </children>
                                           </VBox>
                                        </children>
                                     </HBox>
                                  </children>
                               </VBox>
-                              <Button mnemonicParsing="false" onAction="#addCategory" text="%category.add">
+                              <Button fx:id="addCategory" mnemonicParsing="false" onAction="#addCategory" text="%category.add">
                                  <styleClass>
                                     <String fx:value="btn" />
                                     <String fx:value="btn-primary" />

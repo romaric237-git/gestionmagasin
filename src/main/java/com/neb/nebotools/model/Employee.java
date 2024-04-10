@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Employee extends AbstractEntity{
-    private static Employee userConnected;
-    private static List<Employee> users = new ArrayList<Employee>();
+    private static Employee employeeConnected;
+    private static List<Employee> employees = new ArrayList<Employee>();
     private String login;
     private String firstname;
     private String lastname;
@@ -19,7 +19,7 @@ public class Employee extends AbstractEntity{
 
     static{
         try {
-            userConnected= DaoFactory.getEmployeeDao().find("usr-023-001");
+            employeeConnected= DaoFactory.getEmployeeDao().find("usr-023-001");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class Employee extends AbstractEntity{
         phone = builder.phone;
         role = Role.getRole(builder.role);
 
-        if(!users.contains(this))users.add(this);
+        if(!employees.contains(this))employees.add(this);
     }
 
     public Employee() {
@@ -86,16 +86,16 @@ public class Employee extends AbstractEntity{
         this.role = Role.getRole(role);
     }
 
-    public static Employee getUserConnected() {
-        return userConnected;
+    public static Employee getEmployeeConnected() {
+        return employeeConnected;
     }
 
-    public static void setUserConnected(Employee userConnected) {
-        Employee.userConnected = userConnected;
+    public static void setUserConnected(Employee employeeConnected) {
+        Employee.employeeConnected = employeeConnected;
     }
 
     public static List<Employee> getList() {
-        return users;
+        return employees;
     }
 
 

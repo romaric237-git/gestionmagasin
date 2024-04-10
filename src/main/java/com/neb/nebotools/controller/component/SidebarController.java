@@ -1,33 +1,44 @@
 package com.neb.nebotools.controller.component;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 public class SidebarController {
 
     @FXML
-    void changeCategory(MouseEvent event) {
-
-    }
+    private Button employeeAdd;
 
     @FXML
-    void changeDashboard(MouseEvent event) {
-
-    }
+    private Button employeeList;
 
     @FXML
-    void changeProductAdd(MouseEvent event) {
-
-    }
+    private Button productAdd;
 
     @FXML
-    void changeProductList(MouseEvent event) {
-
-    }
+    private Button productCategory;
 
     @FXML
-    void changeProductOverview(MouseEvent event) {
+    private Button productList;
 
+
+    public Button employeeAdd(){
+        return employeeAdd;
     }
 
+    public Button employeeList(){
+        return employeeList;
+    }
+
+    public Button productAdd(){
+        return productAdd;
+    }
+
+    public Button productCategory(){
+        return productCategory;
+    }
+
+    public Button productList(){
+        return productList;
+    }
 }

@@ -4,7 +4,9 @@ import com.neb.nebotools.HelloApplication;
 import com.neb.nebotools.controller.component.HeaderController;
 import com.neb.nebotools.controller.component.SidebarController;
 import com.neb.nebotools.controller.enumeration.State;
-import com.neb.nebotools.controller.page.product.ProductAddController;
+import com.neb.nebotools.controller.page.employee.EmployeeController;
+import com.neb.nebotools.controller.page.employee.EmployeeListController;
+import com.neb.nebotools.controller.page.product.ProductController;
 import com.neb.nebotools.controller.page.product.ProductListController;
 import com.neb.nebotools.utils.Utils;
 import javafx.fxml.FXML;
@@ -29,8 +31,12 @@ public class ApplicationController extends Controller implements Initializable {
     Parent header;
     ProductListController productListController;
     Parent productList;
-    ProductAddController productAddController;
-    Parent productAdd;
+    ProductController productController;
+    Parent product;
+    EmployeeListController employeeListController;
+    Parent employeeList;
+    EmployeeController employeeController;
+    Parent employee;
     VBox content;
 
     @FXML
@@ -50,9 +56,10 @@ public class ApplicationController extends Controller implements Initializable {
         setCenter();
         setNavigation();
         setProduct();
+        setEmployee();
         switchPane();
 
-        switchPane(productAdd, "product.entity", State.ADD);
+        switchPane(product, "product.entity", State.ADD);
 
     }
 
@@ -70,29 +77,81 @@ public class ApplicationController extends Controller implements Initializable {
             FXMLLoader loader2 = new FXMLLoader();
 
             loader1.setLocation(HelloApplication.class.getResource("view/page/product/productList.fxml"));
-            loader2.setLocation(HelloApplication.class.getResource("view/page/product/productAdd.fxml"));
+            loader2.setLocation(HelloApplication.class.getResource("view/page/product/product.fxml"));
 
             loader1.setResources(Utils.getBundle());
             loader2.setResources(Utils.getBundle());
             productList = loader1.load();
-            productAdd = loader2.load();
+            product = loader2.load();
 
             productListController = loader1.getController();
-            productAddController = loader2.getController();
+            productController = loader2.getController();
 
 
             ((ControllerListAbstract) productListController).getAdd().setOnAction(a -> {
-                switchPane(productAdd, "product.entity", State.ADD);
+                switchPane(product, "product.entity", State.ADD);
             });
 
-            ((ControllerAddAbstract) productAddController).getAddBtn().setOnAction(a -> {
+            ((ControllerAbstract) productController).getAddBtn().setOnAction(a -> {
                 switchPane(productList, "product.entity", State.MANAGE);
             });
 
-            ((ControllerAddAbstract) productAddController).getCancelBtn().setOnAction(a -> {
+            ((ControllerAbstract) productController).getCancelBtn().setOnAction(a -> {
                 switchPane(productList, "product.entity", State.MANAGE);
             });
 
+            sidebarController.productAdd().setOnAction(a->{
+                switchPane(product, "product.entity", State.ADD);
+            });
+
+            sidebarController.productList().setOnAction(a->{
+                switchPane(productList, "product.entity", State.MANAGE);
+            });
+        } catch (IllegalStateException e) {
+            System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
+            e.printStackTrace();
+        }
+    }
+
+    private void setEmployee(){
+        try {
+            FXMLLoader loader1 = new FXMLLoader();
+            FXMLLoader loader2 = new FXMLLoader();
+
+            loader1.setLocation(HelloApplication.class.getResource("view/page/employee/employeeList.fxml"));
+            loader2.setLocation(HelloApplication.class.getResource("view/page/employee/employee.fxml"));
+
+            loader1.setResources(Utils.getBundle());
+            loader2.setResources(Utils.getBundle());
+            employeeList = loader1.load();
+            employee = loader2.load();
+
+            employeeListController = loader1.getController();
+            employeeController = loader2.getController();
+
+
+            ((ControllerListAbstract) employeeListController).getAdd().setOnAction(a -> {
+                switchPane(employee, "employee.entity", State.ADD);
+            });
+
+            ((ControllerAbstract) employeeController).getAddBtn().setOnAction(a -> {
+                switchPane(employeeList, "employee.entity", State.MANAGE);
+            });
+
+            ((ControllerAbstract) employeeController).getCancelBtn().setOnAction(a -> {
+                switchPane(employeeList, "employee.entity", State.MANAGE);
+            });
+
+            sidebarController.employeeAdd().setOnAction(a->{
+                switchPane(employee, "employee.entity", State.ADD);
+            });
+
+            sidebarController.employeeList().setOnAction(a->{
+                switchPane(employeeList, "employee.entity", State.MANAGE);
+            });
         } catch (IllegalStateException e) {
             System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
             e.printStackTrace();
@@ -104,7 +163,8 @@ public class ApplicationController extends Controller implements Initializable {
 
     private void setCenter() {
         VBox center = new VBox();
-        center.getStyleClass().add("justify-content-center");
+        center.getStyleClass().add("justify-content-top-center");
+
         app.setCenter(center);
 
         try {

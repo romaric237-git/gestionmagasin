@@ -1,4 +1,4 @@
-CREATE TABLE `users`(
+CREATE TABLE `employee`(
 	`id` 			VARCHAR(20) PRIMARY KEY,
 	`login`			VARCHAR(100) NOT NULL,
 	`firstname`		VARCHAR(100) NOT NULL,
@@ -8,12 +8,12 @@ CREATE TABLE `users`(
 	`phone` 		VARCHAR(15) NOT NULL,
 	`birth` 		DATE NOT NULL,
 	`sex` 		    int NOT NULL DEFAULT 1,
-	`role` 			int NOT NULL,
+	`role` 			int NOT NULL DEFAULT 1,
 	`is_actif`  	int NOT NULL DEFAULT 1
 );
 
-/* Table utilisateur*/
-INSERT INTO `users` (`id`, `login`, `firstname`, `lastname`, `password`, `mail`, `phone`, `role`, `nb_person`) VALUES
+/* Table employee*/
+INSERT INTO `employee` (`id`, `login`, `firstname`, `lastname`, `password`, `mail`, `phone`, `role`, `nb_person`) VALUES
   ('usr-023-001', 'luffy', 'Luffy', 'Monkey D', '12345678', 'luffy@gmail.com', '6 90 18 53 35', 1, 3),
   ('usr-024-002', 'perona', 'Sama', 'Perona', 'Aqszaqsz0', 'perona@queen.com', '6 90 28 47 16', 1, 1);
 
@@ -67,11 +67,11 @@ INSERT INTO `users` (`id`, `login`, `firstname`, `lastname`, `password`, `mail`,
   CREATE TABLE `invoice`(
   	`id` 			    VARCHAR(20) PRIMARY KEY,
   	`created_date` 		DATE DEFAULT CURRENT_TIMESTAMP,
-  	`users`		        VARCHAR(20) NOT NULL,
+  	`employee`		        VARCHAR(20) NOT NULL,
   	`customer`		    VARCHAR(20),
   	`price` 		    int NOT NULL,
   	`is_actif`  	    int NOT NULL DEFAULT 1,
-  	FOREIGN KEY (users) REFERENCES users(id),
+  	FOREIGN KEY (employee) REFERENCES employee(id),
   	FOREIGN KEY (customer) REFERENCES customer(id)
   );
 

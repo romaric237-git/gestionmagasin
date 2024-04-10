@@ -37,7 +37,7 @@
          <content>
             <Accordion style="-fx-background-color: #fff;">
               <panes>
-                <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#changeDashboard" styleClass="menu-item" text="Dashboard">
+                <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="menu-item" text="Dashboard">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" />
                   </content>
@@ -57,28 +57,28 @@
                   <content>
                         <VBox>
                            <children>
-                              <HBox onMouseClicked="#changeProductAdd" styleClass="data-truncate">
+                              <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Button fx:id="productAdd" mnemonicParsing="false" text="Add" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
-                              <HBox onMouseClicked="#changeProductList" styleClass="data-truncate">
+                              <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="List" />
+                                    <Button fx:id="productList" mnemonicParsing="false" text="List" />
                                     <Separator styleClass="circle" />
                                  </children>
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />
                                  </cursor>
                               </HBox>
-                              <HBox onMouseClicked="#changeCategory" styleClass="data-truncate">
+                              <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Category" />
+                                    <Button fx:id="productCategory" mnemonicParsing="false" text="Category" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
-                              <HBox onMouseClicked="#changeProductOverview" styleClass="data-truncate">
+                              <HBox styleClass="data-truncate">
                                  <children>
                                     <Button mnemonicParsing="false" text="Overview" />
                                     <Separator styleClass="circle" />
@@ -238,19 +238,19 @@
                         <Line endX="15.0" styleClass="line" />
                      </graphic>
                   </TitledPane>
-                  <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" text="User">
+                  <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" text="Employee">
                      <content>
                         <VBox>
                            <children>
                               <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Button fx:id="employeeAdd" mnemonicParsing="false" text="Add" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
                               <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="List" />
+                                    <Button fx:id="employeeList" mnemonicParsing="false" text="List" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>

@@ -17,7 +17,7 @@ public class EmployeeDao extends Dao<Employee> {
 
 	@Override
 	public Employee create(Employee obj) throws SQLException, EntityNotFoundException {
-		String sql = "INSERT INTO `user`(`id`, `login`, `firstname`, `lastname`, `password`, `mail`, `phone`, `role`) VALUES "
+		String sql = "INSERT INTO `employee`(`id`, `login`, `firstname`, `lastname`, `password`, `mail`, `phone`, `role`) VALUES "
 				+ "(?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, generateId());
@@ -34,7 +34,7 @@ public class EmployeeDao extends Dao<Employee> {
 
 	@Override
 	public Employee update(Employee obj) throws SQLException, EntityNotFoundException {
-		String sql = "UPDATE `user` SET "
+		String sql = "UPDATE `employee` SET "
 				+ "`login`=?,"
 				+ "`firstname`=?,"
 				+ "`lastname`=?,"
@@ -73,12 +73,12 @@ public class EmployeeDao extends Dao<Employee> {
 					.phone(rs.getString("phone"))
 					.role(rs.getInt("role")));
 		}
-		throw new EntityNotFoundException("Utilisateur non trouvé");
+		throw new EntityNotFoundException("Employé non trouvé");
 	}
 
 
 	public Employee login(String mail, String password) throws SQLException, EntityNotFoundException {
-		String sql = "SELECT `id` FROM `user` WHERE (`login` = ? OR `mail` = ?) AND `password` = ?";
+		String sql = "SELECT `id` FROM `employee` WHERE (`login` = ? OR `mail` = ?) AND `password` = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, mail);
 		ps.setString(2, mail);

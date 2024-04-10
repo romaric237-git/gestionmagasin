@@ -44,7 +44,7 @@
                            <children>
                               <VBox styleClass="container-xxl" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <fx:include fx:id="p" source="page/product/productAdd.fxml" />
+                                    <fx:include fx:id="p" source="page/product/product.fxml" />
                                  </children>
                               </VBox>
                            </children>
