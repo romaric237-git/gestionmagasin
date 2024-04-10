@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox prefHeight="1000.0" style="-fx-background-color: #f5f5f9;" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.invoice.InvoiceListController">
+<VBox style="-fx-background-color: #f5f5f9;" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.supplier.SuplierListController">
    <children>
       <HBox>
          <styleClass>
@@ -29,20 +29,20 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <Label text="In-store Sales">
+                                    <Label text="SUPPLIER">
                                        <styleClass>
                                           <String fx:value="h6" />
                                           <String fx:value="mb-2" />
                                        </styleClass>
                                     </Label>
-                                    <Label text="\$5,345.43">
+                                    <Label text="3">
                                        <styleClass>
                                           <String fx:value="h4" />
                                           <String fx:value="mb-2" />
                                           <String fx:value="bolder" />
                                        </styleClass>
                                     </Label>
-                                    <Label text="5k orders">
+                                    <Label text="Total Supplier">
                                        <styleClass>
                                           <String fx:value="p" />
                                           <String fx:value="mb-0" />
@@ -73,20 +73,20 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Website Sales">
+                              <Label text="SUPPLIER">
                                  <styleClass>
                                     <String fx:value="h6" />
                                     <String fx:value="mb-2" />
                                  </styleClass>
                               </Label>
-                              <Label text="\$674,347.12">
+                              <Label text="3">
                                  <styleClass>
                                     <String fx:value="h4" />
                                     <String fx:value="mb-2" />
                                     <String fx:value="bolder" />
                                  </styleClass>
                               </Label>
-                              <Label text="\$674,347.12">
+                              <Label text="Total Supplier">
                                  <styleClass>
                                     <String fx:value="p" />
                                     <String fx:value="mb-0" />
@@ -98,7 +98,7 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <FontIcon iconLiteral="bx-laptop" styleClass="bx-sm" />
+                                    <FontIcon iconLiteral="bx-store-alt" styleClass="bx-sm" />
                                  </children>
                                  <styleClass>
                                     <String fx:value="avatar" />
@@ -115,20 +115,20 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Discount">
+                              <Label text="SUPPLIER">
                                  <styleClass>
                                     <String fx:value="h6" />
                                     <String fx:value="mb-2" />
                                  </styleClass>
                               </Label>
-                              <Label text="\$14,235.12">
+                              <Label text="3">
                                  <styleClass>
                                     <String fx:value="h4" />
                                     <String fx:value="mb-2" />
                                     <String fx:value="bolder" />
                                  </styleClass>
                               </Label>
-                              <Label text="6k orders">
+                              <Label text="Total Supplier">
                                  <styleClass>
                                     <String fx:value="p" />
                                     <String fx:value="mb-0" />
@@ -140,7 +140,7 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <FontIcon iconLiteral="bx-gift" styleClass="bx-sm" />
+                                    <FontIcon iconLiteral="bx-store-alt" styleClass="bx-sm" />
                                  </children>
                                  <styleClass>
                                     <String fx:value="avatar" />
@@ -157,20 +157,20 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Affiliate">
+                              <Label text="SUPPLIER">
                                  <styleClass>
                                     <String fx:value="h6" />
                                     <String fx:value="mb-2" />
                                  </styleClass>
                               </Label>
-                              <Label text="\$8,345.23">
+                              <Label text="3">
                                  <styleClass>
                                     <String fx:value="h4" />
                                     <String fx:value="mb-2" />
                                     <String fx:value="bolder" />
                                  </styleClass>
                               </Label>
-                              <Label text="150 orders">
+                              <Label text="Total Supplier">
                                  <styleClass>
                                     <String fx:value="p" />
                                     <String fx:value="mb-0" />
@@ -182,7 +182,7 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <FontIcon iconLiteral="bx-wallet" styleClass="bx-sm" />
+                                    <FontIcon iconLiteral="bx-store-alt" styleClass="bx-sm" />
                                  </children>
                                  <styleClass>
                                     <String fx:value="avatar" />
@@ -250,11 +250,11 @@
                         <String fx:value="spacing30" />
                      </styleClass>
                      <children>
-                        <TextField promptText="Search Product" styleClass="form-control" />
+                        <TextField promptText="Search Employee" styleClass="form-control" />
                         <HBox HBox.hgrow="ALWAYS" />
                         <ChoiceBox prefWidth="70.0" styleClass="form-select" />
                         <ChoiceBox styleClass="form-select" />
-                        <Button fx:id="btnAdd" mnemonicParsing="false" text="Add Product">
+                        <Button fx:id="btnAdd" mnemonicParsing="false" text="%employee.add">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-primary" />
@@ -276,12 +276,12 @@
                         <CheckBox mnemonicParsing="false" styleClass="form-check-input" />
                      </graphic>
                   </TableColumn>
-                <TableColumn prefWidth="210.0" text="ID" />
-                  <TableColumn prefWidth="75.0" text="CLIENT" />
-                  <TableColumn prefWidth="75.0" text="EMPLOYEE" />
-                  <TableColumn prefWidth="75.0" text="QTE" />
-                  <TableColumn prefWidth="75.0" text="PRICE" />
-                  <TableColumn prefWidth="75.0" text="STATUS" />
+                <TableColumn prefWidth="140.0" text="SUPPLIER" />
+                  <TableColumn prefWidth="75.0" text="NAME" />
+                  <TableColumn prefWidth="75.0" text="LASTNAME" />
+                  <TableColumn prefWidth="75.0" text="PHONE" />
+                  <TableColumn prefWidth="75.0" text="BIRTH" />
+                  <TableColumn prefWidth="75.0" text="PAYMENT" />
                   <TableColumn prefWidth="75.0" text="ACTIONS" />
               </columns>
                <columnResizePolicy>

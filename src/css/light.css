@@ -37,6 +37,7 @@
 .card-body{
     -fx-padding: 30;
 }
+
 .card-header{
     -fx-padding: 25;
     -fx-border-color: #d9dee3;
@@ -52,6 +53,9 @@
     -fx-border-width: 0 2 2 2;
     -fx-border-color: #d9dee3;
 }
+.no-padding{
+    -fx-padding: 0;
+}
 .app-brand {
   -fx-min-height: 1px;
   -fx-alignment: center;
@@ -64,6 +68,9 @@
 }
 .justify-content-top-center {
   -fx-alignment: top-center;
+}
+.justify-content-center-right {
+  -fx-alignment: center-right;
 }
 .mb-0{
     -fx-padding: 0 0 0 0;
@@ -153,6 +160,9 @@
     -fx-alignment: top_center;
     -fx-padding: 20 0 0 0;
 }
+.padding-10{
+    -fx-padding: 10;
+}
 .text-muted{
     //-fx-font-size: 12;
     -fx-text-fill: #a1acb8;
@@ -175,6 +185,9 @@
   -fx-border-width: 1;
   -fx-border-radius: 5;
   -fx-border-color: #d9dee3;
+}
+.form-control .scroll-pane .content{
+    -fx-background-color: #fff;
 }
 .form-select{
   -fx-padding: 0 8;
@@ -375,6 +388,12 @@
 
 .btn-padding{
   -fx-padding: 5 20;
+}
+.btn-close{
+    -fx-background-color: none;
+}
+.btn-close .ikonli-font-icon{
+    -fx-font-size: 20;
 }
 .w100{
     -fx-max-width: 10000000;
@@ -750,4 +769,21 @@
   -fx-border-radius: 5;
   -fx-border-width: 5;
   -fx-padding: 75 30;
+}
+.repeater-wrapper-left,
+.repeater-wrapper-center,
+.repeater-wrapper-right{
+    -fx-border-color: #d9dee3;
+    -fx-padding: 15 5;
+}
+.repeater-wrapper-left{
+    -fx-border-width:  1 0 1 1;
+    -fx-border-radius: 8 0 0 8;
+}
+.repeater-wrapper-center{
+    -fx-border-width:  1 0 1 0;
+}
+.repeater-wrapper-right{
+    -fx-border-width:  1 1 1 1;
+    -fx-border-radius: 0 8 8 0;
 }

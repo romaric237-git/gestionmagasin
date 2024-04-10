@@ -176,7 +176,7 @@
                                  <children>
                                     <VBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label styleClass="form-label" text="%employee.lastname" />
+                                          <Label styleClass="form-label" text="%employee.firstname" />
                                           <VBox>
                                              <children>
                                                 <TextField fx:id="firstname" promptText="john" styleClass="form-control" />
@@ -242,12 +242,7 @@
                                     </VBox>
                                     <VBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label styleClass="form-label" text="%employee.phone" />
-                                          <VBox>
-                                             <children>
-                                                <TextField fx:id="phone" styleClass="form-control" />
-                                             </children>
-                                          </VBox>
+                                          <ChoiceBox maxWidth="1.7976931348623157E308" prefWidth="150.0" styleClass="form-select" visible="false" />
                                        </children>
                                     </VBox>
                                  </children>

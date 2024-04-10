@@ -2,26 +2,26 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.customer.CustomerController">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.supplier.SupplierController">
    <children>
       <HBox styleClass="spacing20">
          <children>
             <VBox>
                <children>
-                  <Label text="%customer.titleAdd">
+                  <Label text="%supplier.titleAdd">
                      <styleClass>
                         <String fx:value="h4" />
                         <String fx:value="mb-1" />
                         <String fx:value="bolder" />
                      </styleClass>
                   </Label>
-                  <Label text="%customer.titleSubAdd">
+                  <Label text="%supplier.titleSubAdd">
                      <styleClass>
                         <String fx:value="h6" />
                         <String fx:value="text-muted" />
@@ -38,7 +38,7 @@
                   <String fx:value="btn-padding" />
                </styleClass>
             </Button>
-            <Button fx:id="addBtn" mnemonicParsing="false" text="%customer.add">
+            <Button fx:id="addBtn" mnemonicParsing="false" text="%supplier.add">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-primary" />
@@ -59,7 +59,7 @@
                      <children>
                         <VBox styleClass="card-body">
                            <children>
-                              <Label text="%customer.part">
+                              <Label text="%supplier.part">
                                  <styleClass>
                                     <String fx:value="h5" />
                                     <String fx:value="bolder" />
@@ -70,7 +70,7 @@
                                  <children>
                                     <VBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label styleClass="form-label" text="%customer.firstname" />
+                                          <Label styleClass="form-label" text="%supplier.firstname" />
                                           <VBox>
                                              <children>
                                                 <TextField fx:id="firstname" promptText="john" styleClass="form-control" />
@@ -80,7 +80,7 @@
                                     </VBox>
                                     <VBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label styleClass="form-label" text="%customer.lastname" />
+                                          <Label styleClass="form-label" text="%supplier.lastname" />
                                           <VBox>
                                              <children>
                                                 <TextField fx:id="lastname" promptText="Doe" styleClass="form-control" />
@@ -98,7 +98,7 @@
                                  <children>
                                     <VBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label styleClass="form-label" text="%customer.birth" />
+                                          <Label styleClass="form-label" text="%supplier.birth" />
                                           <VBox>
                                              <children>
                                                 <TextField fx:id="birth" promptText="YYYY-MM-DD" styleClass="form-control" />
@@ -108,7 +108,7 @@
                                     </VBox>
                                     <VBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label styleClass="form-label" text="%customer.phone" />
+                                          <Label styleClass="form-label" text="%supplier.phone" />
                                           <VBox>
                                              <children>
                                                 <TextField fx:id="phone" promptText="690 18 53 35" styleClass="form-control" />
@@ -124,9 +124,9 @@
                               </HBox>
                               <HBox>
                                  <children>
-                                    <VBox>
+                                    <VBox styleClass="justify-content-top-left" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label styleClass="form-label" text="%customer.mail" />
+                                          <Label styleClass="form-label" text="%supplier.mail" />
                                           <VBox>
                                              <children>
                                                 <TextField fx:id="mail" promptText="john.Doe" styleClass="form-control" />
@@ -136,7 +136,13 @@
                                     </VBox>
                                     <VBox HBox.hgrow="ALWAYS">
                                        <children>
-                                          <ChoiceBox maxWidth="1.7976931348623157E308" prefWidth="150.0" styleClass="form-select" visible="false" />
+                                          <Label styleClass="form-label" text="%supplier.description" />
+                                          <VBox>
+                                             <children>
+                                                <TextArea fx:id="description" prefWidth="100.0" styleClass="form-control" />
+                                             </children>
+                                          </VBox>
+                                          <TextField visible="false" />
                                        </children>
                                     </VBox>
                                  </children>

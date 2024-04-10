@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox style="-fx-background-color: #f5f5f9;" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.employee.EmployeeListController">
+<VBox style="-fx-background-color: #f5f5f9;" styleClass="spacing30" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.customer.CustomerListController">
    <children>
       <HBox>
          <styleClass>
@@ -29,7 +29,7 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <Label text="Employee">
+                                    <Label text="Customer">
                                        <styleClass>
                                           <String fx:value="h6" />
                                           <String fx:value="mb-2" />
@@ -42,7 +42,7 @@
                                           <String fx:value="bolder" />
                                        </styleClass>
                                     </Label>
-                                    <Label text="Total Employee">
+                                    <Label text="Total Customer">
                                        <styleClass>
                                           <String fx:value="p" />
                                           <String fx:value="mb-0" />
@@ -73,7 +73,7 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Employee">
+                              <Label text="Customer">
                                  <styleClass>
                                     <String fx:value="h6" />
                                     <String fx:value="mb-2" />
@@ -86,7 +86,7 @@
                                     <String fx:value="bolder" />
                                  </styleClass>
                               </Label>
-                              <Label text="Total Employee">
+                              <Label text="Total Customer">
                                  <styleClass>
                                     <String fx:value="p" />
                                     <String fx:value="mb-0" />
@@ -115,7 +115,7 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Employee">
+                              <Label text="Customer">
                                  <styleClass>
                                     <String fx:value="h6" />
                                     <String fx:value="mb-2" />
@@ -128,7 +128,7 @@
                                     <String fx:value="bolder" />
                                  </styleClass>
                               </Label>
-                              <Label text="Total Employee">
+                              <Label text="Total Customer">
                                  <styleClass>
                                     <String fx:value="p" />
                                     <String fx:value="mb-0" />
@@ -157,7 +157,7 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Employee">
+                              <Label text="Customer">
                                  <styleClass>
                                     <String fx:value="h6" />
                                     <String fx:value="mb-2" />
@@ -170,7 +170,7 @@
                                     <String fx:value="bolder" />
                                  </styleClass>
                               </Label>
-                              <Label text="Total Employee">
+                              <Label text="Total Customer">
                                  <styleClass>
                                     <String fx:value="p" />
                                     <String fx:value="mb-0" />
@@ -276,12 +276,12 @@
                         <CheckBox mnemonicParsing="false" styleClass="form-check-input" />
                      </graphic>
                   </TableColumn>
-                <TableColumn prefWidth="140.0" text="EMPLOYEE" />
+                <TableColumn prefWidth="140.0" text="CUSTOMMER" />
                   <TableColumn prefWidth="75.0" text="NAME" />
                   <TableColumn prefWidth="75.0" text="LASTNAME" />
                   <TableColumn prefWidth="75.0" text="PHONE" />
                   <TableColumn prefWidth="75.0" text="BIRTH" />
-                  <TableColumn prefWidth="75.0" text="LAST CONNECTED" />
+                  <TableColumn prefWidth="75.0" text="PAYMENT" />
                   <TableColumn prefWidth="75.0" text="ACTIONS" />
               </columns>
                <columnResizePolicy>
