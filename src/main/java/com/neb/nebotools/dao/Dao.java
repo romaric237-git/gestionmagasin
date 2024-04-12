@@ -48,12 +48,12 @@ public abstract class Dao <T>{
 	};
 	
 	public ArrayList<T> getAll(int limit) throws SQLException, EntityNotFoundException{
-		con.close();
 		con = BdConnexion.getInstance();
 		List<T> array = new ArrayList<T>();
 		String sql = "SELECT `id` FROM " + table + " LIMIT ?;";
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setInt(1, 10000);
+		System.out.println(sql);
 		ResultSet rs = pst.executeQuery();
 		while(rs.next()) {
 				array.add(find(rs.getString("id")));

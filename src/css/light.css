@@ -693,7 +693,6 @@
 .table-pane .tab:selected{
     -fx-background-color: #eceef1;
 }
-
 .scroll-bar{
     -fx-background-color: #fff;
     -fx-pref-width: 15;
@@ -713,6 +712,13 @@
     -fx-padding: 5 10;
     -fx-text-fill: #697a8d;
     -fx-background-radius: 5;
+}
+.page-active{
+    -fx-background-color: #696cff;
+    -fx-text-fill: #fff;
+}
+.page-active .text{
+    -fx-fill: #fff;
 }
 .editor{
   -fx-padding: 5 0;

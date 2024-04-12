@@ -238,19 +238,13 @@
             </VBox>
             <VBox styleClass="card-header-nr">
                <children>
-                  <Label text="Filter">
-                     <styleClass>
-                        <String fx:value="h5" />
-                        <String fx:value="mb-2" />
-                     </styleClass>
-                  </Label>
                   <HBox>
                      <styleClass>
                         <String fx:value="justify-content-center" />
                         <String fx:value="spacing30" />
                      </styleClass>
                      <children>
-                        <TextField promptText="Search Product" styleClass="form-control" />
+                        <TextField fx:id="search" promptText="Search Product" styleClass="form-control" />
                         <HBox HBox.hgrow="ALWAYS" />
                         <ChoiceBox prefWidth="70.0" styleClass="form-select" />
                         <ChoiceBox styleClass="form-select" />
@@ -268,7 +262,7 @@
                   </HBox>
                </children>
             </VBox>
-            <TableView styleClass="table" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
+            <TableView fx:id="table" styleClass="table" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
               <columns>
                   <TableColumn prefWidth="34.0" />
                 <TableColumn prefWidth="41.0">
@@ -288,14 +282,14 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <HBox styleClass="card-footer">
+            <HBox fx:id="pagination" styleClass="card-footer">
                <children>
                   <VBox pickOnBounds="false" prefWidth="50.0" />
-                  <Label text="Displaying 1 to 7 of 100 entries" />
+                  <Label fx:id="pagination_display" text="Displaying 1 to 7 of 100 entries" />
                   <VBox HBox.hgrow="ALWAYS" />
-                  <HBox styleClass="spacing5">
+                  <HBox fx:id="index" styleClass="spacing5">
                      <children>
-                        <Button mnemonicParsing="false" styleClass="page-item" text="Previous" />
+                        <Button fx:id="pagination_prev" mnemonicParsing="false" styleClass="page-item" text="Previous" />
                         <Button mnemonicParsing="false" styleClass="page-item" text="1" />
                         <Button mnemonicParsing="false" styleClass="page-item" text="2" />
                         <Button mnemonicParsing="false" styleClass="page-item" text="3" />
@@ -303,7 +297,7 @@
                         <Button mnemonicParsing="false" styleClass="page-item" text="5" />
                         <Button mnemonicParsing="false" styleClass="page-item" text="6" />
                         <Button mnemonicParsing="false" styleClass="page-item" text="..." />
-                        <Button mnemonicParsing="false" styleClass="page-item" text="Next" />
+                        <Button fx:id="pagination_next" mnemonicParsing="false" styleClass="page-item" text="Next" />
                         <VBox pickOnBounds="false" prefWidth="50.0" />
                      </children>
                   </HBox>

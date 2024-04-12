@@ -96,12 +96,12 @@
                               </HBox>
                               <HBox>
                                  <children>
-                                    <VBox HBox.hgrow="ALWAYS">
+                                    <VBox styleClass="justify-content-top-left" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label styleClass="form-label" text="%supplier.birth" />
+                                          <Label styleClass="form-label" text="%supplier.mail" />
                                           <VBox>
                                              <children>
-                                                <TextField fx:id="birth" promptText="YYYY-MM-DD" styleClass="form-control" />
+                                                <TextField fx:id="mail" promptText="john.Doe" styleClass="form-control" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -124,25 +124,14 @@
                               </HBox>
                               <HBox>
                                  <children>
-                                    <VBox styleClass="justify-content-top-left" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <Label styleClass="form-label" text="%supplier.mail" />
-                                          <VBox>
-                                             <children>
-                                                <TextField fx:id="mail" promptText="john.Doe" styleClass="form-control" />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox HBox.hgrow="ALWAYS">
+                                    <VBox>
                                        <children>
                                           <Label styleClass="form-label" text="%supplier.description" />
                                           <VBox>
                                              <children>
-                                                <TextArea fx:id="description" prefWidth="100.0" styleClass="form-control" />
+                                                <TextArea fx:id="description" styleClass="form-control" />
                                              </children>
                                           </VBox>
-                                          <TextField visible="false" />
                                        </children>
                                     </VBox>
                                  </children>

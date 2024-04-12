@@ -15,8 +15,8 @@ public class Supplier extends Person{
         this.description = description;
     }
 
-    public Supplier(String firstname, String lastname, String mail, String phone, String description) {
-        super(firstname,lastname,mail,phone);
+    public Supplier(String id, String firstname, String lastname, String mail, String phone, String description) {
+        super(id, firstname,lastname,mail,phone);
         this.description = description;
     }
     public String getDescription() {

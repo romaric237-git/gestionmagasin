@@ -6,6 +6,7 @@ public abstract class Person extends AbstractEntity{
     private String mail;
     private String phone;
 
+
     public Person(String id, String firstname, String lastname, String mail, String phone, int is_actif) {
         super(id, is_actif);
         this.firstname = firstname;
@@ -15,6 +16,14 @@ public abstract class Person extends AbstractEntity{
     }
 
     public Person(String firstname, String lastname, String mail, String phone) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.mail = mail;
+        this.phone = phone;
+    }
+
+    public Person(String id, String firstname, String lastname, String mail, String phone) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.mail = mail;

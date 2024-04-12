@@ -4,10 +4,19 @@ import com.neb.nebotools.HelloApplication;
 import com.neb.nebotools.controller.component.HeaderController;
 import com.neb.nebotools.controller.component.SidebarController;
 import com.neb.nebotools.controller.enumeration.State;
+import com.neb.nebotools.controller.page.customer.CustomerController;
+import com.neb.nebotools.controller.page.customer.CustomerListController;
 import com.neb.nebotools.controller.page.employee.EmployeeController;
 import com.neb.nebotools.controller.page.employee.EmployeeListController;
 import com.neb.nebotools.controller.page.product.ProductController;
 import com.neb.nebotools.controller.page.product.ProductListController;
+import com.neb.nebotools.controller.page.supplier.SupplierController;
+import com.neb.nebotools.controller.page.supplier.SupplierListController;
+import com.neb.nebotools.exception.HighLevelException;
+import com.neb.nebotools.model.Customer;
+import com.neb.nebotools.model.Employee;
+import com.neb.nebotools.model.Product;
+import com.neb.nebotools.model.Supplier;
 import com.neb.nebotools.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,12 +46,20 @@ public class ApplicationController extends Controller implements Initializable {
     Parent employeeList;
     EmployeeController employeeController;
     Parent employee;
+    CustomerListController customerListController;
+    Parent customerList;
+    CustomerController customerController;
+    Parent customer;
+    SupplierListController supplierListController;
+    Parent supplierList;
+    SupplierController supplierController;
+    Parent supplier;
     VBox content;
 
     @FXML
     private BorderPane app;
 
-    private void switchPane(Parent child, String entity, State state) {
+    void switchPane(Parent child, String entity, State state) {
         content.getChildren().clear();
         headerController.changeHeader(entity, state.getName());
         content.getChildren().add(child);
@@ -57,9 +74,13 @@ public class ApplicationController extends Controller implements Initializable {
         setNavigation();
         setProduct();
         setEmployee();
+        setCustomer();
+        setSupplier();
+
         switchPane();
 
-        switchPane(product, "product.entity", State.ADD);
+        supplierController.setState(State.ADD);
+        switchPane(supplier, "supplier.entity", State.ADD);
 
     }
 
@@ -88,15 +109,11 @@ public class ApplicationController extends Controller implements Initializable {
             productController = loader2.getController();
 
 
-            ((ControllerListAbstract) productListController).getAdd().setOnAction(a -> {
+            ((ControllerListAbstract<Product>) productListController).getAdd().setOnAction(a -> {
                 switchPane(product, "product.entity", State.ADD);
             });
 
-            ((ControllerAbstract) productController).getAddBtn().setOnAction(a -> {
-                switchPane(productList, "product.entity", State.MANAGE);
-            });
-
-            ((ControllerAbstract) productController).getCancelBtn().setOnAction(a -> {
+            ((ControllerAbstract<Product>) productController).getCancelBtn().setOnAction(a -> {
                 switchPane(productList, "product.entity", State.MANAGE);
             });
 
@@ -107,10 +124,7 @@ public class ApplicationController extends Controller implements Initializable {
             sidebarController.productList().setOnAction(a->{
                 switchPane(productList, "product.entity", State.MANAGE);
             });
-        } catch (IllegalStateException e) {
-            System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IllegalStateException | IOException e) {
             System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
             e.printStackTrace();
         }
@@ -133,15 +147,11 @@ public class ApplicationController extends Controller implements Initializable {
             employeeController = loader2.getController();
 
 
-            ((ControllerListAbstract) employeeListController).getAdd().setOnAction(a -> {
+            ((ControllerListAbstract<Employee>) employeeListController).getAdd().setOnAction(a -> {
                 switchPane(employee, "employee.entity", State.ADD);
             });
 
-            ((ControllerAbstract) employeeController).getAddBtn().setOnAction(a -> {
-                switchPane(employeeList, "employee.entity", State.MANAGE);
-            });
-
-            ((ControllerAbstract) employeeController).getCancelBtn().setOnAction(a -> {
+            ((ControllerAbstract<Employee>) employeeController).getCancelBtn().setOnAction(a -> {
                 switchPane(employeeList, "employee.entity", State.MANAGE);
             });
 
@@ -152,10 +162,90 @@ public class ApplicationController extends Controller implements Initializable {
             sidebarController.employeeList().setOnAction(a->{
                 switchPane(employeeList, "employee.entity", State.MANAGE);
             });
-        } catch (IllegalStateException e) {
+        } catch (IllegalStateException | IOException e) {
             System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
             e.printStackTrace();
-        } catch (IOException e) {
+        }
+    }
+
+    private void setCustomer(){
+        try {
+            FXMLLoader loader1 = new FXMLLoader();
+            FXMLLoader loader2 = new FXMLLoader();
+
+            loader1.setLocation(HelloApplication.class.getResource("view/page/customer/customerList.fxml"));
+            loader2.setLocation(HelloApplication.class.getResource("view/page/customer/customer.fxml"));
+
+            loader1.setResources(Utils.getBundle());
+            loader2.setResources(Utils.getBundle());
+            customerList = loader1.load();
+            customer = loader2.load();
+
+            customerListController = loader1.getController();
+            customerController = loader2.getController();
+
+
+            ((ControllerListAbstract<Customer>) customerListController).getAdd().setOnAction(a -> {
+                customerController.setState(State.ADD);
+                switchPane(customer, "customer.entity", State.ADD);
+            });
+
+            ((ControllerAbstract<Customer>) customerController).getCancelBtn().setOnAction(a -> {
+                switchPane(customerList, "customer.entity", State.MANAGE);
+            });
+            customerListController.setController(this,customerController);
+            customerListController.setPage((VBox) customer);
+            customerController.setController(this, customerListController);
+
+            sidebarController.customerAdd().setOnAction(a->{
+                switchPane(customer, "customer.entity", State.ADD);
+            });
+
+            sidebarController.customerList().setOnAction(a->{
+                switchPane(customerList, "customer.entity", State.MANAGE);
+            });
+        } catch (IllegalStateException | IOException e) {
+            System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
+            e.printStackTrace();
+        }
+    }
+
+    private void setSupplier(){
+        try {
+            FXMLLoader loader1 = new FXMLLoader();
+            FXMLLoader loader2 = new FXMLLoader();
+
+            loader1.setLocation(HelloApplication.class.getResource("view/page/supplier/supplierList.fxml"));
+            loader2.setLocation(HelloApplication.class.getResource("view/page/supplier/supplier.fxml"));
+
+            loader1.setResources(Utils.getBundle());
+            loader2.setResources(Utils.getBundle());
+            supplierList = loader1.load();
+            supplier = loader2.load();
+
+            supplierListController = loader1.getController();
+            supplierController = loader2.getController();
+
+
+            ((ControllerListAbstract<Supplier>) supplierListController).getAdd().setOnAction(a -> {
+                switchPane(customer, "supplier.entity", State.ADD);
+            });
+
+            ((ControllerAbstract<Supplier>) supplierController).getCancelBtn().setOnAction(a -> {
+                switchPane(supplierList, "supplier.entity", State.MANAGE);
+            });
+            supplierListController.setController(this,supplierController);
+            supplierListController.setPage((VBox) customer);
+            supplierController.setController(this, supplierListController);
+
+            sidebarController.supplierAdd().setOnAction(a->{
+                switchPane(supplier, "supplier.entity", State.ADD);
+            });
+
+            sidebarController.supplierList().setOnAction(a->{
+                switchPane(supplierList, "supplier.entity", State.MANAGE);
+            });
+        } catch (IllegalStateException | IOException e) {
             System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
             e.printStackTrace();
         }

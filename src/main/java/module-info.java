@@ -11,15 +11,32 @@ module com.neb.nebotools {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires org.kordamp.ikonli.boxicons;
 
-    opens com.neb.nebotools to javafx.fxml;
-    exports com.neb.nebotools;
-    opens com.neb.nebotools.controller to javafx.fxml;
-    exports com.neb.nebotools.controller.component to javafx.fxml;
-    opens com.neb.nebotools.controller.component to javafx.fxml;
-    exports com.neb.nebotools.controller.page.product to javafx.fxml;
+    opens com.neb.nebotools to javafx.fxml,javafx.graphics;
+    exports com.neb.nebotools to javafx.fxml,javafx.graphics;
+
+    opens com.neb.nebotools.controller.enumeration to javafx.fxml,javafx.graphics;
+    exports com.neb.nebotools.controller.enumeration to javafx.fxml,javafx.graphics;
+
+    opens com.neb.nebotools.controller to javafx.fxml,javafx.graphics;
     exports com.neb.nebotools.controller;
-    opens com.neb.nebotools.controller.page.product to javafx.fxml;
-    exports com.neb.nebotools.controller.page.employee to javafx.fxml;
-    opens com.neb.nebotools.controller.page.employee to javafx.fxml;
+
+    exports com.neb.nebotools.controller.component to javafx.fxml,javafx.graphics;
+    opens com.neb.nebotools.controller.component to javafx.fxml,javafx.graphics;
+
+    exports com.neb.nebotools.controller.page.product to javafx.fxml,javafx.graphics;
+    opens com.neb.nebotools.controller.page.product to javafx.fxml,javafx.graphics;
+
+    exports com.neb.nebotools.controller.page.employee to javafx.fxml,javafx.graphics;
+    opens com.neb.nebotools.controller.page.employee to javafx.fxml,javafx.graphics;
+
+    exports com.neb.nebotools.controller.page.customer to javafx.fxml,javafx.graphics;
+    opens com.neb.nebotools.controller.page.customer to javafx.fxml,javafx.graphics;
+
+    exports com.neb.nebotools.controller.page.supplier to javafx.fxml,javafx.graphics;
+    opens com.neb.nebotools.controller.page.supplier to javafx.fxml,javafx.graphics;
+
+    opens com.neb.nebotools.model to javafx.base;
+    exports com.neb.nebotools.model to javafx.base;
 }

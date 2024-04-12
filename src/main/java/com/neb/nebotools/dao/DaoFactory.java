@@ -5,6 +5,8 @@ import java.sql.SQLException;
 public abstract class DaoFactory {
 	static EmployeeDao employeeDao;
 	static ProductDao productDao;
+	static CustomerDao customerDao;
+	static SupplierDao supplierDao;
 
 	public static EmployeeDao getEmployeeDao() throws SQLException{
 		if(employeeDao==null) employeeDao = new EmployeeDao();
@@ -14,6 +16,16 @@ public abstract class DaoFactory {
 	public static ProductDao getProductDao() throws SQLException{
 		if(productDao==null) productDao = new ProductDao();
 		return productDao;
+	}
+
+	public static CustomerDao getCustomerDao() throws SQLException{
+		if(customerDao==null) customerDao = new CustomerDao();
+		return customerDao;
+	}
+
+	public static SupplierDao getSupplierDao() throws SQLException{
+		if(supplierDao==null) supplierDao = new SupplierDao();
+		return supplierDao;
 	}
 
 }

@@ -94,4 +94,8 @@ public class Validator {
         }
         return true;
     }
+
+    public Control getControl() {
+        return control;
+    }
 }

@@ -36,6 +36,26 @@ INSERT INTO `employee` (`id`, `login`, `firstname`, `lastname`, `password`, `mai
   	`mail` 		    VARCHAR(100),
   	`is_actif`  	int NOT NULL DEFAULT 1
   );
+  INSERT INTO `customer` (`id`, `firstname`, `lastname`, `phone`, `mail`, `is_actif`) VALUES
+  ('cst-024-001', 'Brondon', 'NJOTSA', '6 90 18 53 35', 'brondonnjotsa@gmail.com', '1'),
+  ('cst-024-002', 'Makam Audrey', 'KAMMEGNE', '6 98 50 65 78', 'makam@gmail.com', '1'),
+  ('cst-024-003', 'Nick Larson', 'PIEBIENG', '6 46 65 48 64', 'nick@gmail.com', '1'),
+  ('cst-024-004', 'Mamiafo', 'Gnitedemg', '6 54 64 40 50', 'mamiafo@gmail.com', '1');
+
+  INSERT INTO `customer` (`id`, `firstname`, `lastname`, `phone`, `mail`, `is_actif`) VALUES
+  ('cst-024-005', 'Elodie Erin', 'BABAN', '6 94 054 65 08', 'elodie@gmail.com', '1'),
+  ('cst-024-006', 'D Luffy ', 'MONKEY', '6 87 04 54 04', 'luffy@gmail.com', '1'),
+  ('cst-024-007', 'Zorro', 'RORONOA', '6 87 50 65 48', 'zorro@gmail.com', '1');
+
+  INSERT INTO `customer` (`id`, `firstname`, `lastname`, `phone`, `mail`, `is_actif`) VALUES
+  ('cst-024-008', 'Sanji', 'VINSMOOKE', '6 50 45 04 65', 'sanji@gmail.com', '1'),
+  ('cst-024-009', 'Linlin', 'CHARLOTTE', '6 80 65 68 40', 'linlin@gmail.com', '1'),
+  ('cst-024-010', 'Katakuri', 'CHARLOTTE', '6 80 98 50 07', 'katakuri@gmail.com', '1');
+
+  INSERT INTO `customer` (`id`, `firstname`, `lastname`, `phone`, `mail`, `is_actif`) VALUES
+  ('cst-024-011', 'D Roger', 'GOLD', '6 80 65 04 80', 'roger@gmail.com', '1'),
+  ('cst-024-012', 'Rayleight', 'SYLVER', '6 80 50 65 87', 'rayleight@gmail.com', '1'),
+  ('cst-024-013', 'Gaban', 'SCOPPER', '6 90 80 48 98', 'gaban@gmail.com', '1');
 
   CREATE TABLE `product`(
   	`id` 			VARCHAR(20) PRIMARY KEY,

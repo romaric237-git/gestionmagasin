@@ -78,15 +78,6 @@
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
-                              <HBox styleClass="data-truncate">
-                                 <children>
-                                    <Button mnemonicParsing="false" text="Overview" />
-                                    <Separator styleClass="circle" />
-                                 </children>
-                                 <cursor>
-                                    <Cursor fx:constant="DEFAULT" />
-                                 </cursor>
-                              </HBox>
                            </children>
                         </VBox>
                   </content>
@@ -104,19 +95,7 @@
                            <children>
                               <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Add" />
-                                    <Separator styleClass="circle" />
-                                 </children>
-                              </HBox>
-                              <HBox styleClass="data-truncate">
-                                 <children>
-                                    <Button mnemonicParsing="false" text="List" />
-                                    <Separator styleClass="circle" />
-                                 </children>
-                              </HBox>
-                              <HBox styleClass="data-truncate">
-                                 <children>
-                                    <Button mnemonicParsing="false" text="Overview" />
+                                    <Button fx:id="orderList" mnemonicParsing="false" text="List" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
@@ -137,7 +116,7 @@
                            <children>
                               <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Button fx:id="invoiceAdd" mnemonicParsing="false" text="Add" />
                                     <Separator styleClass="circle" />
                                  </children>
                                  <cursor>
@@ -146,13 +125,7 @@
                               </HBox>
                               <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="List" />
-                                    <Separator styleClass="circle" />
-                                 </children>
-                              </HBox>
-                              <HBox styleClass="data-truncate">
-                                 <children>
-                                    <Button mnemonicParsing="false" text="Overview" />
+                                    <Button fx:id="invoiceList" mnemonicParsing="false" text="List" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
@@ -173,19 +146,13 @@
                            <children>
                               <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Button fx:id="customerAdd" mnemonicParsing="false" text="Add" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
                               <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="List" />
-                                    <Separator styleClass="circle" />
-                                 </children>
-                              </HBox>
-                              <HBox styleClass="data-truncate">
-                                 <children>
-                                    <Button mnemonicParsing="false" text="Overview" />
+                                    <Button fx:id="customerList" mnemonicParsing="false" text="List" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
@@ -206,19 +173,13 @@
                            <children>
                               <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Add" />
+                                    <Button fx:id="supplierAdd" mnemonicParsing="false" text="Add" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
                               <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="List" />
-                                    <Separator styleClass="circle" />
-                                 </children>
-                              </HBox>
-                              <HBox styleClass="data-truncate">
-                                 <children>
-                                    <Button mnemonicParsing="false" text="Overview" />
+                                    <Button fx:id="supplierList" mnemonicParsing="false" text="List" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>
@@ -251,12 +212,6 @@
                               <HBox styleClass="data-truncate">
                                  <children>
                                     <Button fx:id="employeeList" mnemonicParsing="false" text="List" />
-                                    <Separator styleClass="circle" />
-                                 </children>
-                              </HBox>
-                              <HBox styleClass="data-truncate">
-                                 <children>
-                                    <Button mnemonicParsing="false" text="Overview" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>

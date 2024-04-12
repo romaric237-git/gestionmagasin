@@ -17,8 +17,8 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException, ClassNotFoundException {
 
-        DatabaseInitializer.destroy();
-        DatabaseInitializer.init();
+//        DatabaseInitializer.destroy();
+//        DatabaseInitializer.init();
 
 
         Utils.openApp(stage,"view/application.fxml");
