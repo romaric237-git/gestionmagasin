@@ -12,6 +12,9 @@ module com.neb.nebotools {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires org.kordamp.ikonli.boxicons;
+    requires layout;
+    requires kernel;
+    requires static lombok;
 
     opens com.neb.nebotools to javafx.fxml,javafx.graphics;
     exports com.neb.nebotools to javafx.fxml,javafx.graphics;
@@ -39,4 +42,8 @@ module com.neb.nebotools {
 
     opens com.neb.nebotools.model to javafx.base;
     exports com.neb.nebotools.model to javafx.base;
+
+    opens com.neb.nebotools.controller.page.invoice to javafx.fxml;
+    exports com.neb.nebotools.controller.page.invoice to javafx.fxml;
+
 }

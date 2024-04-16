@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.HTMLEditor?>
 
@@ -90,6 +91,72 @@
                                           <VBox>
                                              <children>
                                                 <TextField fx:id="barcode" promptText="0123-4567" styleClass="form-control" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="mb-3" />
+                                    <String fx:value="spacing30" />
+                                 </styleClass>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="form-label" text="%product.brand" />
+                                          <VBox>
+                                             <children>
+                                                <TextField fx:id="brand" promptText="%product.brand" styleClass="form-control" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label text="%product.category">
+                                             <styleClass>
+                                                <String fx:value="form-label" />
+                                                <String fx:value="mb-3" />
+                                             </styleClass>
+                                          </Label>
+                                          <VBox VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <StackPane>
+                                                   <children>
+                                                      <ChoiceBox fx:id="category" maxWidth="1.7976931348623157E308" styleClass="form-select" />
+                                                      <TextField promptText="%product.nameTitle" visible="false" />
+                                                   </children>
+                                                </StackPane>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="mb-3" />
+                                    <String fx:value="spacing30" />
+                                 </styleClass>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="form-label" text="%product.minimum" />
+                                          <VBox>
+                                             <children>
+                                                <TextField fx:id="minimum" promptText="%product.minimum" styleClass="form-control" text="50" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox visible="false" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="form-label" text="%product.brand" />
+                                          <VBox>
+                                             <children>
+                                                <TextField promptText="%product.brand" styleClass="form-control" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -283,40 +350,6 @@
                                     <VBox VBox.vgrow="ALWAYS">
                                        <children>
                                           <TextField fx:id="minimumPrice" promptText="500" styleClass="form-control" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </VBox>
-                  <VBox>
-                     <styleClass>
-                        <String fx:value="card" />
-                        <String fx:value="mb-2" />
-                     </styleClass>
-                     <children>
-                        <VBox styleClass="card-body">
-                           <children>
-                              <Label text="Options">
-                                 <styleClass>
-                                    <String fx:value="h5" />
-                                    <String fx:value="bolder" />
-                                    <String fx:value="mb-4" />
-                                 </styleClass>
-                              </Label>
-                              <VBox prefHeight="59.0" prefWidth="235.0" styleClass="mb-3">
-                                 <children>
-                                    <Label text="%product.category">
-                                       <styleClass>
-                                          <String fx:value="form-label" />
-                                          <String fx:value="mb-3" />
-                                       </styleClass>
-                                    </Label>
-                                    <VBox VBox.vgrow="ALWAYS">
-                                       <children>
-                                          <ChoiceBox fx:id="category" maxWidth="1.7976931348623157E308" styleClass="form-select" />
                                        </children>
                                     </VBox>
                                  </children>

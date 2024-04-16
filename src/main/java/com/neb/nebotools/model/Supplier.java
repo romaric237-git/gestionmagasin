@@ -1,11 +1,7 @@
 package com.neb.nebotools.model;
 
 public class Supplier extends Person{
-    private String firstname;
-    private String lastname;
     private String description;
-    private String mail;
-    private String phone;
 
     public Supplier() {
     }
@@ -28,18 +24,14 @@ public class Supplier extends Person{
 
     @Override
     public void setEntity(AbstractEntity t) {
+        super.setEntity(t);
         Supplier u = (Supplier) t;
-
-        firstname = u.firstname;
-        lastname = u.lastname;
         description = u.description;
-        mail = u.mail;
-        phone = u.phone;
     }
 
     @Override
     public String toString() {
-        return lastname + " " + firstname;
+        return getLastname() + " " + getFirstname();
     }
 
 }

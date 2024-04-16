@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.component.LineInvoiceController">
+   <children>
+      <HBox prefWidth="1300.0" styleClass="card-body">
+         <children>
+            <VBox styleClass="justify-content-top-left">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="%invoice.search">
+                           <styleClass>
+                              <String fx:value="mb-3" />
+                              <String fx:value="h6" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox styleClass="repeater-wrapper-left" VBox.vgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="search" styleClass="form-control" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox styleClass="justify-content-top-left" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="%invoice.item">
+                           <styleClass>
+                              <String fx:value="mb-3" />
+                              <String fx:value="h6" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox styleClass="repeater-wrapper-center" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ComboBox fx:id="item" maxWidth="1.7976931348623157E308" styleClass="form-select" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox maxWidth="200.0" styleClass="justify-content-top-left" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="%invoice.cost">
+                           <styleClass>
+                              <String fx:value="mb-3" />
+                              <String fx:value="h6" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox styleClass="repeater-wrapper-center" VBox.vgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="cost" text="1">
+                           <styleClass>
+                              <String fx:value="form-control" />
+                              <String fx:value="align-right-input" />
+                           </styleClass></TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox maxWidth="200.0" styleClass="justify-content-top-left" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="%invoice.quantity">
+                           <styleClass>
+                              <String fx:value="mb-3" />
+                              <String fx:value="h6" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox styleClass="repeater-wrapper-center" VBox.vgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="quantity" text="1">
+                           <styleClass>
+                              <String fx:value="form-control" />
+                              <String fx:value="align-right-input" />
+                           </styleClass></TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox maxWidth="200.0" styleClass="justify-content-top-left">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="%invoice.price">
+                           <styleClass>
+                              <String fx:value="mb-3" />
+                              <String fx:value="h6" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </VBox>
+                  <HBox prefWidth="150.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="price" text="2 400 Fcfa" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="justify-content-center-right" />
+                        <String fx:value="repeater-wrapper-center" />
+                     </styleClass>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label>
+                     <styleClass>
+                        <String fx:value="mb-3" />
+                        <String fx:value="h6" />
+                     </styleClass>
+                  </Label>
+                  <VBox styleClass="repeater-wrapper-right" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#remove">
+                           <graphic>
+                              <FontIcon iconLiteral="bx-x" />
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-close" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+   </children>
+</VBox>

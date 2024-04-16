@@ -62,8 +62,8 @@ public class HeaderController extends Controller {
     }
 
     public void changeHeader(String title, String titleSub) {
-        changeTitle(title);
-        changeTitleSub(titleSub);
+        changeTitle(title.toLowerCase());
+        changeTitleSub(titleSub.toLowerCase());
     }
 
     public void changeTitle(String title) {

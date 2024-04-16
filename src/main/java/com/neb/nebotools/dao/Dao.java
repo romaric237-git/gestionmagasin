@@ -37,11 +37,13 @@ public abstract class Dao <T>{
 				+ " ORDER BY `id` desc LIMIT 1";
 		PreparedStatement pst = con.prepareStatement(sql);
 		ResultSet rs = pst.executeQuery();
-		if (rs.next()) return find(rs.getString("id"));
+		if (rs.next()){
+			return find(rs.getString("id"));
+		}
 		return null;
 	}
 	public int delete(String id) throws SQLException{
-		String sql = "UPDATE `"+table+" SET `is_actif` = 0 WHERE `id` = ?";
+		String sql = "UPDATE `"+table+"` SET `is_actif` = 0 WHERE `id` = ?";
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setString(1, id);
 		return pst.executeUpdate();
@@ -53,7 +55,6 @@ public abstract class Dao <T>{
 		String sql = "SELECT `id` FROM " + table + " LIMIT ?;";
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setInt(1, 10000);
-		System.out.println(sql);
 		ResultSet rs = pst.executeQuery();
 		while(rs.next()) {
 				array.add(find(rs.getString("id")));

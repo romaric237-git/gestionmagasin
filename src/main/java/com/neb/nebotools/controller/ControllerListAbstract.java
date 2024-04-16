@@ -54,6 +54,9 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
     @FXML
     protected Button searchBtn;
 
+    CheckBox checkBox;
+
+    private int itemPerPage = 8;
 
     @FXML
     protected TableView<T> table;
@@ -97,35 +100,70 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
             setDao();
             initTable();
             addColumn();
+            setComponent();
             objects = FXCollections.observableArrayList(dao.getAll(1000));
             search.setOnKeyReleased(a -> {
                 objects = FXCollections.observableArrayList(search());
-                paginate();
+                for (T t : objects) {
+                    checkBox.setIndeterminate(false);
+                    checkBox.setSelected(false);
+                    ((AbstractEntity) t).getCheckBox().selectedProperty().addListener(b -> {
+                        verify();
+                    });
+                }
+
+                setPagination();
             });
+
             setPagination();
+            for (T t : objects) {
+                ((AbstractEntity) t).getCheckBox().selectedProperty().addListener(b -> {
+                    verify();
+                });
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        ((VBox)table.getParent()).getChildren().add(pagination_);
-//        VBox.setVgrow(pagination_, Priority.ALWAYS);
 
+    }
+
+    private void setComponent() {
+        ComboBox<Integer> comboSetPagination = new ComboBox<Integer>();
+        ComboBox<Integer> comboPrint = new ComboBox<Integer>();
+        comboPrint.getStyleClass().add("form-select");
+        comboSetPagination.getStyleClass().add("form-select");
+        for (int i = 5; i<=15; i++)
+            comboSetPagination.getItems().add(i);
+        comboSetPagination.getItems().addAll(30,50,75,100);
+        comboSetPagination.getSelectionModel().select(3);
+        comboSetPagination.setOnAction(a->{
+                itemPerPage = comboSetPagination.getSelectionModel().getSelectedItem();
+                setPagination();
+        });
+        for(Integer item: comboSetPagination.getItems()){
+
+        }
+        ((HBox)btnAdd.getParent()).getChildren().add(2,comboPrint);
+        ((HBox)btnAdd.getParent()).getChildren().add(2,comboSetPagination);
     }
 
     private void setPagination() {
         HBox parent = (HBox) pagination_next.getParent();
         parent.getChildren().clear();
         parent.getChildren().addAll(pagination_prev, pagination_next);
-        for (int i = 0; i <= objects.size() / 8; i++) {
+        for (int i = 0; i <= objects.size() / itemPerPage; i++) {
             Button btn = new Button();
             int finalI = i;
-            btn.setOnAction(a-> paginate(finalI));
+            btn.setOnAction(a -> paginate(finalI));
             btn.setText((i + 1) + "");
-            btn.getStyleClass().add("page-item");
+            btn.getStyleClass().addAll("page-item");
+            if(i==1)
+                btn.getStyleClass().addAll("page-active");
             parent.getChildren().add(parent.getChildren().size() - 1, btn);
         }
         indexPaginate = 0;
         pagination_next.setOnAction(a -> {
-            if ((indexPaginate + 1) * 8 < objects.size()) {
+            if ((indexPaginate + 1) * itemPerPage < objects.size()) {
                 indexPaginate++;
                 paginate();
             }
@@ -137,31 +175,28 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
                 paginate();
             }
         });
-        paginate();
-
+paginate();
     }
 
     private void paginate() {
-        if (!objects.isEmpty() && objects.size() > indexPaginate * 8) {
-            pagination_display.setText("Display " + (indexPaginate*8+1) +" to " + Math.min((indexPaginate+1)*8,objects.size()) + " of " + objects.size() + " entries");
-            table.setItems(FXCollections.observableArrayList(objects.subList(indexPaginate * 8, Math.min((indexPaginate + 1) * 8, objects.size()))));
+        table.getItems().clear();
+        if (!objects.isEmpty() && objects.size() > indexPaginate * itemPerPage) {
+            pagination_display.setText("Display " + (indexPaginate * itemPerPage + 1) + " to " + Math.min((indexPaginate + 1) * itemPerPage, objects.size()) + " of " + objects.size() + " entries");
+            table.setItems(FXCollections.observableArrayList(objects.subList(indexPaginate * itemPerPage, Math.min((indexPaginate + 1) * itemPerPage, objects.size()))));
 
             HBox parent = (HBox) pagination_next.getParent();
-            if (parent.getChildren().size() > 3) {
-                System.out.println(parent.getChildren().size());
-                parent.getChildren().get(indexPaginate).getStyleClass().remove("page-active");
+            for (Node node: parent.getChildren())
+            node.getStyleClass().remove("page-active");
 
                 parent.getChildren().get(indexPaginate + 1).getStyleClass().add("page-active");
-
-                parent.getChildren().get(indexPaginate + 2).getStyleClass().remove("page-active");
             }
-        }
+
     }
 
     private void paginate(int page) {
         indexPaginate = page;
         HBox parent = (HBox) pagination_next.getParent();
-        for(Node btn: parent.getChildren())
+        for (Node btn : parent.getChildren())
             btn.getStyleClass().remove("page-active");
         paginate();
     }
@@ -170,13 +205,31 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
 
     private void addColumn() {
         TableColumn<T, Integer> index = new TableColumn<T, Integer>();
+        TableColumn<T, CheckBox> box = new TableColumn<T, CheckBox>();
         TableColumn<T, String> action = new TableColumn<T, String>();
 
         index.setText("#");
         action.setText("ACTION");
 
         index.setStyle("-fx-alignment: center_right");
+        box.setStyle("-fx-alignment: center");
+
+        checkBox = new CheckBox();
+        checkBox.getStyleClass().add("form-check-input");
+        box.setGraphic(checkBox);
+
+        checkBox.selectedProperty().addListener((observable, oldVal, newVal) -> {
+            for (T t : objects) {
+                ((AbstractEntity) t).getCheckBox().setSelected(newVal);
+                ((AbstractEntity) t).getCheckBox().selectedProperty().addListener(a -> {
+                    verify();
+                });
+            }
+            table.refresh();
+        });
+
         index.setCellValueFactory(new PropertyValueFactory<T, Integer>("row"));
+        box.setCellValueFactory(new PropertyValueFactory<T, CheckBox>("checkBox"));
         action.setCellValueFactory(new PropertyValueFactory<T, String>("id"));
 
         action.setCellFactory(new Callback<TableColumn<T, String>, TableCell<T, String>>() {
@@ -236,8 +289,35 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
         });
 
         table.getColumns().add(0, index);
+        table.getColumns().add(1, box);
         table.getColumns().add(action);
 
+    }
+
+    private void verify() {
+        boolean isSelected = true;
+        boolean isNotSelected = true;
+        for (T t : objects)
+            if (((AbstractEntity) t).getCheckBox().isSelected()) {
+                isNotSelected = false;
+                break;
+            }
+
+        for (T t : objects)
+            if (!((AbstractEntity) t).getCheckBox().isSelected()) {
+                isSelected = false;
+                break;
+            }
+
+        if (!isSelected && !isNotSelected) {
+            checkBox.setIndeterminate(true);
+        }else if(isSelected && !isNotSelected) {
+            checkBox.setIndeterminate(false);
+            checkBox.setSelected(true);
+        }else if(!isSelected && isNotSelected) {
+            checkBox.setIndeterminate(false);
+            checkBox.setSelected(false);
+        }
     }
 
 
@@ -257,4 +337,6 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
     }
 
     public abstract List<T> search();
+
+    //public
 }

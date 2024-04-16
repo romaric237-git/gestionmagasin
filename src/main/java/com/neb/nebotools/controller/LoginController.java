@@ -38,10 +38,10 @@ public class LoginController implements Initializable {
     private CheckBox rememberMe;
 
     @FXML
-    void signIn(ActionEvent event) throws IOException, SQLException {
+    void signIn(ActionEvent event) {
         try {
-            Employee.setUserConnected(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText()));
-            if(Employee.getEmployeeConnected()!=null){
+            if(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText())!=null){
+                Employee.setUserConnected(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText()));
             Stage stage = ((Stage) (mail.getScene().getWindow()));
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/twoStep.fxml"));
             ResourceBundle bundle = ResourceBundle.getBundle("english");
@@ -54,7 +54,7 @@ public class LoginController implements Initializable {
             stage.show();
             }
 
-        } catch (EntityNotFoundException e) {
+        } catch (Exception e) {
             System.err.println("Connexion impossible");
         }
     }

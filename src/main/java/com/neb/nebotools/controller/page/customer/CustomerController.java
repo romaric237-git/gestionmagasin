@@ -78,6 +78,41 @@ public class CustomerController extends ControllerAbstract<Customer> {
 
     @Override
     protected void initComponent() {
+        phone.textProperty().addListener((observable, oldVal, newVal) -> {
+            try {
+                if (!newVal.isBlank() &&
+                        ((newVal.charAt(newVal.length() - 1) < '0' &&
+                                newVal.charAt(newVal.length() - 1) > '9') &&
+                                newVal.charAt(newVal.length() - 1) != ' ')) {
+                    throw new Exception();
+                }
+                for(int i = 0; i<newVal.length(); i++)
+                    if(newVal.charAt(i)==' ' && (i-1)%3!=0)
+                        newVal = newVal.replaceAll(" ", "");
 
+
+                if (newVal.length() >= 2 && newVal.charAt(1) != ' ')
+                    phone.setText(newVal.substring(0,1) + " " + newVal.substring(1,newVal.length()));
+
+                if (newVal.length() >= 5 && newVal.charAt(4) != ' ')
+                    phone.setText(newVal.substring(0,4) + " " + newVal.substring(4,newVal.length()));
+
+                if (newVal.length() >= 8 && newVal.charAt(7) != ' ')
+                    phone.setText(newVal.substring(0,7) + " " + newVal.substring(7,newVal.length()));
+
+                if (newVal.length() >= 11 && newVal.charAt(10) != ' ')
+                    phone.setText(newVal.substring(0,10) + " " + newVal.substring(10,newVal.length()));
+
+                if (newVal.length() > 13)
+                    phone.setText(newVal.substring(0,13));
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                phone.setText(oldVal != null ? oldVal : "");
+            }
+
+        });
     }
 }

@@ -3,6 +3,7 @@ package com.neb.nebotools.model;
 import com.neb.nebotools.dao.DaoFactory;
 import com.neb.nebotools.model.enumeration.Role;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Employee extends AbstractEntity{
 
     static{
         try {
-            employeeConnected= DaoFactory.getEmployeeDao().find("usr-023-001");
+            employeeConnected= DaoFactory.getEmployeeDao().find("emp-023-001");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -86,8 +87,8 @@ public class Employee extends AbstractEntity{
         this.role = Role.getRole(role);
     }
 
-    public static Employee getEmployeeConnected() {
-        return employeeConnected;
+    public static Employee getEmployeeConnected() throws SQLException {
+        return DaoFactory.getEmployeeDao().find("usr-023-001");
     }
 
     public static void setUserConnected(Employee employeeConnected) {

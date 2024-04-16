@@ -3,6 +3,7 @@ package com.neb.nebotools.controller;
 import com.neb.nebotools.controller.enumeration.State;
 import com.neb.nebotools.dao.Dao;
 import com.neb.nebotools.validator.Validator;
+import exception.EntityNotFoundException;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -51,7 +53,7 @@ public abstract class ControllerAbstract<T> extends ControllerPrincipalAbstract<
 
     protected abstract void setDao() throws SQLException;
 
-    public void setEntity(T entity) {
+    public void setEntity(T entity) throws SQLException, exception.EntityNotFoundException, IOException {
         this.entity = entity;
         try {
             setField();
@@ -79,10 +81,12 @@ public abstract class ControllerAbstract<T> extends ControllerPrincipalAbstract<
         addBtn.setDisable(true);
         validators = new ArrayList<Validator>();
         initValidator();
-        initComponent();
         try {
             setDao();
+            initComponent();
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (EntityNotFoundException e) {
             throw new RuntimeException(e);
         }
         addBtn.setOnAction(e -> {

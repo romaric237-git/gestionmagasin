@@ -272,10 +272,12 @@
 .form-check-input .box:focused{
     -fx-border-color: #969af4;
 }
-.form-check-input:selected .box{
+.form-check-input:selected .box,
+.form-check-input:indeterminate .box{
     -fx-background-color: #696cff;
     -fx-border-color: #696cff;
 }
+.form-check-input:indeterminate .mark,
 .form-check-input:selected .mark{
     -fx-background-color: #fff;
 }
@@ -360,7 +362,7 @@
  }
 
 .btn-label-primary .text{
-    -fx-fill: #696cff;
+    -fx-fill: #696c;
     -fx-font-size: 16;
 }
 
@@ -629,6 +631,11 @@
     -fx-border-color: #d9dee3;
     -fx-background-color:#fff;
 }
+.list-invoice{
+    -fx-min-height: 500;
+    -fx-border-color: #fff;
+    -fx-background-color:#fff;
+}
 .list:focused{
     -fx-border-color: #d9dee3;
     -fx-background-color:#fff;
@@ -644,13 +651,16 @@
     -fx-padding: 5;
     -fx-alignment: center_left;
 }
-.list-lot .list-cell {
+
+.list-lot .list-cell,
+.list-invoice .list-cell {
     -fx-background-color: white;
     -fx-border-color: #d9dee3;
     -fx-border-width: 0 1 5 1;
     -fx-padding: 5;
     -fx-alignment: center_left;
 }
+
 .list-lot .list-cell:empty {
     -fx-background-color: white;
     -fx-border-color: white;
@@ -659,13 +669,19 @@
     -fx-alignment: center_left;
     -fx-pref-height: 0;
 }
-.list-lot .list-cell:focused {
+.list-lot .list-cell:focused,
+.list-invoice .list-cell:focused {
     -fx-background-color: white;
     -fx-border-color: #d9dee3;
 }
-.list-lot .list-cell:empty {
+.list-lot .list-cell:empty,
+.list-invoice .list-cell:empty {
     -fx-background-color: white;
     -fx-border-color: white;
+}
+
+.list-invoice{
+    -fx-background-color: #000;
 }
 
 .table-pane{
@@ -793,3 +809,8 @@
     -fx-border-width:  1 1 1 1;
     -fx-border-radius: 0 8 8 0;
 }
+
+.align-right-input{
+    -fx-alignment: center_right;
+}
+

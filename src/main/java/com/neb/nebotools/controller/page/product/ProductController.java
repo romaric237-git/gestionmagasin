@@ -2,10 +2,14 @@ package com.neb.nebotools.controller.page.product;
 
 import com.neb.nebotools.HelloApplication;
 import com.neb.nebotools.controller.ControllerAbstract;
+import com.neb.nebotools.controller.component.LineStockController;
 import com.neb.nebotools.dao.DaoFactory;
+import com.neb.nebotools.dao.ProductDao;
+import com.neb.nebotools.model.Lot;
 import com.neb.nebotools.model.Product;
 import com.neb.nebotools.utils.Utils;
 import com.neb.nebotools.validator.Validator;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +19,10 @@ import javafx.scene.web.HTMLEditor;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class ProductController extends ControllerAbstract<Product> {
 
@@ -30,7 +38,7 @@ public class ProductController extends ControllerAbstract<Product> {
     private TextField basePrice;
 
     @FXML
-    private Button cancelBtn;
+    private TextField brand;
 
     @FXML
     private ChoiceBox<String> category;
@@ -51,6 +59,12 @@ public class ProductController extends ControllerAbstract<Product> {
     private TextField nameCategory;
 
     @FXML
+    private TextField minimum;
+
+    Set<String> uniqueItems = new TreeSet<>();
+    List<LineStockController> stockControllers = new ArrayList<LineStockController>();
+
+    @FXML
     void addAnotherLot(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(HelloApplication.class.getResource("view/component/lineStock.fxml"));
@@ -58,11 +72,12 @@ public class ProductController extends ControllerAbstract<Product> {
         loader.setResources(Utils.getBundle());
         VBox component = loader.load();
 
-//        productListController = loader1.getController();
-//        productAddController = loader2.getController();
+        LineStockController stockController = loader.getController();
+        stockControllers.add(stockController);
+        stockController.setComponent(addStock, component,entity, stockControllers);
         addStock.getItems().add(component);
 
-        addStock.scrollTo(addStock.getItems().size()-1);
+        addStock.scrollTo(addStock.getItems().size() - 1);
     }
 
     @FXML
@@ -71,8 +86,11 @@ public class ProductController extends ControllerAbstract<Product> {
     }
 
     @FXML
-    void saveLot(ActionEvent event) {
-
+    void saveLot(ActionEvent event) throws SQLException, exception.EntityNotFoundException {
+        for (LineStockController controller : stockControllers) {
+            controller.save();
+            controller.getRemove().fire();
+        }
     }
 
     @Override
@@ -82,22 +100,52 @@ public class ProductController extends ControllerAbstract<Product> {
 
     @Override
     protected void setField() throws Exception {
-
+        name.setText(entity.getName());
+        brand.setText(entity.getBrand());
+        basePrice.setText(entity.getBase_price() + "");
+        minimumPrice.setText(entity.getMin_price() + "");
+        barcode.setText(entity.getBarcode());
+        category.getSelectionModel().select(entity.getCategory());
+        description.setHtmlText(entity.getDescription());
+        minimum.setText(entity.getMinimum()+"");
     }
 
     @Override
     protected void clearField() throws Exception {
-
+        name.setText("");
+        brand.setText("");
+        basePrice.setText("1");
+        minimumPrice.setText("1");
+        barcode.setText("");
+        category.getSelectionModel().selectFirst();
+        description.setHtmlText("");
+        minimum.setText("1");
     }
 
     @Override
     protected void disableField(boolean disable) {
-
+        name.setDisable(disable);
+        brand.setDisable(disable);
+        basePrice.setDisable(disable);
+        minimumPrice.setDisable(disable);
+        barcode.setDisable(disable);
+        category.setDisable(disable);
+        description.setDisable(disable);
+        minimum.setDisable(disable);
     }
 
     @Override
     protected void buildEntity() throws Exception {
-
+        if (entity == null)
+            entity = new Product();
+        entity.setName(name.getText());
+        entity.setBrand(brand.getText());
+        entity.setCategory(category.getSelectionModel().getSelectedItem());
+        entity.setBase_price(Integer.parseInt(basePrice.getText()));
+        entity.setMin_price(Integer.parseInt(minimumPrice.getText()));
+        entity.setBarcode(barcode.getText());
+        entity.setDescription(description.getHtmlText());
+        entity.setMinimum(Integer.parseInt(minimum.getText()));
     }
 
     @Override
@@ -111,21 +159,32 @@ public class ProductController extends ControllerAbstract<Product> {
 
     @Override
     protected void initValidator() {
-        addValidator(new Validator(name, "Le nom du produit est obligatoire","Le nom a au moins 6 caracteres",6));
-        addValidator(new Validator(barcode, "Le code barre est obligatoire","Le code barre moins 6 caracteres",6));
+        addValidator(new Validator(name, "Le nom du produit est obligatoire", "Le nom a au moins 4 caracteres", 4));
+        addValidator(new Validator(barcode, "Le code barre est obligatoire", "Le code barre moins 4 caracteres", 4));
+        addValidator(new Validator(brand, "La marque est obligatoire", "La marque barre moins 4 caracteres", 4));
         addCategory.setDisable(true);
     }
 
     @Override
-    protected void initComponent() {
+    protected void initComponent() throws SQLException {
+
+        category.getItems().addAll(FXCollections.observableArrayList(((ProductDao) dao).getCategory()));
         category.getItems().add("BASE");
-        category.getSelectionModel().selectFirst();
-        nameCategory.setOnKeyReleased(a->{
-            addCategory.setDisable(!nameCategory.getText().isBlank() && nameCategory.getText().length()<4);
+        category.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && !newValue.isEmpty() && !uniqueItems.contains(newValue)) {
+                uniqueItems.add(newValue);
+                category.setItems(FXCollections.observableArrayList(uniqueItems));
+                category.getSelectionModel().selectFirst();
+            }
         });
-        addCategory.setOnAction(a->{
+
+        category.getSelectionModel().selectFirst();
+        nameCategory.setOnKeyReleased(a -> {
+            addCategory.setDisable(!nameCategory.getText().isBlank() && nameCategory.getText().length() < 4);
+        });
+        addCategory.setOnAction(a -> {
             category.getItems().add(nameCategory.getText().toUpperCase());
-            category.getSelectionModel().select(category.getItems().size()-1);
+            category.getSelectionModel().select(category.getItems().size() - 1);
             nameCategory.setText("");
         });
 
@@ -136,44 +195,56 @@ public class ProductController extends ControllerAbstract<Product> {
         minimumFactory.setValue(50);
 
         basePrice.setText("0");
-        basePrice.textProperty().addListener((observable, oldValue, newValue )->{
+        basePrice.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 int val = Integer.parseInt(newValue);
-                basePrice.setText(String.valueOf(val));
-                if(val<0)
-                    basePrice.setText("0");
-                if(Integer.parseInt(minimumPrice.getText()) > val)
-                    minimumPrice.setText(String.valueOf(val));
+                if (newValue.isEmpty() || newValue.isBlank()) basePrice.setText("0");
+                else if ((newValue.charAt(0) == '0' && newValue.length() > 1) || newValue.charAt(0) == '-')
+                    basePrice.setText(newValue.substring(1));
 
-            }catch (Exception e){
-                if(basePrice.getText().isBlank())
-                    basePrice.setText("0");
-                else basePrice.setText(oldValue);
+                if (Integer.parseInt(minimumPrice.getText()) > val) minimumPrice.setText(String.valueOf(val));
+
+            } catch (Exception e) {
+                basePrice.setText(oldValue);
             }
         });
 
         minimumPrice.setText("0");
-        minimumPrice.textProperty().addListener((observable, oldValue, newValue )->{
+        minimumPrice.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 int val = Integer.parseInt(newValue);
-                minimumPrice.setText(String.valueOf(val));
-                if(val<0)
-                    minimumPrice.setText("0");
-                if(Integer.parseInt(basePrice.getText()) < val)
-                    basePrice.setText(String.valueOf(val));
-            }catch (Exception e){
-                if(minimumPrice.getText().isBlank())
-                    minimumPrice.setText("0");
-                else minimumPrice.setText(oldValue);
+
+                if (newValue.isEmpty() || newValue.isBlank()) minimumPrice.setText("0");
+
+                else if ((newValue.charAt(0) == '0' && newValue.length() > 1) || newValue.charAt(0) == '-')
+                    minimumPrice.setText(newValue.substring(1));
+
+                if (Integer.parseInt(basePrice.getText()) < val) basePrice.setText(String.valueOf(val));
+
+            } catch (Exception e) {
+                minimumPrice.setText(oldValue);
             }
         });
-        minimumFactory.valueProperty().addListener((observable,oldValue,newValue)->{
-//            if(basePrice.getText()<newValue)
-//                baseFactory.setValue(newValue);
-        });
-        baseFactory.valueProperty().addListener((observable,oldValue,newValue)->{
-//            if(minimumPrice.getValue()>newValue)
-//                minimumFactory.setValue(newValue);
-        });
+    }
+
+    @Override
+    public void setEntity(Product entity) throws SQLException, exception.EntityNotFoundException, IOException {
+        super.setEntity(entity);
+        inStock.getItems().clear();
+        for(Lot lot: DaoFactory.getLotDao().findByProduct(entity.getId())){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(HelloApplication.class.getResource("view/component/lineStock.fxml"));
+
+            loader.setResources(Utils.getBundle());
+            VBox component = loader.load();
+
+            LineStockController stockController = loader.getController();
+            stockController.setComponent(inStock, component, lot);
+            stockControllers.add(stockController);
+            stockController.setComponent(addStock, component,entity,stockControllers);
+            inStock.getItems().add(component);
+
+            inStock.scrollTo(inStock.getItems().size() - 1);
+        }
     }
 }

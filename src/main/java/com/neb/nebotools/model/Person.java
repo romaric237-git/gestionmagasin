@@ -1,11 +1,17 @@
 package com.neb.nebotools.model;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
 public abstract class Person extends AbstractEntity{
     private String firstname;
     private String lastname;
     private String mail;
     private String phone;
-
 
     public Person(String id, String firstname, String lastname, String mail, String phone, int is_actif) {
         super(id, is_actif);
@@ -13,6 +19,7 @@ public abstract class Person extends AbstractEntity{
         this.lastname = lastname;
         this.mail = mail;
         this.phone = phone;
+
     }
 
     public Person(String firstname, String lastname, String mail, String phone) {
@@ -37,30 +44,6 @@ public abstract class Person extends AbstractEntity{
         this.phone = "";
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-    public String getLastname() {
-        return lastname;
-    }
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-    public String getMail() {
-        return mail;
-    }
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     @Override
     public void setEntity(AbstractEntity t) {

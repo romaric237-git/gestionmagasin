@@ -36,7 +36,7 @@ public class SupplierDao extends Dao<Supplier> {
                 "`firstname`=?, " +
                 "`lastname`=?, " +
                 "`phone`=?, " +
-                "`mail`=? " +
+                "`mail`=?, " +
                 "`description`=? "
                 + "WHERE `id` = ?; ";
         PreparedStatement ps = con.prepareStatement(sql);

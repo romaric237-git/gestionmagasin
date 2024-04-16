@@ -5,10 +5,8 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -18,7 +16,7 @@
          <children>
             <HBox>
                <children>
-                  <VBox fx:id="num_lot" prefWidth="250.0">
+                  <VBox prefWidth="250.0">
                      <children>
                         <Label text="NUM LOT">
                            <styleClass>
@@ -26,10 +24,10 @@
                               <String fx:value="mb-3" />
                            </styleClass>
                         </Label>
-                        <TextField disable="true" promptText="PK7-PR5-85T-TRE-GRY" styleClass="form-control" />
+                        <TextField fx:id="num_lot" disable="true" promptText="PK7-PR5-85T-TRE-GRY" styleClass="form-control" />
                      </children>
                   </VBox>
-                  <VBox fx:id="quantity" prefWidth="250.0" HBox.hgrow="ALWAYS">
+                  <VBox prefWidth="250.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Label text="%product.quantity">
                            <styleClass>
@@ -37,10 +35,10 @@
                               <String fx:value="mb-3" />
                            </styleClass>
                         </Label>
-                        <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" VBox.vgrow="ALWAYS" />
+                        <TextField fx:id="quantity" promptText="%product.quantity" styleClass="form-control" />
                      </children>
                   </VBox>
-                  <VBox fx:id="variant" HBox.hgrow="ALWAYS">
+                  <VBox HBox.hgrow="ALWAYS">
                      <children>
                         <Label text="%product.variant">
                            <styleClass>
@@ -48,7 +46,7 @@
                               <String fx:value="mb-3" />
                            </styleClass>
                         </Label>
-                        <TextField promptText="%product.variant" styleClass="form-control" />
+                        <TextField fx:id="variant" promptText="%product.variant" styleClass="form-control" />
                      </children>
                   </VBox>
                </children>
@@ -59,7 +57,7 @@
             </HBox>
             <HBox>
                <children>
-                  <VBox fx:id="expiration_date" prefWidth="250.0">
+                  <VBox prefWidth="250.0">
                      <children>
                         <Label text="%product.expDate">
                            <styleClass>
@@ -67,10 +65,10 @@
                               <String fx:value="mb-3" />
                            </styleClass>
                         </Label>
-                        <DatePicker maxWidth="1.7976931348623157E308" styleClass="form-date" VBox.vgrow="ALWAYS" />
+                        <DatePicker fx:id="expiration_date" maxWidth="1.7976931348623157E308" styleClass="form-date" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
-                  <VBox fx:id="supplier" prefWidth="250.0" HBox.hgrow="ALWAYS">
+                  <VBox prefWidth="250.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Label text="%product.supplier">
                            <styleClass>
@@ -78,10 +76,10 @@
                               <String fx:value="mb-3" />
                            </styleClass>
                         </Label>
-                        <ChoiceBox maxWidth="1.7976931348623157E308" styleClass="form-select" />
+                        <ChoiceBox fx:id="supplier" maxWidth="1.7976931348623157E308" styleClass="form-select" />
                      </children>
                   </VBox>
-                  <VBox fx:id="price" HBox.hgrow="ALWAYS">
+                  <VBox HBox.hgrow="ALWAYS">
                      <children>
                         <Label text="%product.price">
                            <styleClass>
@@ -89,7 +87,7 @@
                               <String fx:value="mb-3" />
                            </styleClass>
                         </Label>
-                        <Spinner maxWidth="1.7976931348623157E308" styleClass="form-number" />
+                        <TextField fx:id="price" promptText="%product.price" styleClass="form-control" />
                      </children>
                   </VBox>
                </children>
@@ -98,13 +96,13 @@
                   <String fx:value="mb-4" />
                </styleClass>
             </HBox>
-            <HBox>
+            <HBox styleClass="spacing30">
                <children>
                   <HBox styleClass="spacing30">
                      <children>
                         <HBox styleClass="spacing30">
                            <children>
-                              <VBox fx:id="status" prefWidth="250.0">
+                              <VBox prefWidth="250.0">
                                  <children>
                                     <Label text="%product.status">
                                        <styleClass>
@@ -112,32 +110,52 @@
                                           <String fx:value="mb-3" />
                                        </styleClass>
                                     </Label>
-                                    <ChoiceBox maxWidth="1.7976931348623157E308" styleClass="form-select" />
+                                    <ChoiceBox fx:id="status" maxWidth="1.7976931348623157E308" styleClass="form-select" />
                                  </children>
                               </VBox>
                            </children>
                         </HBox>
                      </children>
                   </HBox>
-                  <Pane HBox.hgrow="ALWAYS" />
-                  <StackPane>
+                  <VBox prefWidth="250.0">
                      <children>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="150.0" text="%btn.remove">
+                        <Label text="%product.devDate">
                            <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="btn-danger" />
-                              <String fx:value="btn-padding" />
+                              <String fx:value="form-label" />
+                              <String fx:value="mb-3" />
                            </styleClass>
-                        </Button>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="150.0" text="%btn.archive">
-                           <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="btn-warning" />
-                              <String fx:value="btn-padding" />
-                           </styleClass>
-                        </Button>
+                        </Label>
+                        <DatePicker fx:id="delivery_date" maxWidth="1.7976931348623157E308" styleClass="form-date" VBox.vgrow="ALWAYS" />
                      </children>
-                  </StackPane>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="%product.expDate" visible="false">
+                           <styleClass>
+                              <String fx:value="form-label" />
+                              <String fx:value="mb-3" />
+                           </styleClass>
+                        </Label>
+                        <StackPane>
+                           <children>
+                              <Button fx:id="remove" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="150.0" text="%btn.remove">
+                                 <styleClass>
+                                    <String fx:value="btn" />
+                                    <String fx:value="btn-danger" />
+                                    <String fx:value="btn-padding" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="archive" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="150.0" text="%btn.archive">
+                                 <styleClass>
+                                    <String fx:value="btn" />
+                                    <String fx:value="btn-warning" />
+                                    <String fx:value="btn-padding" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>

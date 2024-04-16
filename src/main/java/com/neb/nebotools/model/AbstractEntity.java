@@ -1,9 +1,12 @@
 package com.neb.nebotools.model;
 
 import javafx.scene.control.CheckBox;
+import lombok.*;
 
 import java.util.Objects;
-
+@AllArgsConstructor
+@Setter
+@Getter
 public abstract class AbstractEntity {
     protected String id;
     protected int row;
@@ -20,44 +23,13 @@ public abstract class AbstractEntity {
     }
 
     public AbstractEntity() {
-        this("",1);
-    }
-
-    public String getId() {
-        return id;
-    }
-    public void setId() {
-        this.id = id;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public int getIs_actif() {
-        return is_actif;
-    }
-
-    public void setIs_actif(int is_actif) {
-        this.is_actif = is_actif;
+        this("",0);
     }
 
     public abstract void setEntity(AbstractEntity t);
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    public CheckBox getCheckBox() {
-        return checkBox;
     }
 
     @Override

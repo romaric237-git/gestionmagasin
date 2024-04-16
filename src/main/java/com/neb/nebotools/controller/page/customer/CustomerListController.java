@@ -29,9 +29,6 @@ public class CustomerListController extends ControllerListAbstract<Customer> {
     @FXML
     private TableColumn<Customer, String> columnPhone;
 
-    @FXML
-    private TableColumn<Customer, CheckBox> columnSelect;
-
     @Override
     protected void setDao() throws SQLException {
         dao = DaoFactory.getCustomerDao();
@@ -42,7 +39,6 @@ public class CustomerListController extends ControllerListAbstract<Customer> {
         columnCustomer.setCellValueFactory(new PropertyValueFactory<Customer, String>("id"));
         columnFirstname.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstname"));
         columnLastname.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastname"));
-        columnSelect.setCellValueFactory(new PropertyValueFactory<Customer, CheckBox>("checkBox"));
 //        columnPayment.setCellValueFactory(new PropertyValueFactory<Customer, String>("quantite"));
         columnPhone.setCellValueFactory(new PropertyValueFactory<Customer, String>("phone"));
     }

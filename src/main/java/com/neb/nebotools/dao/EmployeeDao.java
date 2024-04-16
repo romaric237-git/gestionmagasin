@@ -58,7 +58,7 @@ public class EmployeeDao extends Dao<Employee> {
 	}
 
 	@Override
-	public Employee find(String id) throws SQLException, EntityNotFoundException {
+	public Employee find(String id) throws SQLException {
 		String sql = "SELECT * FROM `"+table+"` WHERE id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, id);
@@ -73,7 +73,7 @@ public class EmployeeDao extends Dao<Employee> {
 					.phone(rs.getString("phone"))
 					.role(rs.getInt("role")));
 		}
-		throw new EntityNotFoundException("Employé non trouvé");
+		return null;
 	}
 
 
