@@ -7,13 +7,14 @@ import lombok.Setter;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class Invoice extends AbstractEntity{
+public class Invoice extends AbstractEntity {
 
     private String customer;
     private Date date;
@@ -56,6 +57,9 @@ public class Invoice extends AbstractEntity{
         this.employee = employee;
     }
 
+    public String getDateString() {
+        return new SimpleDateFormat("EEE, dd MMMM yyyy").format(date);
+    }
 
     public void setInvoiceLineList(List<InvoiceLine> invoiceLineList) {
         this.invoiceLineList = invoiceLineList;

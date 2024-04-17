@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class LineInvoiceController implements Initializable {
 
+    private boolean isDetail = false;
     private static List<Product>products;
 
     @FXML
@@ -179,12 +180,26 @@ public class LineInvoiceController implements Initializable {
     }
 
     public boolean isValid(){
-        return !quantity.isDisable() && !cost.isDisable();
+        return !quantity.isDisable() && !cost.isDisable() && !isDetail;
     }
 
     public Product getItem(){
         if(item.getSelectionModel().getSelectedItem()!=null)
             return item.getSelectionModel().getSelectedItem();
         throw new IllegalStateException();
+    }
+
+    public void setEntity(InvoiceLine line) throws SQLException, EntityNotFoundException {
+        cost.setText(line.getPrice()+"");
+        quantity.setText(line.getQuantity()+"");
+
+        cost.setDisable(true);
+        quantity.setDisable(true);
+        item.getSelectionModel().select(line.getProduct());
+        item.setDisable(true);
+        search.setDisable(true);
+        isDetail = true;
+
+        setPrice();
     }
 }

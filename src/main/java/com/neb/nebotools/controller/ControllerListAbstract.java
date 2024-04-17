@@ -2,6 +2,7 @@ package com.neb.nebotools.controller;
 
 import com.neb.nebotools.controller.enumeration.State;
 import com.neb.nebotools.dao.Dao;
+import com.neb.nebotools.dao.InvoiceDao;
 import com.neb.nebotools.model.AbstractEntity;
 import exception.EntityNotFoundException;
 import javafx.collections.FXCollections;
@@ -101,18 +102,10 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
             initTable();
             addColumn();
             setComponent();
+            initComponent();
             objects = FXCollections.observableArrayList(dao.getAll(1000));
             search.setOnKeyReleased(a -> {
-                objects = FXCollections.observableArrayList(search());
-                for (T t : objects) {
-                    checkBox.setIndeterminate(false);
-                    checkBox.setSelected(false);
-                    ((AbstractEntity) t).getCheckBox().selectedProperty().addListener(b -> {
-                        verify();
-                    });
-                }
-
-                setPagination();
+                searchInTable();
             });
 
             setPagination();
@@ -127,9 +120,23 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
 
     }
 
+    protected void searchInTable() {
+        objects = FXCollections.observableArrayList(search());
+        for (T t : objects) {
+            checkBox.setIndeterminate(false);
+            checkBox.setSelected(false);
+            ((AbstractEntity) t).getCheckBox().selectedProperty().addListener(b -> {
+                verify();
+            });
+        }
+
+        setPagination();
+    }
+
     private void setComponent() {
         ComboBox<Integer> comboSetPagination = new ComboBox<Integer>();
-        ComboBox<Integer> comboPrint = new ComboBox<Integer>();
+        ComboBox<String> comboPrint = new ComboBox<String>();
+        comboPrint.getItems().addAll("Enregistrer PDF", "IMPRIMER");
         comboPrint.getStyleClass().add("form-select");
         comboSetPagination.getStyleClass().add("form-select");
         for (int i = 5; i<=15; i++)
@@ -279,6 +286,8 @@ paginate();
                                     e1.printStackTrace();
                                 }
                             });
+                            if(dao instanceof InvoiceDao)
+                                menuBtn.getItems().remove(1);
                             setGraphic(hb);
                         } else {
                             setGraphic(null);

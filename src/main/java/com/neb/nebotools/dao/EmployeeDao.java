@@ -17,7 +17,7 @@ public class EmployeeDao extends Dao<Employee> {
 
 	@Override
 	public Employee create(Employee obj) throws SQLException, EntityNotFoundException {
-		String sql = "INSERT INTO `employee`(`id`, `login`, `firstname`, `lastname`, `password`, `mail`, `phone`, `role`) VALUES "
+		String sql = "INSERT INTO `employee`(`id`, `login`, `firstname`, `lastname`, `password`, `mail`, `phone`, `birth`, `sex`) VALUES "
 				+ "(?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, generateId());
@@ -27,7 +27,8 @@ public class EmployeeDao extends Dao<Employee> {
 		ps.setString(5, obj.getPassword());
 		ps.setString(6, obj.getMail());
 		ps.setString(7, obj.getPhone());
-		ps.setInt(8, obj.getRole().getId());
+		ps.setDate(8, obj.getBirth());
+		ps.setInt(9,obj.getSex());
 		ps.executeUpdate();
 		return getLast();
 	}
@@ -41,7 +42,8 @@ public class EmployeeDao extends Dao<Employee> {
 				+ "`password`=?,"
 				+ "`mail`=?,"
 				+ "`phone`=?,"
-				+ "`role`=?,"
+				+ "`birth`=?,"
+				+ "`sex`=? "
 				+ "WHERE `id` = ?; ";
 		PreparedStatement ps = con.prepareStatement(sql);
 
@@ -51,8 +53,10 @@ public class EmployeeDao extends Dao<Employee> {
 		ps.setString(4, obj.getPassword());
 		ps.setString(5, obj.getMail());
 		ps.setString(6, obj.getPhone());
-		ps.setInt(7, obj.getRole().getId());
-		ps.setString(8, obj.getId());
+		ps.setDate(7, obj.getBirth());
+		ps.setInt(8, obj.getSex());
+		ps.setString(9, obj.getId());
+		System.out.println(obj.getId() + ":::" +obj.getLogin());
 		ps.executeUpdate();
 		return find(obj.getId());
 	}
@@ -71,6 +75,8 @@ public class EmployeeDao extends Dao<Employee> {
 					.password(rs.getString("password"))
 					.mail(rs.getString("mail"))
 					.phone(rs.getString("phone"))
+					.birth(rs.getDate("birth"))
+					.sex(rs.getInt("sex"))
 					.role(rs.getInt("role")));
 		}
 		return null;

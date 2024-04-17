@@ -1,6 +1,7 @@
 package com.neb.nebotools.controller;
 
 import com.neb.nebotools.HelloApplication;
+import com.neb.nebotools.utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,16 +37,7 @@ public class TwoStepController implements Initializable {
 
     @FXML
     void verify(ActionEvent event) throws IOException {
-        Stage stage = ((Stage) (digit1.getScene().getWindow()));
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/app.fxml"));
-        ResourceBundle bundle = ResourceBundle.getBundle("french");
-        fxmlLoader.setResources(bundle);
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("light.css");
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+        Utils.openApp(((Stage) (digit1.getScene().getWindow())),"view/app.fxml");
     }
 
     @Override

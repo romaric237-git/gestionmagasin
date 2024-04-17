@@ -176,7 +176,10 @@
   -fx-text-fill: #566a7f;
   -fx-font-size: 15;
 }
-.form-control, .form-select, .form-number, .form-date {
+.form-control,
+.form-select,
+.form-number,
+.form-date {
   -fx-padding: 5 8;
   -fx-font-size: 15;
   -fx-font-weight: 400;
@@ -185,6 +188,14 @@
   -fx-border-width: 1;
   -fx-border-radius: 5;
   -fx-border-color: #d9dee3;
+}
+.form-control:disabled,
+.form-select:disabled,
+.form-select:disabled .list-cell,
+.form-number:disabled,
+.form-date:disabled{
+    -fx-opacity: 1;
+
 }
 .form-control .scroll-pane .content{
     -fx-background-color: #fff;
@@ -221,6 +232,7 @@
 .form-date .date-picker-display-node{
     -fx-background-color: none;
 }
+
 .input-group{
   -fx-padding: 1;
   -fx-border-radius: 5;
@@ -348,7 +360,7 @@
   -fx-font-size: 16;
 }
 
-.btn-primary .ikonli-font-icon{
+.btn-primary  .ikonli-font-icon{
   -fx-fill: #fff;
   -fx-font-size: 20;
 }
@@ -388,7 +400,7 @@
     -fx-fill: #fff;
 }
 
-.btn-padding{
+.btn-padding {
   -fx-padding: 5 20;
 }
 .btn-close{
@@ -814,3 +826,30 @@
     -fx-alignment: center_right;
 }
 
+.bar-chart,
+.bar-chart .chart-plot-background{
+    -fx-background-color: #fff;
+}
+.bar-chart .axis:left .axis-minor-tick-mark{
+visibility:false;
+}
+.bar-chart .chart-vertical-grid-lines{
+    -fx-stroke: #fff;
+}
+
+.bar-chart .chart-content{
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+.bar-chart .plot-content *{
+    -fx-background-radius: 5 5 0 0;
+}
+.bar-chart .chart-legend-item *{
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+.bar-chart .chart-alternative-row-fill,
+.chart .chart-alternative-row-fill{
+    -fx-fill: #fff;
+}

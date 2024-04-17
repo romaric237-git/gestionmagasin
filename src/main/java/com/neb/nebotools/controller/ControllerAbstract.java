@@ -1,7 +1,9 @@
 package com.neb.nebotools.controller;
 
 import com.neb.nebotools.controller.enumeration.State;
+import com.neb.nebotools.controller.page.employee.EmployeeController;
 import com.neb.nebotools.dao.Dao;
+import com.neb.nebotools.model.Employee;
 import com.neb.nebotools.validator.Validator;
 import exception.EntityNotFoundException;
 import javafx.fxml.FXML;
@@ -124,6 +126,8 @@ public abstract class ControllerAbstract<T> extends ControllerPrincipalAbstract<
     private boolean isValid() {
         for (Validator validator : validators)
             if (!validator.isValid()) return false;
+        if(entity instanceof Employee e)
+           return ((EmployeeController)this).verify() && true;
         return true;
     }
 

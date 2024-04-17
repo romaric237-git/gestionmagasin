@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException, ClassNotFoundException {
 
-        DatabaseInitializer.destroy();
+//        DatabaseInitializer.destroy();
         DatabaseInitializer.init();
 
 

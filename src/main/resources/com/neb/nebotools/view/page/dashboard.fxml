@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.neb.nebotools.view.page.Dashboard"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox styleClass="spacing30">
+         <children>
+            <HBox styleClass="spacing30">
+               <children>
+                  <VBox styleClass="card">
+                     <children>
+                        <Label styleClass="h5" text="Total Revenue" />
+                        <BarChart>
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox>
+                     <children>
+                        <ComboBox prefWidth="150.0" styleClass="form-select" />
+                        <PieChart />
+                        <Label styleClass="h5" text="Label" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="justify-content-center" />
+                     </styleClass>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox styleClass="spacing30">
+               <children>
+                  <HBox styleClass="card">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label styleClass="h6" text="Order" />
+                              <Label styleClass="h3" text="276k" />
+                              <AreaChart prefHeight="0.0" prefWidth="0.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </AreaChart>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

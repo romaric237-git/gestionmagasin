@@ -6,11 +6,13 @@ import com.neb.nebotools.controller.component.LineInvoiceController;
 import com.neb.nebotools.dao.DaoFactory;
 import com.neb.nebotools.model.Customer;
 import com.neb.nebotools.model.Invoice;
+import com.neb.nebotools.model.InvoiceLine;
 import com.neb.nebotools.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -27,6 +29,8 @@ import java.util.Random;
 
 public class InvoiceController extends ControllerAbstract<Invoice> {
 
+    @FXML
+    private Button addItem;
     @FXML
     private Label SubTotalTVA;
 
@@ -99,7 +103,31 @@ public class InvoiceController extends ControllerAbstract<Invoice> {
 
     @Override
     protected void setField() throws Exception {
+        for(InvoiceLine line: entity.getInvoiceLineList()){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(HelloApplication.class.getResource("view/component/lineInvoice.fxml"));
 
+            loader.setResources(Utils.getBundle());
+            VBox component = loader.load();
+
+            LineInvoiceController invoiceController = loader.getController();
+            invoiceController.setComponent(items, component, stockControllers, this);
+            stockControllers.add(invoiceController);
+            items.getChildren().add(component);
+            invoiceController.setEntity(line);
+        }
+        subTotal.setText(entity.getPrice() + " CFA");
+        SubTotalTVA.setText((entity.getPrice()*0.1925) + " CFA");
+        Total.setText((entity.getPrice()*1.925) + " CFA");
+        String text = "INV-";
+        String listChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random rd = new Random();
+        for (int i = 0; i < 9; i++) {
+            if ((i + 1) % 3 == 0 && i != 8)
+                text += "-";
+            text += listChar.charAt(rd.nextInt(0, 35));
+        }
+        invoiceField.setText(text);
     }
 
     @Override
@@ -110,6 +138,9 @@ public class InvoiceController extends ControllerAbstract<Invoice> {
     @Override
     protected void disableField(boolean disable) {
 
+        addItem.setVisible(!disable);
+        customer.setDisable(disable);
+        search.setDisable(disable);
     }
 
     @Override

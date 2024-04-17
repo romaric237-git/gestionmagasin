@@ -102,7 +102,7 @@
                                                       <String fx:value="bolder" />
                                                    </styleClass>
                                                 </Label>
-                                                <TextField fx:id="invoiceField" disable="true" styleClass="form-control" text="INV-065-894-W50" />
+                                                <TextField fx:id="invoiceField" disable="true" prefWidth="250.0" styleClass="form-control" text="INV-065-894-W50" />
                                              </children>
                                              <styleClass>
                                                 <String fx:value="spacing10" />
@@ -113,7 +113,7 @@
                                           <HBox>
                                              <children>
                                                 <Label text="Date" />
-                                                <TextField fx:id="date" disable="true" styleClass="form-control" text="2024-04-10" />
+                                                <TextField fx:id="date" disable="true" prefWidth="250.0" styleClass="form-control" text="2024-04-10" />
                                              </children>
                                              <styleClass>
                                                 <String fx:value="spacing10" />
@@ -129,7 +129,7 @@
                               <VBox fx:id="items" />
                               <VBox styleClass="card-body">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#addItem" text="Add Item">
+                                    <Button fx:id="addItem" mnemonicParsing="false" onAction="#addItem" text="Add Item">
                                        <styleClass>
                                           <String fx:value="btn" />
                                           <String fx:value="btn-primary" />

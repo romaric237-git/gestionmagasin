@@ -62,13 +62,13 @@ public class HeaderController extends Controller {
     }
 
     public void changeHeader(String title, String titleSub) {
-        changeTitle(title.toLowerCase());
-        changeTitleSub(titleSub.toLowerCase());
+        changeTitle(title);
+        changeTitleSub(titleSub);
     }
 
     public void changeTitle(String title) {
         titleString = title;
-        this.title.setText(Utils.getBundle().getString(title)+"/");
+        this.title.setText(Utils.getBundle().getString(title).toLowerCase()+"/");
     }
 
     public void changeTitleSub(String titleSub) {

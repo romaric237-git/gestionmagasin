@@ -14,7 +14,6 @@ import com.neb.nebotools.controller.page.product.ProductController;
 import com.neb.nebotools.controller.page.product.ProductListController;
 import com.neb.nebotools.controller.page.supplier.SupplierController;
 import com.neb.nebotools.controller.page.supplier.SupplierListController;
-import com.neb.nebotools.exception.HighLevelException;
 import com.neb.nebotools.model.*;
 import com.neb.nebotools.utils.Utils;
 import javafx.fxml.FXML;
@@ -84,8 +83,8 @@ public class ApplicationController extends Controller implements Initializable {
 
         switchPane();
 
-        invoiceController.setState(State.ADD);
-        switchPane(invoice, "invoice.entity", State.ADD);
+        employeeController.setState(State.ADD);
+        switchPane(employee, "employee.entity", State.ADD);
 
     }
 
@@ -97,7 +96,7 @@ public class ApplicationController extends Controller implements Initializable {
         content.getChildren().add(productList);
     }
 
-    private void setProduct(){
+    private void setProduct() {
         try {
             FXMLLoader loader1 = new FXMLLoader();
             FXMLLoader loader2 = new FXMLLoader();
@@ -122,15 +121,15 @@ public class ApplicationController extends Controller implements Initializable {
             ((ControllerAbstract<Product>) productController).getCancelBtn().setOnAction(a -> {
                 switchPane(productList, "product.entity", State.MANAGE);
             });
-            productListController.setController(this,productController);
+            productListController.setController(this, productController);
             productListController.setPage((VBox) product);
             productController.setController(this, productListController);
 
-            sidebarController.productAdd().setOnAction(a->{
+            sidebarController.productAdd().setOnAction(a -> {
                 switchPane(product, "product.entity", State.ADD);
             });
 
-            sidebarController.productList().setOnAction(a->{
+            sidebarController.productList().setOnAction(a -> {
                 switchPane(productList, "product.entity", State.MANAGE);
             });
 
@@ -140,7 +139,7 @@ public class ApplicationController extends Controller implements Initializable {
         }
     }
 
-    private void setEmployee(){
+    private void setEmployee() {
         try {
             FXMLLoader loader1 = new FXMLLoader();
             FXMLLoader loader2 = new FXMLLoader();
@@ -158,19 +157,23 @@ public class ApplicationController extends Controller implements Initializable {
 
 
             ((ControllerListAbstract<Employee>) employeeListController).getAdd().setOnAction(a -> {
-
+                employeeController.setState(State.ADD);
                 switchPane(employee, "employee.entity", State.ADD);
             });
 
             ((ControllerAbstract<Employee>) employeeController).getCancelBtn().setOnAction(a -> {
                 switchPane(employeeList, "employee.entity", State.MANAGE);
             });
+            employeeListController.setController(this, employeeController);
+            employeeListController.setPage((VBox) employee);
+            employeeController.setController(this, employeeListController);
 
-            sidebarController.employeeAdd().setOnAction(a->{
+            sidebarController.employeeAdd().setOnAction(a -> {
+                employeeController.setState(State.ADD);
                 switchPane(employee, "employee.entity", State.ADD);
             });
 
-            sidebarController.employeeList().setOnAction(a->{
+            sidebarController.employeeList().setOnAction(a -> {
                 switchPane(employeeList, "employee.entity", State.MANAGE);
             });
         } catch (IllegalStateException | IOException e) {
@@ -179,7 +182,7 @@ public class ApplicationController extends Controller implements Initializable {
         }
     }
 
-    private void setCustomer(){
+    private void setCustomer() {
         try {
             FXMLLoader loader1 = new FXMLLoader();
             FXMLLoader loader2 = new FXMLLoader();
@@ -202,17 +205,19 @@ public class ApplicationController extends Controller implements Initializable {
             });
 
             ((ControllerAbstract<Customer>) customerController).getCancelBtn().setOnAction(a -> {
+                customerController.setState(State.ADD);
                 switchPane(customerList, "customer.entity", State.MANAGE);
             });
-            customerListController.setController(this,customerController);
+            customerListController.setController(this, customerController);
             customerListController.setPage((VBox) customer);
             customerController.setController(this, customerListController);
 
-            sidebarController.customerAdd().setOnAction(a->{
+            sidebarController.customerAdd().setOnAction(a -> {
+                customerController.setState(State.ADD);
                 switchPane(customer, "customer.entity", State.ADD);
             });
 
-            sidebarController.customerList().setOnAction(a->{
+            sidebarController.customerList().setOnAction(a -> {
                 switchPane(customerList, "customer.entity", State.MANAGE);
             });
         } catch (IllegalStateException | IOException e) {
@@ -221,7 +226,7 @@ public class ApplicationController extends Controller implements Initializable {
         }
     }
 
-    private void setSupplier(){
+    private void setSupplier() {
         try {
             FXMLLoader loader1 = new FXMLLoader();
             FXMLLoader loader2 = new FXMLLoader();
@@ -239,21 +244,23 @@ public class ApplicationController extends Controller implements Initializable {
 
 
             ((ControllerListAbstract<Supplier>) supplierListController).getAdd().setOnAction(a -> {
-                switchPane(customer, "supplier.entity", State.ADD);
+                supplierController.setState(State.ADD);
+                switchPane(supplier, "supplier.entity", State.ADD);
             });
 
             ((ControllerAbstract<Supplier>) supplierController).getCancelBtn().setOnAction(a -> {
                 switchPane(supplierList, "supplier.entity", State.MANAGE);
             });
-            supplierListController.setController(this,supplierController);
+            supplierListController.setController(this, supplierController);
             supplierListController.setPage((VBox) supplier);
             supplierController.setController(this, supplierListController);
 
-            sidebarController.supplierAdd().setOnAction(a->{
+            sidebarController.supplierAdd().setOnAction(a -> {
+                supplierController.setState(State.ADD);
                 switchPane(supplier, "supplier.entity", State.ADD);
             });
 
-            sidebarController.supplierList().setOnAction(a->{
+            sidebarController.supplierList().setOnAction(a -> {
                 switchPane(supplierList, "supplier.entity", State.MANAGE);
             });
         } catch (IllegalStateException | IOException e) {
@@ -262,7 +269,7 @@ public class ApplicationController extends Controller implements Initializable {
         }
     }
 
-    private void setInvoice(){
+    private void setInvoice() {
         try {
             FXMLLoader loader1 = new FXMLLoader();
             FXMLLoader loader2 = new FXMLLoader();
@@ -280,21 +287,23 @@ public class ApplicationController extends Controller implements Initializable {
 
 
             ((ControllerListAbstract<Invoice>) invoiceListController).getAdd().setOnAction(a -> {
+                invoiceController.setState(State.ADD);
                 switchPane(invoice, "invoice.entity", State.ADD);
             });
 
             ((ControllerAbstract<Invoice>) invoiceController).getCancelBtn().setOnAction(a -> {
                 switchPane(invoiceList, "invoice.entity", State.MANAGE);
             });
-            invoiceListController.setController(this,invoiceController);
+            invoiceListController.setController(this, invoiceController);
             invoiceListController.setPage((VBox) invoice);
             invoiceController.setController(this, invoiceListController);
 
-            sidebarController.invoiceAdd().setOnAction(a->{
+            sidebarController.invoiceAdd().setOnAction(a -> {
+                invoiceController.setState(State.ADD);
                 switchPane(invoice, "invoice.entity", State.ADD);
             });
 
-            sidebarController.invoiceList().setOnAction(a->{
+            sidebarController.invoiceList().setOnAction(a -> {
                 switchPane(invoiceList, "invoice.entity", State.MANAGE);
             });
         } catch (IllegalStateException | IOException e) {

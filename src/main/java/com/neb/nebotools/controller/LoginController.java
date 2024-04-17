@@ -76,7 +76,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        new Validator(mail, "Le mail ne doit pas etre vide");
+        new Validator(mail, "Le mail ou login ne doit pas etre vide");
         new Validator(passwordP, "Le mot de passe ne doit pas etre vide", "Le mot de passe doit avoir au moins 8 caractères", 8);
     }
 }
