@@ -48,8 +48,9 @@ public abstract class DaoFactory {
 	}
 
 	public static LogDao getLogDao() throws SQLException{
-		if(lotDao==null) lotDao = new LogDao();
-		return lotDao;
+//		if(lotDao==null) lotDao = new LogDao();
+//		return lotDao;
+		return null;
 	}
 
 }

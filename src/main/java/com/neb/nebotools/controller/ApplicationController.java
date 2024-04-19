@@ -87,7 +87,7 @@ public class ApplicationController extends Controller implements Initializable {
         setSupplier();
         setInvoice();
         setSetting();
-        setLog();
+//        setLog();
 
         switchPane();
 
