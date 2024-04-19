@@ -2,6 +2,7 @@ package com.neb.nebotools.controller.component;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 
 public class SidebarController {
@@ -44,6 +45,9 @@ public class SidebarController {
 
     @FXML
     private Button account;
+
+    @FXML
+    private TitledPane log;
 
     public Button customerAdd(){
         return customerAdd;
@@ -95,5 +99,8 @@ public class SidebarController {
 
     public Button account() {
         return account;
+    }
+    public TitledPane log() {
+        return log;
     }
 }

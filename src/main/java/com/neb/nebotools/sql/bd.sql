@@ -107,6 +107,17 @@ INSERT INTO `employee` (`id`, `login`, `firstname`, `lastname`, `password`, `mai
   	FOREIGN KEY (product) REFERENCES product(id)
   );
 
+  CREATE TABLE `log`(
+  	`id` 			VARCHAR(20) PRIMARY KEY,
+  	`employee` 		VARCHAR(20) NOT NULL,
+  	`type` 		    VARCHAR(20) NOT NULL,
+  	`entity`		VARCHAR(20) NOT NULL,
+  	`entity_id`     VARCHAR(20) NOT NULL,
+  	`date_log` 		    DATETIME DEFAULT CURRENT_TIMESTAMP,
+  	`is_actif`  	int NOT NULL DEFAULT 1,
+  	FOREIGN KEY (employee) REFERENCES employee(id)
+  );
+
 
 
   INSERT INTO `product`(`id`, `name`, `brand`, `barcode`, `category`, `description`, `base_price`, `min_price`, `minimum`) VALUES

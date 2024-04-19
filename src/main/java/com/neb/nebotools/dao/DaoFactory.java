@@ -10,6 +10,7 @@ public abstract class DaoFactory {
 	static LotDao lotDao;
 	static InvoiceDao invoiceDao;
 	static LineInvoiceDao lineInvoiceDao;
+	static LogDao logDao;
 
 	public static EmployeeDao getEmployeeDao() throws SQLException{
 		if(employeeDao==null) employeeDao = new EmployeeDao();
@@ -44,6 +45,11 @@ public abstract class DaoFactory {
 	public static LineInvoiceDao getLineInvoiceDao() throws SQLException{
 		if(lineInvoiceDao==null) lineInvoiceDao = new LineInvoiceDao();
 		return lineInvoiceDao;
+	}
+
+	public static LogDao getLogDao() throws SQLException{
+		if(lotDao==null) lotDao = new LogDao();
+		return lotDao;
 	}
 
 }

@@ -10,6 +10,7 @@ import com.neb.nebotools.controller.page.employee.EmployeeController;
 import com.neb.nebotools.controller.page.employee.EmployeeListController;
 import com.neb.nebotools.controller.page.invoice.InvoiceController;
 import com.neb.nebotools.controller.page.invoice.InvoiceListController;
+import com.neb.nebotools.controller.page.log.LogController;
 import com.neb.nebotools.controller.page.product.ProductController;
 import com.neb.nebotools.controller.page.product.ProductListController;
 import com.neb.nebotools.controller.page.setting.SettingController;
@@ -60,6 +61,8 @@ public class ApplicationController extends Controller implements Initializable {
     Parent invoice;
     SettingController settingController;
     Parent setting;
+    LogController logCotroller;
+    Parent log;
     VBox content;
 
     @FXML
@@ -84,6 +87,7 @@ public class ApplicationController extends Controller implements Initializable {
         setSupplier();
         setInvoice();
         setSetting();
+        setLog();
 
         switchPane();
 
@@ -328,6 +332,26 @@ public class ApplicationController extends Controller implements Initializable {
             sidebarController.account().setOnAction(a -> {
                 settingController.refresh();
                 switchPane(setting, "invoice.entity", State.DETAIL);
+            });
+
+        } catch (IllegalStateException | IOException e) {
+            System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
+            e.printStackTrace();
+        }
+    }
+
+    private void setLog() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+
+            loader.setLocation(HelloApplication.class.getResource("view/page/setting/setting.fxml"));
+            loader.setResources(Utils.getBundle());
+            log = loader.load();
+            logCotroller = loader.getController();
+
+            sidebarController.log().setOnMouseClicked(a -> {
+                logCotroller.refresh();
+                switchPane(log, "invoice.entity", State.DETAIL);
             });
 
         } catch (IllegalStateException | IOException e) {
