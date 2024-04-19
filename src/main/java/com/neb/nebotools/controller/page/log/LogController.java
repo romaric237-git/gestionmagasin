@@ -11,7 +11,7 @@ import java.util.List;
 public class LogController extends ControllerListAbstract<Log> {
     @Override
     protected void setDao() throws SQLException {
-dao = DaoFactory.ge
+//dao = DaoFactory.ge
     }
 
     @Override
