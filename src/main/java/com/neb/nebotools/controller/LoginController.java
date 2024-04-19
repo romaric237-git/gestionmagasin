@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
     void signIn(ActionEvent event) {
         try {
             if(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText())!=null){
-                Employee.setUserConnected(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText()));
+                Employee.setEmployee(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText()).getId());
             Stage stage = ((Stage) (mail.getScene().getWindow()));
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/twoStep.fxml"));
             ResourceBundle bundle = ResourceBundle.getBundle("english");

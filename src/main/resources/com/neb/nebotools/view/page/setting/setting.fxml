@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+
+<HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.page.setting.SettingController">
+   <children>
+      <HBox styleClass="spacing30">
+         <children>
+            <VBox>
+               <children>
+                  <VBox styleClass="card-body">
+                     <children>
+                        <VBox alignment="CENTER" styleClass="justify-content-center">
+                           <children>
+                              <ImageView fitHeight="266.0" fitWidth="394.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/logo/profile.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" styleClass="justify-content-center">
+                           <children>
+                              <Label fx:id="detailName" text="Violet Mendoza">
+                                 <styleClass>
+                                    <String fx:value="h4" />
+                                    <String fx:value="bolder" />
+                                    <String fx:value="mb-2" />
+                                 </styleClass>
+                              </Label>
+                              <Label fx:id="detailType" styleClass="bg-label-secondary" text="EMPLOYEE" />
+                           </children>
+                        </VBox>
+                        <Label text="Detail">
+                           <styleClass>
+                              <String fx:value="h4" />
+                              <String fx:value="bolder" />
+                           </styleClass>
+                        </Label>
+                        <Separator prefWidth="200.0" styleClass="mb-4" />
+                        <HBox>
+                           <children>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label styleClass="h6" text="%employee.numberRegistration" />
+                                          <VBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="detailRegistration" styleClass="h6" text="emp-350-805-890" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="spacing10" />
+                                          <String fx:value="padding-10" />
+                                       </styleClass>
+                                    </HBox>
+                                    <Separator VBox.vgrow="ALWAYS" />
+                                    <HBox>
+                                       <children>
+                                          <Label styleClass="h6" text="%employee.login" />
+                                          <VBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="detailLogin" styleClass="h6" text="brondon" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="spacing10" />
+                                          <String fx:value="padding-10" />
+                                       </styleClass>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" />
+                                    <HBox>
+                                       <children>
+                                          <Label styleClass="h6" text="%employee.firstname" />
+                                          <VBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="detailFirstName" styleClass="h6" text="BRONDON" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="spacing10" />
+                                          <String fx:value="padding-10" />
+                                       </styleClass>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" />
+                                    <HBox>
+                                       <children>
+                                          <Label styleClass="h6" text="%employee.lastname" />
+                                          <VBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="detailLastName" styleClass="h6" text="Njotsa Ella" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="spacing10" />
+                                          <String fx:value="padding-10" />
+                                       </styleClass>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" />
+                                    <HBox>
+                                       <children>
+                                          <Label styleClass="h6" text="%employee.mail" />
+                                          <VBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="detailMail" styleClass="h6" text="brondonnjotsa@mail.com" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="spacing10" />
+                                          <String fx:value="padding-10" />
+                                       </styleClass>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" />
+                                    <HBox>
+                                       <children>
+                                          <Label styleClass="h6" text="%employee.phone" />
+                                          <VBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="detailPhone" styleClass="h6" text="6 90 18 53 35" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="spacing10" />
+                                          <String fx:value="padding-10" />
+                                       </styleClass>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" />
+                                    <HBox>
+                                       <children>
+                                          <Label styleClass="h6" text="%employee.birth" />
+                                          <VBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="detailBirth" styleClass="h6" text="13 juillet 2005 (19 ans)" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="spacing10" />
+                                          <String fx:value="padding-10" />
+                                       </styleClass>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" />
+                                    <HBox>
+                                       <children>
+                                          <Label styleClass="h6" text="%employee.sex" />
+                                          <VBox HBox.hgrow="ALWAYS" />
+                                          <Label fx:id="detailSex" styleClass="h6" text="Femme" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="spacing10" />
+                                          <String fx:value="padding-10" />
+                                       </styleClass>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" />
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                     </children>
+                  </VBox>
+               </children>
+               <styleClass>
+                  <String fx:value="card" />
+                  <String fx:value="justify-content-top-left" />
+               </styleClass>
+            </VBox>
+            <VBox styleClass="spacing30">
+               <children>
+                  <HBox styleClass="spacing20">
+                     <children>
+                        <VBox prefHeight="373.0" prefWidth="665.0" styleClass="card" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox styleClass="card-header">
+                                 <children>
+                                    <Label text="%setting.password">
+                                       <styleClass>
+                                          <String fx:value="h5" />
+                                          <String fx:value="bolder" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <VBox styleClass="alert-warning">
+                                       <children>
+                                          <Label styleClass="h6" text="%setting.passwordsub1" />
+                                          <Label styleClass="p" text="%setting.passwordsub2" />
+                                       </children>
+                                    </VBox>
+                                    <HBox styleClass="spacing30">
+                                       <children>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label styleClass="form-label" text="%setting.newPassword" />
+                                                <VBox>
+                                                   <children>
+                                                      <AnchorPane>
+                                                         <children>
+                                                            <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <TextField fx:id="passwordT1" promptText="%login.passwordInput" styleClass="form-control" />
+                                                                  <PasswordField fx:id="passwordP1" focusTraversable="false" promptText="%login.passwordInput" styleClass="form-control" />
+                                                               </children>
+                                                            </StackPane>
+                                                            <ToggleButton focusTraversable="false" layoutX="303.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchP" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                                                               <graphic>
+                                                                  <FontIcon iconLiteral="bx-hide" styleClass="icon" />
+                                                               </graphic>
+                                                               <styleClass>
+                                                                  <String fx:value="input-group-text" />
+                                                                  <String fx:value="cursor-pointer" />
+                                                               </styleClass>
+                                                            </ToggleButton>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label styleClass="form-label" text="%setting.confirmNewPassword" />
+                                                <VBox>
+                                                   <children>
+                                                      <AnchorPane>
+                                                         <children>
+                                                            <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <TextField fx:id="passwordVT" promptText="%login.passwordInput" styleClass="form-control" />
+                                                                  <PasswordField fx:id="passwordVP" focusTraversable="false" promptText="%login.passwordInput" styleClass="form-control" />
+                                                               </children>
+                                                            </StackPane>
+                                                            <ToggleButton focusTraversable="false" layoutX="303.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchP2" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                                                               <graphic>
+                                                                  <FontIcon iconLiteral="bx-hide" styleClass="icon" />
+                                                               </graphic>
+                                                               <styleClass>
+                                                                  <String fx:value="input-group-text" />
+                                                                  <String fx:value="cursor-pointer" />
+                                                               </styleClass>
+                                                            </ToggleButton>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <Button fx:id="changePassword" mnemonicParsing="false" text="%setting.password">
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="btn-primary" />
+                                          <String fx:value="btn-padding" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="card-body" />
+                                    <String fx:value="spacing30" />
+                                 </styleClass>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox styleClass="card-header">
+                                 <children>
+                                    <Label text="%setting.twoStep">
+                                       <styleClass>
+                                          <String fx:value="h5" />
+                                          <String fx:value="bolder" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label styleClass="form-label" text="%setting.twoStepSub" />
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="form-label" text="%setting.twoStepDetail" />
+                                    <HBox>
+                                       <children>
+                                          <TextField fx:id="digit1" styleClass="box-text" />
+                                          <TextField fx:id="digit2" styleClass="box-text" />
+                                          <TextField fx:id="digit3" styleClass="box-text" />
+                                          <TextField fx:id="digit4" styleClass="box-text" />
+                                          <TextField fx:id="digit5" styleClass="box-text" />
+                                          <TextField fx:id="digit6" styleClass="box-text" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="mb-4" />
+                                          <String fx:value="spacing10" />
+                                       </styleClass>
+                                    </HBox>
+                                    <Button fx:id="changePin" mnemonicParsing="false" text="%setting.pin">
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="btn-primary" />
+                                          <String fx:value="btn-padding" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="card-body" />
+                                    <String fx:value="spacing30" />
+                                 </styleClass>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox styleClass="card">
+                     <children>
+                        <VBox styleClass="card-header">
+                           <children>
+                              <Label text="%employee.part2">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="bolder" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="form-label" text="%employee.firstname" />
+                                          <VBox>
+                                             <children>
+                                                <TextField fx:id="firstname" promptText="john" styleClass="form-control" text="BRONDON" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="form-label" text="%employee.lastname" />
+                                          <VBox>
+                                             <children>
+                                                <TextField fx:id="lastname" promptText="Doe" styleClass="form-control" text="Njotsa Ella" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="mb-3" />
+                                    <String fx:value="spacing30" />
+                                 </styleClass>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="form-label" text="%employee.birth" />
+                                          <VBox>
+                                             <children>
+                                                <DatePicker fx:id="birth" maxWidth="1.7976931348623157E308" promptText="YYYY-MM-DD" styleClass="form-date" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="form-label" text="%employee.phone" />
+                                          <VBox>
+                                             <children>
+                                                <TextField fx:id="phone" promptText="690 18 53 35" styleClass="form-control" text="6 90 18 53 35" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="mb-3" />
+                                    <String fx:value="spacing30" />
+                                 </styleClass>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="form-label" text="%employee.sex" />
+                                          <VBox>
+                                             <children>
+                                                <ChoiceBox fx:id="sex" maxWidth="1.7976931348623157E308" prefWidth="150.0" styleClass="form-select" VBox.vgrow="ALWAYS" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <ChoiceBox maxWidth="1.7976931348623157E308" prefWidth="150.0" styleClass="form-select" visible="false" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="mb-3" />
+                                    <String fx:value="spacing30" />
+                                 </styleClass>
+                              </HBox>
+                              <Button fx:id="changePersonalInform" mnemonicParsing="false" text="%setting.persInfo">
+                                 <styleClass>
+                                    <String fx:value="btn" />
+                                    <String fx:value="btn-primary" />
+                                    <String fx:value="btn-padding" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                           <styleClass>
+                              <String fx:value="card-body" />
+                              <String fx:value="spacing30" />
+                           </styleClass>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <styleClass>
+      <String fx:value="spacing30" />
+      <String fx:value="justify-content-top-center" />
+   </styleClass>
+</HBox>

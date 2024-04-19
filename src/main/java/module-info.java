@@ -46,4 +46,7 @@ module com.neb.nebotools {
     opens com.neb.nebotools.controller.page.invoice to javafx.fxml;
     exports com.neb.nebotools.controller.page.invoice to javafx.fxml;
 
+    opens com.neb.nebotools.controller.page.setting to javafx.fxml;
+    exports com.neb.nebotools.controller.page.setting to javafx.fxml;
+
 }

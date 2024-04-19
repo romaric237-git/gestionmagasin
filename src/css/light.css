@@ -352,6 +352,14 @@
   -fx-background-color: #e00e1d;
 }
 
+.bg-label-secondary{
+    -fx-background-color: #ebeef0;
+    -fx-padding: 2 8;
+}
+.bg-label-secondary .text{
+    -fx-fill: #8a96a6;
+}
+
 .btn-primary .text,
 .btn-danger .text,
 .btn-warning .text,
@@ -430,7 +438,16 @@
 .menu-vertical .menu-item {
   -fx-padding: 6 10;
 }
-
+.alert-warning {
+  -fx-background-color: #fff2d6;
+  -fx-border-color: #ffe6b3;
+  -fx-background-radius: 5;
+  -fx-border-radius: 5;
+  -fx-padding: 20;
+}
+.alert-warning * .text{
+  -fx-fill: #ffab00;
+}
 .menu-item{
   -fx-background-color: #fff;
   -fx-alignment: center_right;

@@ -13,7 +13,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
-
+import javafx.print.PrinterJob;
 
 
 import java.io.FileNotFoundException;
@@ -23,6 +23,36 @@ import java.util.Locale;
 
 public class Test {
     public static void main(String[] args) throws FileNotFoundException {
+//        try {
+//            // Spécifier le chemin du fichier PDF
+//            File file = new File("exemple.pdf");
+//
+//            // Vérifier si le bureau est pris en charge et le fichier PDF existe
+//            if (Desktop.isDesktopSupported() && file.exists()) {
+//                // Ouvrir le fichier PDF avec l'application par défaut du système
+//                Desktop.getDesktop().open(file);
+//            } else {
+//                System.out.println("Le bureau n'est pas pris en charge ou le fichier PDF n'existe pas.");
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null && job.showPrintDialog(null)) {
+            // Redimensionner le nœud pour tenir sur une seule page
+//            double scaleX = job.getJobSettings().getPageLayout().getPrintableWidth() / nodeToPrint.getBoundsInParent().getWidth();
+//            double scaleY = job.getJobSettings().getPageLayout().getPrintableHeight() / nodeToPrint.getBoundsInParent().getHeight();
+//            double scale = Math.min(scaleX, scaleY);
+//
+//            nodeToPrint.getTransforms().add(new Scale(scale, scale));
+//
+//            // Imprimer le nœud
+//            boolean success = job.printPage(nodeToPrint);
+//            if (success) {
+//                job.endJob();
+//            }
+        }
         createMakamPdf();
     }
 

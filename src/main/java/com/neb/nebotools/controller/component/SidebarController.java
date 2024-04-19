@@ -42,8 +42,8 @@ public class SidebarController {
     @FXML
     private Button supplierList;
 
-
-
+    @FXML
+    private Button account;
 
     public Button customerAdd(){
         return customerAdd;
@@ -91,5 +91,9 @@ public class SidebarController {
 
     public Button supplierList(){
         return supplierList;
+    }
+
+    public Button account() {
+        return account;
     }
 }

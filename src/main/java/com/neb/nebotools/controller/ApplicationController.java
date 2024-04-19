@@ -12,6 +12,7 @@ import com.neb.nebotools.controller.page.invoice.InvoiceController;
 import com.neb.nebotools.controller.page.invoice.InvoiceListController;
 import com.neb.nebotools.controller.page.product.ProductController;
 import com.neb.nebotools.controller.page.product.ProductListController;
+import com.neb.nebotools.controller.page.setting.SettingController;
 import com.neb.nebotools.controller.page.supplier.SupplierController;
 import com.neb.nebotools.controller.page.supplier.SupplierListController;
 import com.neb.nebotools.model.*;
@@ -57,6 +58,8 @@ public class ApplicationController extends Controller implements Initializable {
     Parent invoiceList;
     InvoiceController invoiceController;
     Parent invoice;
+    SettingController settingController;
+    Parent setting;
     VBox content;
 
     @FXML
@@ -80,6 +83,7 @@ public class ApplicationController extends Controller implements Initializable {
         setCustomer();
         setSupplier();
         setInvoice();
+        setSetting();
 
         switchPane();
 
@@ -306,6 +310,26 @@ public class ApplicationController extends Controller implements Initializable {
             sidebarController.invoiceList().setOnAction(a -> {
                 switchPane(invoiceList, "invoice.entity", State.MANAGE);
             });
+        } catch (IllegalStateException | IOException e) {
+            System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
+            e.printStackTrace();
+        }
+    }
+
+    private void setSetting() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+
+            loader.setLocation(HelloApplication.class.getResource("view/page/setting/setting.fxml"));
+            loader.setResources(Utils.getBundle());
+            setting = loader.load();
+            settingController = loader.getController();
+
+            sidebarController.account().setOnAction(a -> {
+                settingController.refresh();
+                switchPane(setting, "invoice.entity", State.DETAIL);
+            });
+
         } catch (IllegalStateException | IOException e) {
             System.err.println("Une erreur s'est manifesté. Impossible de charger le composant: ");
             e.printStackTrace();

@@ -119,15 +119,8 @@ public class InvoiceController extends ControllerAbstract<Invoice> {
         subTotal.setText(entity.getPrice() + " CFA");
         SubTotalTVA.setText((entity.getPrice()*0.1925) + " CFA");
         Total.setText((entity.getPrice()*1.925) + " CFA");
-        String text = "INV-";
-        String listChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        Random rd = new Random();
-        for (int i = 0; i < 9; i++) {
-            if ((i + 1) % 3 == 0 && i != 8)
-                text += "-";
-            text += listChar.charAt(rd.nextInt(0, 35));
-        }
-        invoiceField.setText(text);
+        invoiceField.setText(entity.getId());
+        date.setText(entity.getDate().toString());
     }
 
     @Override

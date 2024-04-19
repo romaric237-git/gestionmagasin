@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Line?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.component.SidebarController">
+<VBox prefHeight="1044.0" prefWidth="281.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neb.nebotools.controller.component.SidebarController">
    <children>
       <HBox alignment="CENTER" minHeight="160.0" prefHeight="160.0" styleClass="app-brand">
          <children>
@@ -226,10 +226,7 @@
                         <FontIcon iconLiteral="bx-user-circle" />
                      </graphic>
                   </TitledPane>
-                  <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="menu-item" text="Logs">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                     </content>
+                  <TitledPane fx:id="log" animated="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="menu-item" text="Logs">
                      <graphic>
                         <FontIcon iconLiteral="bx-user" />
                      </graphic>
@@ -246,7 +243,7 @@
                               </HBox>
                               <HBox styleClass="data-truncate">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Account" />
+                                    <Button fx:id="account" mnemonicParsing="false" text="Account" />
                                     <Separator styleClass="circle" />
                                  </children>
                               </HBox>

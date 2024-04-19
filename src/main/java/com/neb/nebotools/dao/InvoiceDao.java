@@ -19,7 +19,7 @@ public class InvoiceDao extends Dao<Invoice> {
                 "(?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, obj.getId());
-        ps.setString(2, Employee.getEmployeeConnected().getId());
+        ps.setString(2, Employee.getEmployee().getId());
         ps.setString(3, obj.getCustomer().getId());
         ps.setInt(4, obj.getPrice());
         ps.executeUpdate();

@@ -9,6 +9,8 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.geometry.Side;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -137,6 +139,9 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
         ComboBox<Integer> comboSetPagination = new ComboBox<Integer>();
         ComboBox<String> comboPrint = new ComboBox<String>();
         comboPrint.getItems().addAll("Enregistrer PDF", "IMPRIMER");
+        comboPrint.getSelectionModel().selectFirst();
+        comboPrint.setOnAction(a->{
+        });
         comboPrint.getStyleClass().add("form-select");
         comboSetPagination.getStyleClass().add("form-select");
         for (int i = 5; i<=15; i++)

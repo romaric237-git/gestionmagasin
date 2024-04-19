@@ -3,6 +3,7 @@ package com.neb.nebotools.utils;
 import com.neb.nebotools.HelloApplication;
 import com.neb.nebotools.controller.Controller;
 import javafx.fxml.FXMLLoader;
+import javafx.print.PrinterJob;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -52,6 +53,8 @@ public class Utils {
             stage.setX(0);
             stage.setY(0);
             stage.show();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

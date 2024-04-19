@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Employee extends AbstractEntity {
-    private static Employee employeeConnected;
+    private static String employee;
     private static List<Employee> employees = new ArrayList<Employee>();
     private String login;
     private String firstname;
@@ -25,14 +25,6 @@ public class Employee extends AbstractEntity {
     private Date birth;
     private int sex;
     private Role role;
-
-    static {
-        try {
-            employeeConnected = DaoFactory.getEmployeeDao().find("emp-023-001");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     public int getOld() {
         return LocalDate.now().getYear() - birth.toLocalDate().getYear();
@@ -116,12 +108,12 @@ public class Employee extends AbstractEntity {
         this.role = Role.getRole(role);
     }
 
-    public static Employee getEmployeeConnected() throws SQLException {
+    public static Employee getEmployee() throws SQLException {
         return DaoFactory.getEmployeeDao().find("usr-023-001");
     }
 
-    public static void setUserConnected(Employee employeeConnected) {
-        Employee.employeeConnected = employeeConnected;
+    public static void setEmployee(String employee) {
+        Employee.employee = employee;
     }
 
     public static List<Employee> getList() {
