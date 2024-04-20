@@ -17,6 +17,7 @@ import com.neb.nebotools.controller.page.setting.SettingController;
 import com.neb.nebotools.controller.page.supplier.SupplierController;
 import com.neb.nebotools.controller.page.supplier.SupplierListController;
 import com.neb.nebotools.model.*;
+import com.neb.nebotools.model.enumeration.Role;
 import com.neb.nebotools.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +30,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
@@ -82,13 +84,23 @@ public class ApplicationController extends Controller implements Initializable {
         setCenter();
         setNavigation();
         setProduct();
-        setEmployee();
         setCustomer();
         setSupplier();
         setInvoice();
-        setSetting();
-        setLog();
-
+        try {
+            if(Employee.getEmployee().getRole()== Role.OWNER) {
+                setEmployee();
+                setSetting();
+                setLog();
+            }else{
+                sidebarController.getAccordion().getPanes().remove(sidebarController.getAdministration());
+                sidebarController.getAccordion().getPanes().remove(sidebarController.getEmployee());
+                sidebarController.getAccordion().getPanes().remove(sidebarController.getLog());
+                sidebarController.getAccordion().getPanes().remove(sidebarController.getSetting());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         switchPane();
 
         employeeController.setState(State.ADD);

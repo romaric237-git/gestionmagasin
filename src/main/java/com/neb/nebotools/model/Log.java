@@ -20,6 +20,10 @@ public class Log extends AbstractEntity {
     public Employee getEmployee() throws SQLException {
         return DaoFactory.getEmployeeDao().find(employee);
     }
+
+    public String getLogin() throws SQLException {
+        return DaoFactory.getEmployeeDao().find(employee).getLogin();
+    }
     public String getDateString() {
         return new SimpleDateFormat("EEE, dd MMMM yyyy").format(date_log);
     }

@@ -35,7 +35,7 @@
       </HBox>
       <ScrollPane fitToHeight="true" fitToWidth="true">
          <content>
-            <Accordion style="-fx-background-color: #fff;">
+            <Accordion fx:id="accordion" style="-fx-background-color: #fff;">
               <panes>
                 <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="menu-item" text="Dashboard">
                   <content>
@@ -194,12 +194,12 @@
                         <FontIcon iconLiteral="bx-user" />
                      </graphic>
                   </TitledPane>
-                  <TitledPane animated="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="menu-header-text" text="ADMINISTRATION">
+                  <TitledPane fx:id="administration" animated="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="menu-header-text" text="ADMINISTRATION">
                      <graphic>
                         <Line endX="15.0" styleClass="line" />
                      </graphic>
                   </TitledPane>
-                  <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" text="Employee">
+                  <TitledPane fx:id="employee" animated="false" nodeOrientation="RIGHT_TO_LEFT" text="Employee">
                      <content>
                         <VBox>
                            <children>
@@ -231,7 +231,7 @@
                         <FontIcon iconLiteral="bx-user" />
                      </graphic>
                   </TitledPane>
-                  <TitledPane animated="false" nodeOrientation="RIGHT_TO_LEFT" text="Setting">
+                  <TitledPane fx:id="setting" animated="false" nodeOrientation="RIGHT_TO_LEFT" text="Setting">
                      <content>
                         <VBox>
                            <children>

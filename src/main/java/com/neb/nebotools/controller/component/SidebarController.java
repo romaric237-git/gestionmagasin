@@ -1,11 +1,17 @@
 package com.neb.nebotools.controller.component;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
+import lombok.Getter;
 
+@Getter
 public class SidebarController {
+
+    @FXML
+    private Accordion accordion;
 
     @FXML
     private Button customerAdd;
@@ -48,6 +54,19 @@ public class SidebarController {
 
     @FXML
     private TitledPane log;
+
+
+    @FXML
+    private TitledPane administration;
+
+
+    @FXML
+    private TitledPane employee;
+
+
+    @FXML
+    private TitledPane setting;
+
 
     public Button customerAdd(){
         return customerAdd;

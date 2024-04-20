@@ -53,12 +53,12 @@ public class LogController extends ControllerListAbstract<Log> {
 
     @Override
     protected void initComponent() throws SQLException, EntityNotFoundException {
-        columnDate.setCellFactory(new PropertyValueFactory<Log, String>("dateString"));
-columnEmploye;
-columnEntity;
-columnEntityId;
-columnLog;
-columnLogin;
-columnType;
+        columnDate.setCellValueFactory(new PropertyValueFactory<Log, String>("dateString"));
+        columnEmploye.setCellValueFactory(new PropertyValueFactory<Log, Employee>("employee"));
+        columnEntity.setCellValueFactory(new PropertyValueFactory<Log, String>("entity"));
+        columnEntityId.setCellValueFactory(new PropertyValueFactory<Log, String>("entityID"));
+        columnLog.setCellValueFactory(new PropertyValueFactory<Log, String>("id"));
+        columnLogin.setCellValueFactory(new PropertyValueFactory<Log, String>("login"));
+        columnType.setCellValueFactory(new PropertyValueFactory<Log, String>("type"));
     }
 }

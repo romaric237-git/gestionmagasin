@@ -136,5 +136,30 @@ public class EmployeeDao extends Dao<Employee> {
         }
         return null;
     }
+    public Employee update(int pin) throws SQLException, EntityNotFoundException {
+        String sql = "UPDATE `employee` SET "
+                + "`pin`=? "
+                + "WHERE `id` = ?; ";
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setInt(1, pin);
+        ps.setString(2, Employee.getEmployee().getId());
+        ps.executeUpdate();
+
+        return find(Employee.getEmployee().getId());
+    }
+    public Employee update(String password) throws SQLException, EntityNotFoundException {
+        String sql = "UPDATE `employee` SET "
+                + "`pin`=000000, " +
+                "`password`=?"
+                + "WHERE `id` = ?; ";
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setString(1, password);
+        ps.setString(2, Employee.getEmployee().getId());
+        ps.executeUpdate();
+
+        return find(Employee.getEmployee().getId());
+    }
 
 }
