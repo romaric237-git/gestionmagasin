@@ -1,6 +1,7 @@
 package com.neb.nebotools.controller;
 
 import com.neb.nebotools.controller.enumeration.State;
+import com.neb.nebotools.controller.page.invoice.InvoiceListController;
 import com.neb.nebotools.dao.Dao;
 import com.neb.nebotools.dao.InvoiceDao;
 import com.neb.nebotools.model.AbstractEntity;
@@ -139,7 +140,7 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
         ComboBox<Integer> comboSetPagination = new ComboBox<Integer>();
         ComboBox<String> comboPrint = new ComboBox<String>();
         comboPrint.getItems().addAll("Enregistrer PDF", "IMPRIMER");
-        comboPrint.getSelectionModel().selectFirst();
+        comboPrint.getSelectionModel().selectLast();
         comboPrint.setOnAction(a -> {
             try {
                 printSelection();
@@ -302,8 +303,21 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
                                     e1.printStackTrace();
                                 }
                             });
-                            if (dao instanceof InvoiceDao)
+                            if (dao instanceof InvoiceDao) {
                                 menuBtn.getItems().remove(1);
+                                menuBtn.getItems().add(new MenuItem("Imprimer"));
+                                menuBtn.getItems().get(1).setOnAction(a->{
+                                    try {
+                                        InvoiceListController.printInvoice(item);
+                                    } catch (FileNotFoundException e) {
+                                        throw new RuntimeException(e);
+                                    } catch (SQLException e) {
+                                        throw new RuntimeException(e);
+                                    } catch (EntityNotFoundException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                });
+                            }
                             setGraphic(hb);
                         } else {
                             setGraphic(null);
