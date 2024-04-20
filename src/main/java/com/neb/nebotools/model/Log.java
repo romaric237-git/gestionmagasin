@@ -1,14 +1,15 @@
 package com.neb.nebotools.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.neb.nebotools.dao.DaoFactory;
+import lombok.*;
 
 import java.sql.Date;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@Builder
 public class Log extends AbstractEntity {
     private String employee;
     private String type;
@@ -16,8 +17,21 @@ public class Log extends AbstractEntity {
     private String entityID;
     private Date date_log;
 
+    public Employee getEmployee() throws SQLException {
+        return DaoFactory.getEmployeeDao().find(employee);
+    }
+    public String getDateString() {
+        return new SimpleDateFormat("EEE, dd MMMM yyyy").format(date_log);
+    }
     @Override
     public void setEntity(AbstractEntity t) {
+
+    }
+
+    @AllArgsConstructor
+    public enum Type{
+        ADD("ADD"),UPDATE("UPDATE"),DELETE("DELETE"),LOGIN("LOGIN");
+        String type;
 
     }
 }

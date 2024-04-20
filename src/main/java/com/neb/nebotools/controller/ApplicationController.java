@@ -87,7 +87,7 @@ public class ApplicationController extends Controller implements Initializable {
         setSupplier();
         setInvoice();
         setSetting();
-//        setLog();
+        setLog();
 
         switchPane();
 
@@ -344,7 +344,7 @@ public class ApplicationController extends Controller implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader();
 
-            loader.setLocation(HelloApplication.class.getResource("view/page/setting/setting.fxml"));
+            loader.setLocation(HelloApplication.class.getResource("view/page/log/log.fxml"));
             loader.setResources(Utils.getBundle());
             log = loader.load();
             logCotroller = loader.getController();

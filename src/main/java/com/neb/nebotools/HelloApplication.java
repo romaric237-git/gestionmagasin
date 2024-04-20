@@ -13,12 +13,12 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException, ClassNotFoundException {
 
-//        DatabaseInitializer.destroy();
+        DatabaseInitializer.destroy();
         DatabaseInitializer.init();
 
 
 //        Utils.openApp(stage,"view/component/lineStock.fxml");
-        Utils.openApp(stage, "view/application.fxml");
+        Utils.openApp(stage, "view/login.fxml");
     }
 
     public static void main(String[] args) throws FileNotFoundException {

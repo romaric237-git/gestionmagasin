@@ -360,7 +360,7 @@
     -fx-fill: #8a96a6;
 }
 
-.btn-primary .text,
+.btn-primary  .text,
 .btn-danger .text,
 .btn-warning .text,
 .btn-secondary .text{

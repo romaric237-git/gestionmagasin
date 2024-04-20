@@ -3,6 +3,7 @@ package com.neb.nebotools.controller;
 import com.neb.nebotools.HelloApplication;
 import com.neb.nebotools.dao.DaoFactory;
 import com.neb.nebotools.model.Employee;
+import com.neb.nebotools.utils.Utils;
 import exception.EntityNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import com.neb.nebotools.validator.Validator;
@@ -42,18 +40,16 @@ public class LoginController implements Initializable {
         try {
             if(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText())!=null){
                 Employee.setEmployee(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText()).getId());
-            Stage stage = ((Stage) (mail.getScene().getWindow()));
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("view/twoStep.fxml"));
-            ResourceBundle bundle = ResourceBundle.getBundle("english");
-            fxmlLoader.setResources(bundle);
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add("light.css");
-            stage.setTitle("Hello!");
-            stage.setScene(scene);
-            stage.show();
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Login Correct");
+                alert.setHeaderText("Login Correct");
+                alert.showAndWait();
+                Utils.openApp(((Stage) (mail.getScene().getWindow())),"view/twoStep.fxml");
             }
-
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Mail ou Mot de Passe incorrect");
+            alert.setHeaderText("Mail ou Mot de Passe incorrect");
+            alert.showAndWait();
         } catch (Exception e) {
             System.err.println("Connexion impossible");
         }
