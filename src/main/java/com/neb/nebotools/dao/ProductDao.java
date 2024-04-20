@@ -1,6 +1,7 @@
 package com.neb.nebotools.dao;
 
 import com.neb.nebotools.model.AbstractEntity;
+import com.neb.nebotools.model.Log;
 import com.neb.nebotools.model.Product;
 import exception.EntityNotFoundException;
 
@@ -23,7 +24,8 @@ public class ProductDao extends Dao<Product> {
         String sql = "INSERT INTO `product`(`id`, `name`, `brand`, `barcode`, `category`, `description`, `base_price`, `min_price`, `minimum`) VALUES "
                 + "(?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, generateId());
+        String id = generateId();
+        ps.setString(1, id);
         ps.setString(2, obj.getName());
         ps.setString(3, obj.getBrand());
         ps.setString(4, obj.getBarcode());
@@ -33,6 +35,12 @@ public class ProductDao extends Dao<Product> {
         ps.setInt(8, obj.getMin_price());
         ps.setInt(9, obj.getMinimum());
         ps.executeUpdate();
+
+        DaoFactory.getLogDao().create(Log.builder()
+                .type("CREATE")
+                .entity("PRODUCT")
+                .entityID(obj.getId())
+                .build());
         return getLast();
     }
 
@@ -60,6 +68,12 @@ public class ProductDao extends Dao<Product> {
         ps.setInt(7, obj.getMin_price());
         ps.setInt(8, obj.getMinimum());
         ps.executeUpdate();
+
+        DaoFactory.getLogDao().create(Log.builder()
+                .type("UPDATE")
+                .entity("PRODUCT")
+                .entityID(obj.getId())
+                .build());
         return find(obj.getId());
     }
 

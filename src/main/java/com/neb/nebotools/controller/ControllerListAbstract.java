@@ -9,8 +9,6 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.geometry.Side;
-import javafx.print.Printer;
-import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,8 +19,10 @@ import javafx.util.Callback;
 import org.kordamp.ikonli.boxicons.BoxiconsRegular;
 import org.kordamp.ikonli.javafx.FontIcon;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -140,24 +140,35 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
         ComboBox<String> comboPrint = new ComboBox<String>();
         comboPrint.getItems().addAll("Enregistrer PDF", "IMPRIMER");
         comboPrint.getSelectionModel().selectFirst();
-        comboPrint.setOnAction(a->{
+        comboPrint.setOnAction(a -> {
+            try {
+                printSelection();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         });
         comboPrint.getStyleClass().add("form-select");
         comboSetPagination.getStyleClass().add("form-select");
-        for (int i = 5; i<=15; i++)
+        for (int i = 5; i <= 15; i++)
             comboSetPagination.getItems().add(i);
-        comboSetPagination.getItems().addAll(30,50,75,100);
+        comboSetPagination.getItems().addAll(30, 50, 75, 100);
         comboSetPagination.getSelectionModel().select(3);
-        comboSetPagination.setOnAction(a->{
-                itemPerPage = comboSetPagination.getSelectionModel().getSelectedItem();
-                setPagination();
+        comboSetPagination.setOnAction(a -> {
+            itemPerPage = comboSetPagination.getSelectionModel().getSelectedItem();
+            setPagination();
         });
-        for(Integer item: comboSetPagination.getItems()){
+        for (Integer item : comboSetPagination.getItems()) {
 
         }
-        ((HBox)btnAdd.getParent()).getChildren().add(2,comboPrint);
-        ((HBox)btnAdd.getParent()).getChildren().add(2,comboSetPagination);
+        ((HBox) btnAdd.getParent()).getChildren().add(2, comboPrint);
+        ((HBox) btnAdd.getParent()).getChildren().add(2, comboSetPagination);
     }
+
+    protected abstract void printSelection() throws SQLException, EntityNotFoundException, FileNotFoundException;
 
     private void setPagination() {
         HBox parent = (HBox) pagination_next.getParent();
@@ -169,7 +180,7 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
             btn.setOnAction(a -> paginate(finalI));
             btn.setText((i + 1) + "");
             btn.getStyleClass().addAll("page-item");
-            if(i==1)
+            if (i == 1)
                 btn.getStyleClass().addAll("page-active");
             parent.getChildren().add(parent.getChildren().size() - 1, btn);
         }
@@ -187,7 +198,7 @@ public abstract class ControllerListAbstract<T> extends ControllerPrincipalAbstr
                 paginate();
             }
         });
-paginate();
+        paginate();
     }
 
     private void paginate() {
@@ -197,11 +208,11 @@ paginate();
             table.setItems(FXCollections.observableArrayList(objects.subList(indexPaginate * itemPerPage, Math.min((indexPaginate + 1) * itemPerPage, objects.size()))));
 
             HBox parent = (HBox) pagination_next.getParent();
-            for (Node node: parent.getChildren())
-            node.getStyleClass().remove("page-active");
+            for (Node node : parent.getChildren())
+                node.getStyleClass().remove("page-active");
 
-                parent.getChildren().get(indexPaginate + 1).getStyleClass().add("page-active");
-            }
+            parent.getChildren().get(indexPaginate + 1).getStyleClass().add("page-active");
+        }
 
     }
 
@@ -291,7 +302,7 @@ paginate();
                                     e1.printStackTrace();
                                 }
                             });
-                            if(dao instanceof InvoiceDao)
+                            if (dao instanceof InvoiceDao)
                                 menuBtn.getItems().remove(1);
                             setGraphic(hb);
                         } else {
@@ -325,10 +336,10 @@ paginate();
 
         if (!isSelected && !isNotSelected) {
             checkBox.setIndeterminate(true);
-        }else if(isSelected && !isNotSelected) {
+        } else if (isSelected && !isNotSelected) {
             checkBox.setIndeterminate(false);
             checkBox.setSelected(true);
-        }else if(!isSelected && isNotSelected) {
+        } else if (!isSelected && isNotSelected) {
             checkBox.setIndeterminate(false);
             checkBox.setSelected(false);
         }
@@ -353,4 +364,13 @@ paginate();
     public abstract List<T> search();
 
     //public
+
+    public List<T> getSelected() {
+        List<T> ts = new ArrayList<T>();
+        for (T t : objects) {
+            if (((AbstractEntity) t).getCheckBox().isSelected());
+            ts.add(t);
+        }
+        return ts;
+    }
 }

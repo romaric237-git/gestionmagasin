@@ -5,11 +5,13 @@ import com.neb.nebotools.dao.DaoFactory;
 import com.neb.nebotools.model.AbstractEntity;
 import com.neb.nebotools.model.Customer;
 import com.neb.nebotools.model.Supplier;
+import exception.EntityNotFoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -41,6 +43,11 @@ public class SupplierListController extends ControllerListAbstract<Supplier> {
         columnLastname.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastname"));
 //        columnPayment.setCellValueFactory(new PropertyValueFactory<Customer, String>("quantite"));
         columnPhone.setCellValueFactory(new PropertyValueFactory<Customer, String>("phone"));
+    }
+
+    @Override
+    protected void printSelection() throws SQLException, EntityNotFoundException, FileNotFoundException {
+
     }
 
     @Override

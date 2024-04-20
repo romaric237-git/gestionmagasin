@@ -1,5 +1,6 @@
 package com.neb.nebotools.dao;
 
+import com.neb.nebotools.model.Log;
 import com.neb.nebotools.model.Lot;
 import exception.EntityNotFoundException;
 
@@ -20,7 +21,8 @@ public class LotDao extends Dao<Lot> {
         String sql = "INSERT INTO `lot`(`id`, `product`, `num_lot`, `quantity`, `variant`, `delivery_date`, `expiration_date`, `supplier`, `price`, `status`) VALUES "
                 + "(?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, generateId());
+        String id = generateId();
+        ps.setString(1, id);
         ps.setString(2, obj.getProduct());
         ps.setString(3, obj.getNum_lot());
         ps.setInt(4, obj.getQuantity());
@@ -31,6 +33,12 @@ public class LotDao extends Dao<Lot> {
         ps.setInt(9, obj.getPrice());
         ps.setInt(10, obj.getStatus());
         ps.executeUpdate();
+
+        DaoFactory.getLogDao().create(Log.builder()
+                .type("CREATE")
+                .entity("LOT")
+                .entityID(obj.getId())
+                .build());
         return getLast();
     }
 
@@ -59,6 +67,12 @@ public class LotDao extends Dao<Lot> {
         ps.setInt(8, obj.getPrice());
         ps.executeUpdate();
 
+
+        DaoFactory.getLogDao().create(Log.builder()
+                .type("UPDATE")
+                .entity("LOT")
+                .entityID(obj.getId())
+                .build());
         return find(obj.getId());
     }
 

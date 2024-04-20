@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -43,6 +44,11 @@ public class LogController extends ControllerListAbstract<Log> {
 
     @Override
     protected void initTable() {
+
+    }
+
+    @Override
+    protected void printSelection() throws SQLException, EntityNotFoundException, FileNotFoundException {
 
     }
 

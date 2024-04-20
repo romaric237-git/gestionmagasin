@@ -1,6 +1,7 @@
 package com.neb.nebotools.dao;
 
 import com.neb.nebotools.model.Customer;
+import com.neb.nebotools.model.Log;
 import com.neb.nebotools.model.Supplier;
 import exception.EntityNotFoundException;
 
@@ -20,13 +21,20 @@ public class SupplierDao extends Dao<Supplier> {
         String sql = "INSERT INTO `supplier`(`id`, `firstname`, `lastname`, `phone`, `mail`, `description`) VALUES " +
                 "(?,?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, generateId());
+        String id = generateId();
+        ps.setString(1, id);
         ps.setString(2, obj.getFirstname());
         ps.setString(3, obj.getLastname());
         ps.setString(4, obj.getPhone());
         ps.setString(5, obj.getMail());
         ps.setString(6, obj.getDescription());
         ps.executeUpdate();
+
+        DaoFactory.getLogDao().create(Log.builder()
+                .type("CREATE")
+                .entity("Supplier")
+                .entityID(id)
+                .build());
         return getLast();
     }
 
@@ -48,6 +56,12 @@ public class SupplierDao extends Dao<Supplier> {
         ps.setString(4, obj.getMail());
         ps.setString(5, obj.getDescription());
         ps.executeUpdate();
+
+        DaoFactory.getLogDao().create(Log.builder()
+                .type("UPDATE")
+                .entity("SUPPLIER")
+                .entityID(obj.getId())
+                .build());
         return find(obj.getId());
     }
 

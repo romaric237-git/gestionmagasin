@@ -5,11 +5,13 @@ import com.neb.nebotools.dao.DaoFactory;
 import com.neb.nebotools.model.AbstractEntity;
 import com.neb.nebotools.model.Customer;
 import com.neb.nebotools.model.Employee;
+import exception.EntityNotFoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -49,6 +51,11 @@ public class EmployeeListController extends ControllerListAbstract<Employee> {
         columnOld.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("old"));
         columnPhone.setCellValueFactory(new PropertyValueFactory<Employee, String>("phone"));
         columnSex.setCellValueFactory(new PropertyValueFactory<Employee, String>("sexe"));
+    }
+
+    @Override
+    protected void printSelection() throws SQLException, EntityNotFoundException, FileNotFoundException {
+
     }
 
     @Override

@@ -26,6 +26,11 @@ public class InvoiceDao extends Dao<Invoice> {
         for (InvoiceLine invoiceLine: obj.getInvoiceLineList())
             DaoFactory.getLineInvoiceDao().create(invoiceLine);
 
+        DaoFactory.getLogDao().create(Log.builder()
+                .type("CREATE")
+                .entity("INVOICE")
+                .entityID(obj.getId())
+                .build());
         return getLast();
     }
 

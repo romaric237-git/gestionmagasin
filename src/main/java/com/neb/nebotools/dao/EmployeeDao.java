@@ -128,9 +128,9 @@ public class EmployeeDao extends Dao<Employee> {
         if (rs.next()) {
             Employee e = find(rs.getString(1));
             DaoFactory.getLogDao().create(Log.builder()
-                    .type("UPDATE")
+                    .type("LOGIN")
                     .entity("EMPLOYEE")
-                    .entityID("LOGIN")
+                    .entityID(Employee.getEmployee().getId())
                     .build());
             return e;
         }
@@ -146,6 +146,11 @@ public class EmployeeDao extends Dao<Employee> {
         ps.setString(2, Employee.getEmployee().getId());
         ps.executeUpdate();
 
+        DaoFactory.getLogDao().create(Log.builder()
+                .type("UPDATE PIN CODE")
+                .entity("EMPLOYEE")
+                .entityID(Employee.getEmployee().getId())
+                .build());
         return find(Employee.getEmployee().getId());
     }
     public Employee update(String password) throws SQLException, EntityNotFoundException {
@@ -159,6 +164,11 @@ public class EmployeeDao extends Dao<Employee> {
         ps.setString(2, Employee.getEmployee().getId());
         ps.executeUpdate();
 
+        DaoFactory.getLogDao().create(Log.builder()
+                .type("UPDATE PASSWORD CODE")
+                .entity("EMPLOYEE")
+                .entityID(Employee.getEmployee().getId())
+                .build());
         return find(Employee.getEmployee().getId());
     }
 

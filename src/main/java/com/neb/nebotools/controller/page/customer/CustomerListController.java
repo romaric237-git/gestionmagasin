@@ -10,6 +10,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -41,6 +42,11 @@ public class CustomerListController extends ControllerListAbstract<Customer> {
         columnLastname.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastname"));
 //        columnPayment.setCellValueFactory(new PropertyValueFactory<Customer, String>("quantite"));
         columnPhone.setCellValueFactory(new PropertyValueFactory<Customer, String>("phone"));
+    }
+
+    @Override
+    protected void printSelection() throws SQLException, EntityNotFoundException, FileNotFoundException {
+
     }
 
     @Override

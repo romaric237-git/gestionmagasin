@@ -4,10 +4,12 @@ import com.neb.nebotools.controller.ControllerListAbstract;
 import com.neb.nebotools.dao.DaoFactory;
 import com.neb.nebotools.model.AbstractEntity;
 import com.neb.nebotools.model.Product;
+import exception.EntityNotFoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -77,6 +79,11 @@ public class ProductListController extends ControllerListAbstract<Product> {
         columnStock.setCellValueFactory(new PropertyValueFactory<Product, Integer>("stock"));
         columnQuantity.setCellValueFactory(new PropertyValueFactory<Product, Integer>("quantity"));
         columnStatus.setCellValueFactory(new PropertyValueFactory<Product, String>("status"));
+    }
+
+    @Override
+    protected void printSelection() throws SQLException, EntityNotFoundException, FileNotFoundException {
+
     }
 
     @Override
