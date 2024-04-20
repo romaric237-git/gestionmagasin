@@ -64,18 +64,25 @@ public abstract class ControllerAbstract<T> extends ControllerPrincipalAbstract<
         }
     }
 
-    public void setState(State state){
+    public void setState(State state) throws Exception {
         this.state = state;
-        if (state == State.DETAIL)
-            ((Pane)cancelBtn.getParent()).getChildren().remove(addBtn);
-        else
+        if (state == State.DETAIL) {
+            ((Pane) cancelBtn.getParent()).getChildren().remove(addBtn);
+            disableField(true);
+        }else{
             if(!((Pane)cancelBtn.getParent()).getChildren().contains(addBtn))
                 ((Pane)cancelBtn.getParent()).getChildren().add(addBtn);
+        }
 
-        if(state == State.MODIFY)
+        if(state == State.MODIFY) {
             addBtn.setText("Modifier");
-        if(state == State.ADD)
+            disableField(false);
+        }
+        if(state == State.ADD){
             addBtn.setText("Ajouter");
+            disableField(false);
+            clearField();
+        }
     }
 
     @Override

@@ -142,7 +142,7 @@ public class EmployeeController extends ControllerAbstract<Employee> {
         entity.setLastname(lastname.getText());
         entity.setLogin(login.getText());
         entity.setMail(mail.getText());
-        entity.setPassword(passwordT.getText());
+        entity.setPassword((passwordP.isVisible() ? passwordP.getText() : passwordT.getText()));
         entity.setPhone(phone.getText());
     }
 

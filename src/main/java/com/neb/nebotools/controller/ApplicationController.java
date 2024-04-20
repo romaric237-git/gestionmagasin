@@ -87,24 +87,24 @@ public class ApplicationController extends Controller implements Initializable {
         setCustomer();
         setSupplier();
         setInvoice();
+        setSetting();
         try {
-            if(Employee.getEmployee().getRole()== Role.OWNER) {
+            if (Employee.getEmployee().getRole() == Role.OWNER) {
                 setEmployee();
                 setSetting();
                 setLog();
-            }else{
+            } else {
                 sidebarController.getAccordion().getPanes().remove(sidebarController.getAdministration());
                 sidebarController.getAccordion().getPanes().remove(sidebarController.getEmployee());
                 sidebarController.getAccordion().getPanes().remove(sidebarController.getLog());
-                sidebarController.getAccordion().getPanes().remove(sidebarController.getSetting());
+//                sidebarController.getAccordion().getPanes().remove(sidebarController.getSetting());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         switchPane();
-
-        employeeController.setState(State.ADD);
-        switchPane(employee, "employee.entity", State.ADD);
+        settingController.refresh();
+        switchPane(setting, "employee.entity", State.ADD);
 
     }
 
@@ -134,7 +134,11 @@ public class ApplicationController extends Controller implements Initializable {
 
 
             ((ControllerListAbstract<Product>) productListController).getAdd().setOnAction(a -> {
-                productController.setState(State.ADD);
+                try {
+                    productController.setState(State.ADD);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 switchPane(product, "product.entity", State.ADD);
             });
 
@@ -177,7 +181,11 @@ public class ApplicationController extends Controller implements Initializable {
 
 
             ((ControllerListAbstract<Employee>) employeeListController).getAdd().setOnAction(a -> {
-                employeeController.setState(State.ADD);
+                try {
+                    employeeController.setState(State.ADD);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 switchPane(employee, "employee.entity", State.ADD);
             });
 
@@ -189,7 +197,11 @@ public class ApplicationController extends Controller implements Initializable {
             employeeController.setController(this, employeeListController);
 
             sidebarController.employeeAdd().setOnAction(a -> {
-                employeeController.setState(State.ADD);
+                try {
+                    employeeController.setState(State.ADD);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 switchPane(employee, "employee.entity", State.ADD);
             });
 
@@ -220,12 +232,20 @@ public class ApplicationController extends Controller implements Initializable {
 
 
             ((ControllerListAbstract<Customer>) customerListController).getAdd().setOnAction(a -> {
-                customerController.setState(State.ADD);
+                try {
+                    customerController.setState(State.ADD);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 switchPane(customer, "customer.entity", State.ADD);
             });
 
             ((ControllerAbstract<Customer>) customerController).getCancelBtn().setOnAction(a -> {
-                customerController.setState(State.ADD);
+                try {
+                    customerController.setState(State.ADD);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 switchPane(customerList, "customer.entity", State.MANAGE);
             });
             customerListController.setController(this, customerController);
@@ -233,7 +253,11 @@ public class ApplicationController extends Controller implements Initializable {
             customerController.setController(this, customerListController);
 
             sidebarController.customerAdd().setOnAction(a -> {
-                customerController.setState(State.ADD);
+                try {
+                    customerController.setState(State.ADD);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 switchPane(customer, "customer.entity", State.ADD);
             });
 
@@ -264,7 +288,11 @@ public class ApplicationController extends Controller implements Initializable {
 
 
             ((ControllerListAbstract<Supplier>) supplierListController).getAdd().setOnAction(a -> {
-                supplierController.setState(State.ADD);
+                try {
+                    supplierController.setState(State.ADD);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 switchPane(supplier, "supplier.entity", State.ADD);
             });
 
@@ -276,7 +304,11 @@ public class ApplicationController extends Controller implements Initializable {
             supplierController.setController(this, supplierListController);
 
             sidebarController.supplierAdd().setOnAction(a -> {
-                supplierController.setState(State.ADD);
+                try {
+                    supplierController.setState(State.ADD);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 switchPane(supplier, "supplier.entity", State.ADD);
             });
 
@@ -307,7 +339,11 @@ public class ApplicationController extends Controller implements Initializable {
 
 
             ((ControllerListAbstract<Invoice>) invoiceListController).getAdd().setOnAction(a -> {
-                invoiceController.setState(State.ADD);
+                try {
+                    invoiceController.setState(State.ADD);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 switchPane(invoice, "invoice.entity", State.ADD);
             });
 
@@ -319,7 +355,11 @@ public class ApplicationController extends Controller implements Initializable {
             invoiceController.setController(this, invoiceListController);
 
             sidebarController.invoiceAdd().setOnAction(a -> {
-                invoiceController.setState(State.ADD);
+                try {
+                    invoiceController.setState(State.ADD);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 switchPane(invoice, "invoice.entity", State.ADD);
             });
 

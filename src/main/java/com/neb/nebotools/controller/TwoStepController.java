@@ -47,7 +47,8 @@ public class TwoStepController implements Initializable {
             nbre += Integer.parseInt(digit4.getText())*100;
             nbre += Integer.parseInt(digit5.getText())*10;
             nbre += Integer.parseInt(digit6.getText());
-            if(DaoFactory.getEmployeeDao().loginWithPin(nbre)!=null){
+            System.out.println(nbre);
+            if(DaoFactory.getEmployeeDao().loginWithPin(nbre)){
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Code PIN Correct");
                 alert.setHeaderText("Code PIN Correct");

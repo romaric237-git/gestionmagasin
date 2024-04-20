@@ -40,6 +40,9 @@ public class LoginController implements Initializable {
         try {
             if(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText())!=null){
                 Employee.setEmployee(DaoFactory.getEmployeeDao().login(mail.getText(),passwordP.getText()).getId());
+                System.out.println(
+                        Employee.getEmployee().getId()
+                );
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Login Correct");
                 alert.setHeaderText("Login Correct");

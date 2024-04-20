@@ -113,17 +113,18 @@ public class EmployeeDao extends Dao<Employee> {
         ps.setString(3, password);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
+            Employee.setEmployee(rs.getString("id"));
             return find(rs.getString(1));
         }
         return null;
     }
 
 
-    public Employee loginWithPin(int pin) throws SQLException, EntityNotFoundException {
-        String sql = "SELECT `id` FROM `employee` WHERE `id` = ? AND `pin` = ?";
+    public boolean loginWithPin(int pin) throws SQLException, EntityNotFoundException {
+        String sql = "SELECT * FROM `employee` WHERE `pin` = ? AND `id` = ?";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, Employee.getEmployee().getId());
-        ps.setInt(2, pin);
+        ps.setInt(1, pin);
+        ps.setString(2, Employee.getEmployee().getId());
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             Employee e = find(rs.getString(1));
@@ -132,9 +133,9 @@ public class EmployeeDao extends Dao<Employee> {
                     .entity("EMPLOYEE")
                     .entityID(Employee.getEmployee().getId())
                     .build());
-            return e;
+            return true;
         }
-        return null;
+        return false;
     }
     public Employee update(int pin) throws SQLException, EntityNotFoundException {
         String sql = "UPDATE `employee` SET "

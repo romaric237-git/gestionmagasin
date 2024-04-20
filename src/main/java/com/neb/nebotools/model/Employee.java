@@ -109,7 +109,7 @@ public class Employee extends AbstractEntity {
     }
 
     public static Employee getEmployee() throws SQLException {
-        return DaoFactory.getEmployeeDao().find("usr-023-001");
+        return DaoFactory.getEmployeeDao().find(employee);
     }
 
     public static void setEmployee(String employee) {
