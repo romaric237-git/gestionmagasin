@@ -53,11 +53,12 @@ public class TwoStepController implements Initializable {
                 alert.setHeaderText("Code PIN Correct");
                 alert.showAndWait();
                 Utils.openApp(((Stage) (digit1.getScene().getWindow())),"view/application.fxml");
+            }else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Code PIN incorrect");
+                alert.setHeaderText("Code PIN incorrect");
+                alert.showAndWait();
             }
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Code PIN incorrect");
-            alert.setHeaderText("Code PIN incorrect");
-            alert.showAndWait();
         } catch (Exception e) {
             System.err.println("Connexion impossible");
             e.printStackTrace();
@@ -66,29 +67,29 @@ public class TwoStepController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        digit1.textProperty().addListener((observable,oldValue,newValue)->{
-//            if(digit(digit1,oldValue,newValue))
-//                digit2.requestFocus();
-//        });
-//        digit2.textProperty().addListener((observable,oldValue,newValue)->{
-//            if(digit(digit2,oldValue,newValue))
-//                digit3.requestFocus();
-//        });
-//        digit3.textProperty().addListener((observable,oldValue,newValue)->{
-//            if(digit(digit3,oldValue,newValue))
-//                digit4.requestFocus();
-//        });
-//        digit4.textProperty().addListener((observable,oldValue,newValue)->{
-//            if(digit(digit4,oldValue,newValue))
-//                digit5.requestFocus();
-//        });
-//        digit5.textProperty().addListener((observable,oldValue,newValue)->{
-//            if(digit(digit5,oldValue,newValue))
-//                digit6.requestFocus();
-//        });
-//        digit6.textProperty().addListener((observable,oldValue,newValue)->{
-//            digit(digit6,oldValue,newValue);
-//        });
+        digit1.textProperty().addListener((observable,oldValue,newValue)->{
+            if(digit(digit1,oldValue,newValue))
+                digit2.requestFocus();
+        });
+        digit2.textProperty().addListener((observable,oldValue,newValue)->{
+            if(digit(digit2,oldValue,newValue))
+                digit3.requestFocus();
+        });
+        digit3.textProperty().addListener((observable,oldValue,newValue)->{
+            if(digit(digit3,oldValue,newValue))
+                digit4.requestFocus();
+        });
+        digit4.textProperty().addListener((observable,oldValue,newValue)->{
+            if(digit(digit4,oldValue,newValue))
+                digit5.requestFocus();
+        });
+        digit5.textProperty().addListener((observable,oldValue,newValue)->{
+            if(digit(digit5,oldValue,newValue))
+                digit6.requestFocus();
+        });
+        digit6.textProperty().addListener((observable,oldValue,newValue)->{
+            digit(digit6,oldValue,newValue);
+        });
 
     }
 

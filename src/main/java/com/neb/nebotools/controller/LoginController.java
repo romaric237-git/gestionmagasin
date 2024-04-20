@@ -45,11 +45,12 @@ public class LoginController implements Initializable {
                 alert.setHeaderText("Login Correct");
                 alert.showAndWait();
                 Utils.openApp(((Stage) (mail.getScene().getWindow())),"view/twoStep.fxml");
+            }else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Mail ou Mot de Passe incorrect");
+                alert.setHeaderText("Mail ou Mot de Passe incorrect");
+                alert.showAndWait();
             }
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Mail ou Mot de Passe incorrect");
-            alert.setHeaderText("Mail ou Mot de Passe incorrect");
-            alert.showAndWait();
         } catch (Exception e) {
             System.err.println("Connexion impossible");
         }
