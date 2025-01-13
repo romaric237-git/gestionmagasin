@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static com.almasb.fxgl.app.GameApplication.launch;
+
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException, ClassNotFoundException {
